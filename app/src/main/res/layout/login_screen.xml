@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_screen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/CharcoalBlack"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/txtLogTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:fontFamily="@font/rouge_script"
+        android:text="Login"
+        android:textColor="@color/white"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" /> <!--Login Title-->
+
+    <TextView
+        android:id="@+id/txtLogUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="120dp"
+        android:text="Username :"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" /> <!--Username Text-->
+
+    <TextView
+        android:id="@+id/txtLogPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="5dp"
+        android:text="Password :"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtLogInputUsername" /> <!--Username Text Field-->
+
+    <TextView
+        android:id="@+id/txtLogInputUsername"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="40dp"
+        android:background="@color/white"
+        android:fontFamily="@font/inter"
+        android:text="Username"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtLogUsername" /> <!--Password Text-->
+
+    <TextView
+        android:id="@+id/txtLogInputPassword"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="40dp"
+        android:background="@color/white"
+        android:fontFamily="@font/inter"
+        android:text="Password"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtLogPassword" /> <!--Password Text Field-->
+
+    <Button
+        android:id="@+id/btnRegisterScreen"
+        android:layout_width="wrap_content"
+        android:layout_height="30sp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/round_btn"
+        android:text="Register"
+        android:textColor="@color/orange"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/txtNotYet"
+        app:layout_constraintTop_toBottomOf="@+id/txtLogInputPassword" /> <!--Register Button-->
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="30sp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/round_btn"
+        android:backgroundTint="@color/orange"
+        android:text="Login"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtLogInputPassword" /> <!--Login Button-->
+
+    <Button
+        android:id="@+id/btnMainScreen"
+        android:layout_width="0dp"
+        android:layout_height="30sp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/round_btn"
+        android:backgroundTint="@color/orange"
+        android:text="Back to Main Screen"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnRegisterScreen" /> <!--Back to Main Screen Button-->
+
+    <TextView
+        android:id="@+id/txtNotYet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:text="Not yet Sign Up?"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/btnLogin"
+        app:layout_constraintTop_toBottomOf="@+id/txtLogInputPassword" /> <!--Not Yet Text-->
+</androidx.constraintlayout.widget.ConstraintLayout>
