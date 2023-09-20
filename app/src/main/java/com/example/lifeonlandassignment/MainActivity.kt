@@ -2,6 +2,8 @@ package com.example.lifeonlandassignment
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.lifeonlandassignment.databinding.ActivityMainBinding
+import com.example.lifeonlandassignment.register.RegisterFragment
 
 class MainActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,7 +16,7 @@ class MainActivity: AppCompatActivity() {
 //                add(R.id.fragment_container, HomeFragment())
 //                add(R.id.fragment_container, FavouriteFragment())
 //                add(R.id.fragment_container, ProfileFragment())
-                add(R.id.fragment_container, EventFragment())
+                add(R.id.fragment_container, RegisterFragment())
                 commit()
             }
         }
