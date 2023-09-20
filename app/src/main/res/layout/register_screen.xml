@@ -1,188 +1,209 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/register_screen"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/CharcoalBlack">
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="registerViewModel"
+            type="com.example.lifeonlandassignment.register.RegisterViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/register_screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/CharcoalBlack">
 
 
-    <TextView
-        android:id="@+id/txtRegTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
-        android:fontFamily="@font/rouge_script"
-        android:text="Register"
-        android:textColor="@color/white"
-        android:textSize="50sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/txtRegTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            android:fontFamily="@font/rouge_script"
+            android:text="Register"
+            android:textColor="@color/white"
+            android:textSize="50sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/txtRegUsername"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="120dp"
-        android:text="Username :"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/txtRegUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="120dp"
+            android:text="Username :"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/txtRegPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="5dp"
-        android:text="Password :"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtRegInputUsername" />
+        <TextView
+            android:id="@+id/txtRegPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="5dp"
+            android:text="Password :"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtRegInputUsername" />
 
-    <TextView
-        android:id="@+id/txtRegConfirmPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="5dp"
-        android:text="Confirm Password :"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtRegInputPassword" />
+        <TextView
+            android:id="@+id/txtRegConfirmPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="5dp"
+            android:text="Confirm Password :"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtRegInputPassword" />
 
-    <TextView
-        android:id="@+id/txtRegPhoneNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="5dp"
-        android:text="Phone Number :"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtRegInputConfirmPassword" />
+        <TextView
+            android:id="@+id/txtRegPhoneNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="5dp"
+            android:text="Phone Number :"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtRegInputConfirmPassword" />
 
-    <TextView
-        android:id="@+id/txtRegEmailAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="5dp"
-        android:text="Email Address :"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtRegInputPhoneNumber" />
+        <TextView
+            android:id="@+id/txtRegEmailAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="5dp"
+            android:text="Email Address :"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtRegInputPhoneNumber" />
 
-    <TextView
-        android:id="@+id/txtRegInputUsername"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="40dp"
-        android:background="@color/white"
-        android:text="Username"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtRegUsername" />
+        <EditText
+            android:id="@+id/txtRegInputUsername"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="40dp"
+            android:background="@color/white"
+            android:hint="@string/username_hint"
+            android:importantForAutofill="no"
+            android:text="@{registerViewModel.inputUsername}"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtRegUsername" />
 
-    <TextView
-        android:id="@+id/txtRegInputPassword"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="40dp"
-        android:background="@color/white"
-        android:text="Password"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtRegPassword" />
+        <EditText
+            android:id="@+id/txtRegInputPassword"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="40dp"
+            android:background="@color/white"
+            android:hint="@string/password_hint"
+            android:importantForAutofill="no"
+            android:text="@{registerViewModel.inputPass}"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtRegPassword" />
 
-    <TextView
-        android:id="@+id/txtRegInputConfirmPassword"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="40dp"
-        android:background="@color/white"
-        android:text="Confirm Password"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtRegConfirmPassword" />
+        <EditText
+            android:id="@+id/txtRegInputConfirmPassword"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="40dp"
+            android:background="@color/white"
+            android:hint="@string/confirmPass_hint"
+            android:importantForAutofill="no"
+            android:text="@{registerViewModel.inputConfirmPass}"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtRegConfirmPassword" />
 
-    <TextView
-        android:id="@+id/txtRegInputPhoneNumber"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="40dp"
-        android:background="@color/white"
-        android:text="Phone Number"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtRegPhoneNumber" />
+        <EditText
+            android:id="@+id/txtRegInputPhoneNumber"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="40dp"
+            android:background="@color/white"
+            android:hint="@string/phoneNo_hint"
+            android:importantForAutofill="no"
+            android:text="@{registerViewModel.inputPhoneNo}"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtRegPhoneNumber" />
 
-    <TextView
-        android:id="@+id/txtRegInputEmailAddress"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="40dp"
-        android:background="@color/white"
-        android:text="Email Address"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtRegEmailAddress" />
+        <EditText
+            android:id="@+id/txtRegInputEmailAddress"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="40dp"
+            android:background="@color/white"
+            android:hint="@string/email_hint"
+            android:importantForAutofill="no"
+            android:text="@{registerViewModel.inputEmail}"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtRegEmailAddress" />
 
-    <Button
-        android:id="@+id/btnRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="30sp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/round_btn"
-        android:backgroundTint="@color/orange"
-        android:text="Sign Up"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtRegInputEmailAddress" />
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="30sp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/round_btn"
+            android:backgroundTint="@color/orange"
+            android:text="Sign Up"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:onClick="@{()->registerViewModel.registerButton()}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtRegInputEmailAddress" />
 
-    <Button
-        android:id="@+id/btnLoginScreen"
-        android:layout_width="0dp"
-        android:layout_height="30sp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="40dp"
-        android:background="@drawable/round_btn"
-        android:backgroundTint="@color/orange"
-        android:text="Back to Login Screen"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnRegister" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/btnLoginScreen"
+            android:layout_width="0dp"
+            android:layout_height="30sp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="40dp"
+            android:background="@drawable/round_btn"
+            android:backgroundTint="@color/orange"
+            android:text="Back to Login Screen"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnRegister" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

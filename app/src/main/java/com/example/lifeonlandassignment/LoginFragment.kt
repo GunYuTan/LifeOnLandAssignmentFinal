@@ -1,4 +1,8 @@
 package com.example.lifeonlandassignment
 
-class LoginFragment {
+import androidx.appcompat.app.AppCompatActivity
+import com.example.lifeonlandassignment.databinding.LoginScreenBinding
+
+class LoginFragment : AppCompatActivity(){
+
 }
