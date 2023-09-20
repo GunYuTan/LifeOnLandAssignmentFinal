@@ -11,8 +11,8 @@ import kotlin.math.abs
 
 class MainActivity: AppCompatActivity() {
 
-//    private lateinit var viewPager2: ViewPager2
-//    private lateinit var viewPager3: ViewPager2
+    private lateinit var viewPager2: ViewPager2
+    private lateinit var viewPager3: ViewPager2
 //    private lateinit var viewPager4: ViewPager2
 //    private lateinit var viewPager5: ViewPager2
 //    private lateinit var viewPager6: ViewPager2
@@ -80,8 +80,8 @@ class MainActivity: AppCompatActivity() {
     private fun setUpTransformer() {
         // Apply the transformer to both view pagers
         val transformer = createTransformer()
-//        viewPager2.setPageTransformer(transformer)
-//        viewPager3.setPageTransformer(transformer)
+        viewPager2.setPageTransformer(transformer)
+        viewPager3.setPageTransformer(transformer)
 //        viewPager4.setPageTransformer(transformer)
 //        viewPager5.setPageTransformer(transformer)
 //        viewPager6.setPageTransformer(transformer)
@@ -97,8 +97,8 @@ class MainActivity: AppCompatActivity() {
         return transformer
     }
     private fun init() {
-//        viewPager2 = findViewById(R.id.viewPager2)
-//        viewPager3 = findViewById(R.id.viewPager3)
+        viewPager2 = findViewById(R.id.viewPager2)
+        viewPager3 = findViewById(R.id.viewPager3)
 //        viewPager4 = findViewById(R.id.viewPager4)
 //        viewPager5 = findViewById(R.id.viewPager5)
 //        viewPager6 = findViewById(R.id.viewPager6)
