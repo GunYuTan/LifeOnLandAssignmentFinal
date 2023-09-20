@@ -24,8 +24,8 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.home_screen, container, false)
-        // Your initialization code here
         return view
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -36,6 +36,7 @@ class HomeFragment : Fragment() {
         setUpTransformer()
 
         viewPager4.registerOnPageChangeCallback(getPageChangeCallback(handler4))
+
     }
 
     override fun onPause() {

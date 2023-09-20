@@ -39,6 +39,7 @@ class EventFragment : Fragment() {
 
         handler5.postDelayed(runnable5, 2000)
         handler6.postDelayed(runnable6, 2000)
+
     }
 
     override fun onPause() {
