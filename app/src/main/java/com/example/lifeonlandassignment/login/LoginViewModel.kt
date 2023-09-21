@@ -6,6 +6,7 @@ import androidx.databinding.Observable
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.lifeonlandassignment.Global
 import com.example.lifeonlandassignment.database.AssignmentDatabaseRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -40,8 +41,9 @@ class LoginViewModel (private val repository: AssignmentDatabaseRepository, appl
                     if(userList.password == password){
                         inputUsername.value == null
                         inputPass.value == null
+                        _messageLiveData.value = "Login Successfully."
                         _navigatetoHome.value = true
-                        _messageLiveData.value = "Successfull."
+                        Global.loginUser = username
                     }else{
                         _messageLiveData.value = "Invalid username or password."
                     }
@@ -52,6 +54,7 @@ class LoginViewModel (private val repository: AssignmentDatabaseRepository, appl
             }
         }
     }
+
     override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
     }
 

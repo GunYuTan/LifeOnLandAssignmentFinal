@@ -1,19 +1,34 @@
-package com.example.lifeonlandassignment
+package com.example.lifeonlandassignment.profile
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
+import com.example.lifeonlandassignment.Global
+import com.example.lifeonlandassignment.R
+import com.example.lifeonlandassignment.database.AssignmentDatabase
+import com.example.lifeonlandassignment.database.AssignmentDatabaseRepository
+import com.example.lifeonlandassignment.databinding.ProfileScreenBinding
 import kotlin.math.abs
 
 class ProfileFragment : Fragment() {
+    private lateinit var profileViewModel: ProfileViewModel
+    private var _binding: ProfileScreenBinding? = null
+    private val binding get() = _binding!!
+    private val loginUser = Global.loginUser
+    val application = requireNotNull(this.activity).application
+    val dataSource = AssignmentDatabase.getInstance(application).assignmentDatabaseDao
+
     private lateinit var viewPager2: ViewPager2
     private lateinit var viewPager3: ViewPager2
     private val handler2 = Handler()
@@ -26,8 +41,8 @@ class ProfileFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.profile_screen, container, false)
-        return view
+        _binding = ProfileScreenBinding.inflate(inflater, container, false)
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -43,6 +58,10 @@ class ProfileFragment : Fragment() {
 
         viewPager2.registerOnPageChangeCallback(getPageChangeCallback(handler2, runnable2))
         viewPager3.registerOnPageChangeCallback(getPageChangeCallback(handler3, runnable3))
+
+        binding.btnChangePicture.setOnClickListener{
+            chooseProfilePicture()
+        }
     }
 
     override fun onPause() {
@@ -100,6 +119,12 @@ class ProfileFragment : Fragment() {
         adapter3 = ImageAdapter3(imageList3)
         viewPager2.adapter = adapter2
         viewPager3.adapter = adapter3
+    }
+
+    private fun chooseProfilePicture(){
+        val intent = Intent(Intent.ACTION_GET_CONTENT)
+        intent.type = "image/*"
+        startActivityForResult(intent, REQUEST_CODE_GALLERY)
     }
 
     inner class ImageAdapter2(private val imageList: ArrayList<Int>) : RecyclerView.Adapter<ImageAdapter2.ImageViewHolder>() {

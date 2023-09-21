@@ -1,5 +1,6 @@
 package com.example.lifeonlandassignment.database
 
+import android.graphics.Bitmap
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -19,9 +20,9 @@ data class User(
     val phoneNo: String,
 
     @ColumnInfo(name = "email")
-    val email: String
+    val email: String,
 
-
-
+    @ColumnInfo(name = "userImage")
+    val userImage: Bitmap?
 
 )

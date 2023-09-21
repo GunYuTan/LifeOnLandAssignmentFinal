@@ -57,7 +57,7 @@ class RegisterViewModel(private val repository: AssignmentDatabaseRepository, ap
                 if(userList !=null){
                     _messageLiveData.value = "Username has been register before."
                 }else{
-                    repository.insert(User(null,username, password, phoneNo, email))
+                    repository.insert(User(null,username, password, phoneNo, email, null))
                     inputUsername.value = null
                     inputPass.value = null
                     inputConfirmPass.value = null

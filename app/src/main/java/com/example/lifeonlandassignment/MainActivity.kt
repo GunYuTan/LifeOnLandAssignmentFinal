@@ -2,8 +2,7 @@ package com.example.lifeonlandassignment
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.lifeonlandassignment.login.LoginFragment
-import com.example.lifeonlandassignment.register.RegisterFragment
+import com.example.lifeonlandassignment.profile.ProfileFragment
 
 class MainActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,7 +15,7 @@ class MainActivity: AppCompatActivity() {
 //                add(R.id.fragment_container, HomeFragment())
 //                add(R.id.fragment_container, FavouriteFragment())
 //                add(R.id.fragment_container, ProfileFragment())
-                add(R.id.fragment_container, LoginFragment())
+                add(R.id.fragment_container, ProfileFragment())
                 commit()
             }
         }
