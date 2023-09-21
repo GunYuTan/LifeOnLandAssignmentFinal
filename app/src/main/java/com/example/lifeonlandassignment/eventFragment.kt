@@ -1,121 +1,128 @@
 package com.example.lifeonlandassignment
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.CompositePageTransformer
-import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
-import kotlin.math.abs
+import com.example.lifeonlandassignment.R
+
 
 class EventFragment : Fragment() {
-    private lateinit var viewPager5: ViewPager2
-    private lateinit var viewPager6: ViewPager2
-    private val handler5 = Handler()
-    private val handler6 = Handler()
-    private lateinit var adapter5: ImageAdapter5
-    private lateinit var adapter6: ImageAdapter6
+
+    private lateinit var upcomingEventsPager: ViewPager2
+    private lateinit var currentEventsPager: ViewPager2
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var toggle: ActionBarDrawerToggle
+    private lateinit var myImageView: ImageView
+
+    private val upcomingEventsHandler = Handler()
+    private val currentEventsHandler = Handler()
+
+    private lateinit var upcomingEventsAdapter: EventsAdapter
+    private lateinit var currentEventsAdapter: EventsAdapter
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.event_screen, container, false)
-        return view
+        return inflater.inflate(R.layout.event_screen, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewPager5 = view.findViewById(R.id.viewPager5)
-        viewPager6 = view.findViewById(R.id.viewPager6)
+        upcomingEventsPager = view.findViewById(R.id.viewPager5)
+        currentEventsPager = view.findViewById(R.id.viewPager6)
+        myImageView = view.findViewById(R.id.myImageView)
+        drawerLayout = view.findViewById(R.id.event_screen)
 
-        init()
+        // Drawer and ImageView setup
+        myImageView.setOnClickListener {
+            val newImageDrawable: Drawable = resources.getDrawable(R.drawable.dashboard, requireActivity().theme)
+            myImageView.setImageDrawable(newImageDrawable)
+            drawerLayout.openDrawer(GravityCompat.START)
+        }
 
-        handler5.postDelayed(runnable5, 2000)
-        handler6.postDelayed(runnable6, 2000)
+        toggle = ActionBarDrawerToggle(
+            requireActivity(), drawerLayout, R.string.drawer_open, R.string.drawer_close
+        )
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
 
+        (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        // Initialize ViewPager2 Adapters
+        initializeAdaptersAndPagers()
+
+        // Auto-scroll setup
+        startAutoScroll(upcomingEventsHandler, upcomingEventsPager, 2000)
+        startAutoScroll(currentEventsHandler, currentEventsPager, 2000)
+    }
+
+    private fun initializeAdaptersAndPagers() {
+        val upcomingEvents = arrayListOf(R.drawable.javan_rhino2, R.drawable.javan_rhino2, R.drawable.javan_rhino2)
+        val currentEvents = arrayListOf(R.drawable.javan_rhino2, R.drawable.javan_rhino2, R.drawable.javan_rhino2)
+
+        upcomingEventsAdapter = EventsAdapter(upcomingEvents)
+        currentEventsAdapter = EventsAdapter(currentEvents)
+
+        upcomingEventsPager.adapter = upcomingEventsAdapter
+        currentEventsPager.adapter = currentEventsAdapter
+
+        registerAutoScrollCallback(upcomingEventsHandler, upcomingEventsPager)
+        registerAutoScrollCallback(currentEventsHandler, currentEventsPager)
+    }
+
+    private fun startAutoScroll(handler: Handler, pager: ViewPager2, delay: Long) {
+        handler.postDelayed({ pager.currentItem = (pager.currentItem + 1) % upcomingEventsAdapter.itemCount }, delay)
+    }
+
+    private fun registerAutoScrollCallback(handler: Handler, pager: ViewPager2) {
+        pager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                handler.removeCallbacksAndMessages(null)
+                startAutoScroll(handler, pager, 2000)
+            }
+        })
     }
 
     override fun onPause() {
         super.onPause()
-        handler5.removeCallbacks(runnable5)
-        handler6.removeCallbacks(runnable6)
+        upcomingEventsHandler.removeCallbacksAndMessages(null)
+        currentEventsHandler.removeCallbacksAndMessages(null)
     }
 
     override fun onResume() {
         super.onResume()
-        handler5.postDelayed(runnable5, 2000)
-        handler6.postDelayed(runnable6, 2000)
+        startAutoScroll(upcomingEventsHandler, upcomingEventsPager, 2000)
+        startAutoScroll(currentEventsHandler, currentEventsPager, 2000)
     }
 
-    private val runnable5 = Runnable { viewPager5.currentItem = (viewPager5.currentItem + 1) % adapter5.itemCount }
-    private val runnable6 = Runnable { viewPager6.currentItem = (viewPager6.currentItem + 1) % adapter6.itemCount }
-
-    private fun getPageChangeCallback(handler: Handler, runnable: Runnable) = object : ViewPager2.OnPageChangeCallback() {
-        override fun onPageSelected(position: Int) {
-            super.onPageSelected(position)
-            handler.removeCallbacks(runnable)
-            handler.postDelayed(runnable, 2000)
-        }
-    }
-
-    private fun init() {
-        val imageList5 = ArrayList<Int>()
-        imageList5.add(R.drawable.javan_rhino2)
-        imageList5.add(R.drawable.javan_rhino2)
-        imageList5.add(R.drawable.javan_rhino2)
-
-        val imageList6 = ArrayList<Int>()
-        imageList6.add(R.drawable.javan_rhino2)
-        imageList6.add(R.drawable.javan_rhino2)
-        imageList6.add(R.drawable.javan_rhino2)
-
-        adapter5 = ImageAdapter5(imageList5)
-        adapter6 = ImageAdapter6(imageList6)
-        viewPager5.adapter = adapter5
-        viewPager6.adapter = adapter6
-
-        viewPager5.registerOnPageChangeCallback(getPageChangeCallback(handler5, runnable5))
-        viewPager6.registerOnPageChangeCallback(getPageChangeCallback(handler6, runnable6))
-    }
-
-    inner class ImageAdapter5(private val imageList: ArrayList<Int>) : RecyclerView.Adapter<ImageAdapter5.ImageViewHolder>() {
-        inner class ImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-            val imageView: ImageView = itemView.findViewById(R.id.imageView)
+    inner class EventsAdapter(private val images: List<Int>) : RecyclerView.Adapter<EventsAdapter.ViewHolder>() {
+        inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+            val imageView: ImageView = view.findViewById(R.id.imageView)
         }
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             val view = LayoutInflater.from(parent.context).inflate(R.layout.image_container, parent, false)
-            return ImageViewHolder(view)
+            return ViewHolder(view)
         }
 
-        override fun getItemCount(): Int = imageList.size
+        override fun getItemCount(): Int = images.size
 
-        override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
-            holder.imageView.setImageResource(imageList[position])
-        }
-    }
-
-    inner class ImageAdapter6(private val imageList: ArrayList<Int>) : RecyclerView.Adapter<ImageAdapter6.ImageViewHolder>() {
-        inner class ImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-            val imageView: ImageView = itemView.findViewById(R.id.imageView)
-        }
-
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
-            val view = LayoutInflater.from(parent.context).inflate(R.layout.image_container, parent, false)
-            return ImageViewHolder(view)
-        }
-
-        override fun getItemCount(): Int = imageList.size
-
-        override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
-            holder.imageView.setImageResource(imageList[position])
+        override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+            holder.imageView.setImageResource(images[position])
         }
     }
 }

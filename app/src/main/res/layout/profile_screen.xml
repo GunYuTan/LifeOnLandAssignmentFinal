@@ -1,15 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/profile_screen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/CharcoalBlack">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/CharcoalBlack">
+
+
+        <ImageView
+            android:id="@+id/myImageView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/dashboard"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/txtHomeTitle"
@@ -56,7 +71,7 @@
         <Button
             android:id="@+id/btnUpdateProfileScreen"
             android:layout_width="0dp"
-            android:layout_height="30sp"
+            android:layout_height="45sp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
@@ -72,9 +87,9 @@
         <Button
             android:id="@+id/btnChangePicture"
             android:layout_width="0dp"
-            android:layout_height="30sp"
+            android:layout_height="45sp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="25dp"
             android:layout_marginEnd="10dp"
             android:background="@drawable/round_btn"
             android:backgroundTint="@color/orange"
@@ -149,4 +164,13 @@
             app:layout_constraintTop_toBottomOf="@+id/txtRecentlyEventJoined" /> <!--viewPager 3(id)-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+    </ScrollView>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:menu="@menu/drawer_menu" />
+
+</androidx.drawerlayout.widget.DrawerLayout>

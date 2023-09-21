@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.example.lifeonlandassignment"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.lifeonlandassignment"
@@ -46,7 +46,13 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.8.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.0")
+    implementation("androidx.gridlayout:gridlayout:1.0.0")
+    implementation("androidx.navigation:navigation-common:2.7.3")
+    implementation("androidx.navigation:navigation-common-ktx:2.7.3")
+    implementation("androidx.navigation:navigation-runtime:2.7.3")
+    implementation("androidx.navigation:navigation-ui:2.7.3")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.3")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.3")
     implementation("androidx.room:room-common:2.5.2")
     implementation("androidx.room:room-ktx:2.5.2")
     implementation("androidx.databinding:databinding-runtime:8.1.1")
