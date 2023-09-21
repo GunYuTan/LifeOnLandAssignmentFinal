@@ -45,7 +45,7 @@ class RegisterViewModel(private val repository: AssignmentDatabaseRepository, ap
         val phoneNo = inputPhoneNo.value
         val email = inputEmail.value
 
-        Log.i("Testing",username+password)
+        //Log.i("Testing",inputUsername.value.toString())
         if(username == null || password == null || confirmPass == null || phoneNo == null || email == null){
             _messageLiveData.value = "Each field is required."
         }else if(password != confirmPass){
@@ -57,10 +57,20 @@ class RegisterViewModel(private val repository: AssignmentDatabaseRepository, ap
                 if(userList !=null){
                     _messageLiveData.value = "Username has been register before."
                 }else{
-                    repository.insert(User(0,username, password, phoneNo, email))
+                    repository.insert(User(null,username, password, phoneNo, email))
+                    inputUsername.value = null
+                    inputPass.value = null
+                    inputConfirmPass.value = null
+                    inputPhoneNo.value = null
+                    inputEmail.value = null
+                    _messageLiveData.value = "Register successfully."
                 }
             }
         }
+    }
+
+    fun backToLogin(){
+
     }
 
     override fun addOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {}

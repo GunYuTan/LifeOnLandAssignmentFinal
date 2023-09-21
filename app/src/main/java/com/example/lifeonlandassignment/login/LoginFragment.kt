@@ -1,4 +1,4 @@
-package com.example.lifeonlandassignment.register
+package com.example.lifeonlandassignment.login
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,30 +12,26 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.lifeonlandassignment.R
 import com.example.lifeonlandassignment.database.AssignmentDatabase
 import com.example.lifeonlandassignment.database.AssignmentDatabaseRepository
-import com.example.lifeonlandassignment.databinding.RegisterScreenBinding
+import com.example.lifeonlandassignment.databinding.LoginScreenBinding
 
-class RegisterFragment : Fragment() {
-    private lateinit var registerViewModel: RegisterViewModel
+class LoginFragment : Fragment(){
+    private lateinit var loginViewModel: LoginViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding: RegisterScreenBinding = DataBindingUtil.inflate(
-            inflater, R.layout.register_screen, container, false)
+        val binding: LoginScreenBinding = DataBindingUtil.inflate(inflater, R.layout.login_screen,container,false)
         val application = requireNotNull(this.activity).application
         val dataSource = AssignmentDatabase.getInstance(application).assignmentDatabaseDao
         val repository = AssignmentDatabaseRepository(dataSource)
-        val factory = RegisterViewModelFactory(repository, application)
-        registerViewModel = ViewModelProvider(this,factory).get(RegisterViewModel::class.java)
-        binding.registerViewModel = registerViewModel
+        val factory = LoginViewModelFactory(repository, application)
+        loginViewModel = ViewModelProvider(this,factory).get(LoginViewModel::class.java)
+        binding.loginViewModel = loginViewModel
         binding.lifecycleOwner = this
 
-        binding.btnLoginScreen.setOnClickListener{
-            //go back to login screen
-        }
-
-        registerViewModel.messageLiveData.observe(viewLifecycleOwner, Observer { message ->
+        loginViewModel.messageLiveData.observe(viewLifecycleOwner, Observer { message ->
             message?.let {
                 // Use the context of the fragment to show the Toast
                 Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
@@ -44,4 +40,5 @@ class RegisterFragment : Fragment() {
 
         return binding.root
     }
+
 }
