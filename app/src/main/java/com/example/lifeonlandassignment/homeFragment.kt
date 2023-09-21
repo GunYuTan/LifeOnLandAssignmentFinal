@@ -1,22 +1,33 @@
 package com.example.lifeonlandassignment
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.navigation.NavigationView
 import kotlin.math.abs
 
 class HomeFragment : Fragment() {
     private lateinit var viewPager4: ViewPager2
     private val handler4 = Handler()
     private lateinit var adapter4: ImageAdapter4
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var navigationView: NavigationView
+    private lateinit var toggle: ActionBarDrawerToggle
+    private lateinit var myImageView: ImageView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,19 +35,38 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.home_screen, container, false)
-        return view
 
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         viewPager4 = view.findViewById(R.id.viewPager4)
+        drawerLayout = view.findViewById(R.id.home_screen)
+        navigationView = view.findViewById(R.id.nav_view)
+        myImageView = view.findViewById(R.id.myImageView)
 
         init()
         setUpTransformer()
 
         viewPager4.registerOnPageChangeCallback(getPageChangeCallback(handler4))
 
+        myImageView.setOnClickListener {
+            // Change ImageView
+            val newImageDrawable: Drawable = resources.getDrawable(R.drawable.dashboard, requireActivity().theme)
+            myImageView.setImageDrawable(newImageDrawable)
+
+            // Open Drawer
+            drawerLayout.openDrawer(GravityCompat.START)
+        }
+
+        // Initialize the ActionBarDrawerToggle instance
+        toggle = ActionBarDrawerToggle(
+            requireActivity(), drawerLayout, R.string.drawer_open, R.string.drawer_close
+        )
+
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
+        // Show hamburger icon on ActionBar
+        (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        return view
     }
 
     override fun onPause() {
@@ -94,5 +124,12 @@ class HomeFragment : Fragment() {
         override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
             holder.imageView.setImageResource(imageList[position])
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (toggle.onOptionsItemSelected(item)) {
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

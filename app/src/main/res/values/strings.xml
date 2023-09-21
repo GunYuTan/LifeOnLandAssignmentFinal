@@ -5,4 +5,6 @@
     <string name="confirmPass_hint">Confirm Password</string>
     <string name="phoneNo_hint">Phone Number</string>
     <string name="email_hint">Email Address</string>
+    <string name="drawer_open" />
+    <string name="drawer_close" />
 </resources>

@@ -1,22 +1,33 @@
 package com.example.lifeonlandassignment
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.navigation.NavigationView
 import kotlin.math.abs
 
 class FavouriteFragment : Fragment() {
     private lateinit var viewPager7: ViewPager2
     private val handler7 = Handler()
     private lateinit var adapter7: ImageAdapter7
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var navigationView: NavigationView
+    private lateinit var toggle: ActionBarDrawerToggle
+    private lateinit var myImageView: ImageView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,18 +35,37 @@ class FavouriteFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.favourite_screen, container, false)
-        // Your initialization code here
-        return view
-    }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         viewPager7 = view.findViewById(R.id.viewPager7)
+        drawerLayout = view.findViewById(R.id.favourite_screen) // Not the best ID naming
+        myImageView = view.findViewById(R.id.myImageView)
 
         init()
         setUpTransformer()
 
         viewPager7.registerOnPageChangeCallback(getPageChangeCallback(handler7))
+
+        myImageView.setOnClickListener {
+            // Change ImageView
+            val newImageDrawable: Drawable = resources.getDrawable(R.drawable.dashboard, requireActivity().theme)
+            myImageView.setImageDrawable(newImageDrawable)
+
+            // Open Drawer
+            drawerLayout.openDrawer(GravityCompat.START)
+        }
+
+        // Initialize the ActionBarDrawerToggle instance
+        toggle = ActionBarDrawerToggle(
+            requireActivity(), drawerLayout, R.string.drawer_open, R.string.drawer_close
+        )
+
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
+        // Show hamburger icon on ActionBar
+        (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        return view
     }
 
     override fun onPause() {
