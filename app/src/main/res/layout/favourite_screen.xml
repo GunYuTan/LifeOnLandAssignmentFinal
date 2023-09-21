@@ -40,7 +40,7 @@
     </androidx.viewpager2.widget.ViewPager2>
 
     <ImageView
-        android:id="@+id/iconFavourite"
+        android:id="@+id/btnFavourites"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginBottom="100dp"
@@ -48,75 +48,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_favourite" />
-
-    <ImageView
-        android:id="@+id/btnToHomeScreen"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_home" /> <!--home screen icon-->
-
-    <ImageView
-        android:id="@+id/btnNotification"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="7dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnToHomeScreen"
-        app:srcCompat="@drawable/ic_notification" /> <!--notification screen icon-->
-
-    <ImageView
-        android:id="@+id/btnFavourites"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="7dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnNotification"
-        app:srcCompat="@drawable/ic_favourite" /> <!--favourite screen icon-->
-
-    <!--event screen icon-->
-
-    <ImageView
-        android:id="@+id/btnEvent"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="7dp"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnFavourites"
-        app:srcCompat="@drawable/ic_event" />
-
-    <ImageView
-        android:id="@+id/btnSearch"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="7dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnEvent"
-        app:srcCompat="@drawable/ic_search" /> <!--search screen icon-->
-
-    <ImageView
-        android:id="@+id/btnProfile"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="7dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnSearch"
-        app:srcCompat="@drawable/ic_account" />
-
-    <!--profile screen icon-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

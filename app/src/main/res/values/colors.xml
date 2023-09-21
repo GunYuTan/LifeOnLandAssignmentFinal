@@ -2,6 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="bottom_nav_active">#FFA500</color>
+    <color name="bottom_nav_inactive">#FFFFFFFF</color>
     <color name="CharcoalBlack">#3D4142</color>
     <color name="orange">#FFA500</color>
 </resources>

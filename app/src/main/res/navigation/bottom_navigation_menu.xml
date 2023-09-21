@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/btnToHomeScreen"
+        android:icon="@drawable/ic_home"
+        android:title="Home" />
+    <item
+        android:id="@+id/btnNotification"
+        android:icon="@drawable/ic_notification"
+        android:title="Notification" />
+    <item
+        android:id="@+id/btnFavourite"
+        android:icon="@drawable/ic_favourite"
+        android:title="Favourite" />
+    <item
+        android:id="@+id/btnEvent"
+        android:icon="@drawable/ic_event"
+        android:title="Event" />
+    <item
+        android:id="@+id/btnProfile"
+        android:icon="@drawable/ic_account"
+        android:title="Profile" />
+</menu>

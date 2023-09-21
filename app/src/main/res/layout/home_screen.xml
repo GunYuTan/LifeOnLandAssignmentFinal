@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home_screen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -38,79 +39,5 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtHomeTitle" /> <!--viewPager 4 (id)-->
-
-    <ImageView
-        android:id="@+id/btnToHomeScreen"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewPager4"
-        app:srcCompat="@drawable/ic_home" /> <!--home screen icon-->
-
-    <ImageView
-        android:id="@+id/btnNotification"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="7dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnToHomeScreen"
-        app:layout_constraintTop_toBottomOf="@+id/viewPager4"
-        app:srcCompat="@drawable/ic_notification" /> <!--notification screen icon-->
-
-    <ImageView
-        android:id="@+id/iconFavourite"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="7dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnNotification"
-        app:layout_constraintTop_toBottomOf="@+id/viewPager4"
-        app:srcCompat="@drawable/ic_favourite" /> <!--favourite screen icon-->
-
-    <ImageView
-        android:id="@+id/btnEvent"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="7dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/iconFavourite"
-        app:layout_constraintTop_toBottomOf="@+id/viewPager4"
-        app:srcCompat="@drawable/ic_event" /> <!--event screen icon-->
-
-    <ImageView
-        android:id="@+id/btnSearch"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="7dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnEvent"
-        app:layout_constraintTop_toBottomOf="@+id/viewPager4"
-        app:srcCompat="@drawable/ic_search" /> <!--search screen icon-->
-
-    <ImageView
-        android:id="@+id/btnProfile"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="7dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnSearch"
-        app:layout_constraintTop_toBottomOf="@+id/viewPager4"
-        app:srcCompat="@drawable/ic_account" /> <!--profile screen icon-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
