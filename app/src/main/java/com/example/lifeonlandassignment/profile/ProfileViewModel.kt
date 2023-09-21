@@ -12,7 +12,6 @@ class ProfileViewModel (private val repository: AssignmentDatabaseRepository, ap
     fun selectProfilePic(){
         val intent = Intent(Intent.ACTION_GET_CONTENT)
         intent.type = "image/*"
-        startActivityForResult
     }
     override fun addOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {}
 

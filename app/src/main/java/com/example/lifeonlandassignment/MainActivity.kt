@@ -12,13 +12,14 @@ import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.drawerlayout.widget.DrawerLayout
+import com.example.lifeonlandassignment.login.LoginFragment
+import com.example.lifeonlandassignment.register.RegisterFragment
 import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
 
         // Color setup
@@ -40,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction().apply {
                 setReorderingAllowed(true)
-                add(R.id.fragment_container, HomeFragment())
+                add(R.id.fragment_container, LoginFragment())
                 commit()
             }
         }

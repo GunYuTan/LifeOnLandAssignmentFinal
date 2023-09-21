@@ -23,6 +23,6 @@ data class User(
     val email: String,
 
     @ColumnInfo(name = "userImage")
-    val userImage: Bitmap?
+    val userImage: ByteArray?
 
 )
