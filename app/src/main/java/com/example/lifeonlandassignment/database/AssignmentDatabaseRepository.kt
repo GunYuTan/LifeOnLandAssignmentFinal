@@ -5,7 +5,6 @@ class AssignmentDatabaseRepository (private val dao: AssignmentDatabaseDao){
 
     suspend fun insert(user: User){
         return dao.insert(user)
-
     }
 
     suspend fun getUsername(username: String):User?{

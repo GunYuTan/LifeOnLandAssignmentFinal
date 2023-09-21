@@ -10,16 +10,18 @@ data class User(
     val userId: Int?,
 
     @ColumnInfo(name = "username")
-    val username: String?,
-
-    @ColumnInfo(name = "email")
-    val email: String?,
+    val username: String,
 
     @ColumnInfo(name = "password")
-    val password: String?,
+    val password: String,
 
     @ColumnInfo(name = "phoneNo")
-    val phoneNo: String?
+    val phoneNo: String,
+
+    @ColumnInfo(name = "email")
+    val email: String
+
+
 
 
 )
