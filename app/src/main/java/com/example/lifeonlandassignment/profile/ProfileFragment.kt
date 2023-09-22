@@ -1,5 +1,7 @@
 package com.example.lifeonlandassignment
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
@@ -7,13 +9,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
+import com.example.lifeonlandassignment.profile.ProfileViewModel
 import kotlin.math.abs
 
 class ProfileFragment : Fragment() {
+    private val requestCodeSelectImage = 100
+    private val profileViewModel: ProfileViewModel by viewModels()
     private lateinit var viewPager2: ViewPager2
     private lateinit var viewPager3: ViewPager2
     private val handler2 = Handler()
@@ -45,6 +51,15 @@ class ProfileFragment : Fragment() {
         viewPager3.registerOnPageChangeCallback(getPageChangeCallback(handler3, runnable3))
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_my)
+
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        startActivityForResult(intent, requestCodeSelectImage)
+    }
+
     override fun onPause() {
         super.onPause()
         handler2.removeCallbacks(runnable2)
@@ -56,6 +71,18 @@ class ProfileFragment : Fragment() {
         handler2.postDelayed(runnable2, 2000)
         handler3.postDelayed(runnable3, 2000)
     }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == requestCodeSelectImage && resultCode == Activity.RESULT_OK) {
+            val selectedImageUri = data?.data
+            selectedImageUri?.let { uri ->
+                // Pass the selected image URI to the ViewModel
+                profileViewModel.updateProfileImage()////////////////////////////
+            }
+        }
+    }
+
 
     private val runnable2 = Runnable { viewPager2.currentItem = (viewPager2.currentItem + 1) % adapter2.itemCount }
     private val runnable3 = Runnable { viewPager3.currentItem = (viewPager3.currentItem + 1) % adapter3.itemCount }
