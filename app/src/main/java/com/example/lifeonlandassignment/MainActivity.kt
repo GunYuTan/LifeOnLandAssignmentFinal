@@ -1,20 +1,12 @@
 package com.example.lifeonlandassignment
 
-import android.graphics.drawable.Drawable
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
-import android.view.MenuItem
-import android.widget.ImageView
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import androidx.drawerlayout.widget.DrawerLayout
 import com.example.lifeonlandassignment.login.LoginFragment
-import com.example.lifeonlandassignment.register.RegisterFragment
-import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,7 +43,7 @@ class MainActivity : AppCompatActivity() {
             var selectedFragment: Fragment? = null
             when (item.itemId) {
                 R.id.btnToHomeScreen -> selectedFragment = HomeFragment()
-                // R.id.btnNotification -> selectedFragment = NotificationFragment()
+                R.id.btnNotification -> selectedFragment = NotificationFragment()
                 R.id.btnFavourite -> selectedFragment = FavouriteFragment()
                 R.id.btnEvent -> selectedFragment = EventFragment()
                 // R.id.btnSearch -> selectedFragment = SearchFragment()

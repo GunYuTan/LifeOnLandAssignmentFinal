@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/CharcoalBlack">
+
+        <ImageView
+            android:id="@+id/picTiger"
+            android:layout_width="match_parent"
+            android:layout_height="282dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/sunde_island2" />
+
+        <TextView
+            android:id="@+id/txtAnimalTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="35dp"
+            android:fontFamily="@font/rouge_script"
+            android:text="Sunda Island Tiger"
+            android:textAlignment="center"
+            android:textColor="@color/orange"
+            android:textSize="50sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/picTiger" />
+
+        <TextView
+        android:id="@+id/txtAnimalDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="25dp"
+        android:fontFamily="@font/inter"
+        android:text="Sunda Tigers are distinguished by heavy black stripes on their orange coats. The last of the Sunda Island Tigers estimated to be fewer than 400 today are holding on for survival in the remaining patches of forest on the island of Sumatra. Accelerating deforestation and rampant poaching mean this noble creature could end up extinct like its Javan and Balinese counterparts."
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtAnimalTitle" />
+
+        <ImageView
+        android:id="@+id/mapTiger"
+        android:layout_width="361dp"
+        android:layout_height="247dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtAnimalDescription"
+        app:srcCompat="@drawable/map_tiger" />
+
+    <ImageView
+        android:id="@+id/statusIcon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mapTiger"
+        app:srcCompat="@drawable/status" />
+
+    <ImageView
+        android:id="@+id/populationIcon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/statusIcon"
+        app:srcCompat="@drawable/population" />
+
+    <ImageView
+        android:id="@+id/scientificNameIcon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/populationIcon"
+        app:srcCompat="@drawable/scientific_name" />
+
+    <ImageView
+        android:id="@+id/weightIcon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scientificNameIcon"
+        app:srcCompat="@drawable/weight" />
+
+    <ImageView
+        android:id="@+id/heightIcon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/weightIcon"
+        app:srcCompat="@drawable/habitat" />
+
+    <TextView
+        android:id="@+id/txtStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:text="Status"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/statusIcon"
+        app:layout_constraintTop_toBottomOf="@+id/mapTiger" />
+
+    <TextView
+        android:id="@+id/txtStatusDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="5dp"
+        android:text="Critically Endangered"
+        android:textColor="@color/orange"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/statusIcon"
+        app:layout_constraintTop_toBottomOf="@+id/txtStatus" />
+
+    <TextView
+        android:id="@+id/txtPopulation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/inter"
+        android:text="Population"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/populationIcon"
+        app:layout_constraintTop_toBottomOf="@+id/txtStatusDetail" />
+
+    <TextView
+        android:id="@+id/txtPopulationDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="5dp"
+        android:text="Less than 400"
+        android:textColor="@color/orange"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/populationIcon"
+        app:layout_constraintTop_toBottomOf="@+id/txtPopulation" />
+
+    <TextView
+        android:id="@+id/txtScientificName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/inter"
+        android:text="Scientific Name"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/scientificNameIcon"
+        app:layout_constraintTop_toBottomOf="@+id/txtPopulationDetail" />
+
+    <TextView
+        android:id="@+id/txtScientificNameDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="5dp"
+        android:text="Panthera Tigris Sondaica"
+        android:textColor="@color/orange"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/scientificNameIcon"
+        app:layout_constraintTop_toBottomOf="@+id/txtScientificName" />
+
+    <TextView
+        android:id="@+id/txtWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/inter"
+        android:text="Weight"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/weightIcon"
+        app:layout_constraintTop_toBottomOf="@+id/txtScientificNameDetail" />
+
+        <TextView
+        android:id="@+id/txtWeightDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="5dp"
+        android:text="165 - 308 pounds"
+        android:textColor="@color/orange"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/weightIcon"
+        app:layout_constraintTop_toBottomOf="@+id/txtWeight" />
+
+        <TextView
+            android:id="@+id/txtHabitat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="11dp"
+            android:fontFamily="@font/inter"
+            android:text="Habitat"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/heightIcon"
+            app:layout_constraintTop_toBottomOf="@+id/txtWeightDetail" />
+
+        <TextView
+        android:id="@+id/txtHabitatDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="5dp"
+        android:text="Tropical Broadleaf Evergreen Forests, \nFreshwater Swamp Forest and Peat \nSwamps"
+        android:textColor="@color/orange"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/heightIcon"
+        app:layout_constraintTop_toBottomOf="@+id/txtHabitat" />
+
+        <ImageView
+            android:id="@+id/backButtonAnimal"
+            android:layout_width="40sp"
+            android:layout_height="40sp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="25dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/back_button" />
+
+        <TextView
+            android:id="@+id/brTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:text=""
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtHabitatDetail" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

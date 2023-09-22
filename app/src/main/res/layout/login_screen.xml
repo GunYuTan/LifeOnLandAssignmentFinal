@@ -116,22 +116,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtLogInputPassword" /> <!--Login Button-->
 
-    <Button
-        android:id="@+id/btnMainScreen"
-        android:layout_width="0dp"
-        android:layout_height="30sp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="40dp"
-        android:background="@drawable/round_btn"
-        android:backgroundTint="@color/orange"
-        android:text="Back to Main Screen"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnRegisterScreen" /> <!--Back to Main Screen Button-->
-
     <TextView
         android:id="@+id/txtNotYet"
         android:layout_width="wrap_content"

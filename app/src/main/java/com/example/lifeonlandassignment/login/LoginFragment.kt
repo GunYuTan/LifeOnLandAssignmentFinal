@@ -4,15 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.lifeonlandassignment.HomeFragment
 import com.example.lifeonlandassignment.R
 import com.example.lifeonlandassignment.database.AssignmentDatabase
 import com.example.lifeonlandassignment.database.AssignmentDatabaseRepository
 import com.example.lifeonlandassignment.databinding.LoginScreenBinding
+import com.example.lifeonlandassignment.register.RegisterFragment
 
 class LoginFragment : Fragment(){
     private lateinit var loginViewModel: LoginViewModel
@@ -27,9 +30,28 @@ class LoginFragment : Fragment(){
         val dataSource = AssignmentDatabase.getInstance(application).assignmentDatabaseDao
         val repository = AssignmentDatabaseRepository(dataSource)
         val factory = LoginViewModelFactory(repository, application)
+
         loginViewModel = ViewModelProvider(this,factory).get(LoginViewModel::class.java)
         binding.loginViewModel = loginViewModel
         binding.lifecycleOwner = this
+
+        val button: Button = binding.btnRegisterScreen
+        button.setOnClickListener {
+            val fragmentManager = parentFragmentManager
+            val fragmentTransaction = fragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.fragment_container, RegisterFragment())
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.commit()
+        }
+
+        val button1: Button = binding.btnLogin
+        button1.setOnClickListener {
+            val fragmentManager = parentFragmentManager
+            val fragmentTransaction = fragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.fragment_container, HomeFragment())
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.commit()
+        }
 
         loginViewModel.messageLiveData.observe(viewLifecycleOwner, Observer { message ->
             message?.let {
@@ -40,5 +62,5 @@ class LoginFragment : Fragment(){
 
         return binding.root
     }
-
 }
+
