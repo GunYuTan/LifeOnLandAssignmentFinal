@@ -69,10 +69,6 @@ class RegisterViewModel(private val repository: AssignmentDatabaseRepository, ap
         }
     }
 
-    fun backToLogin(){
-
-    }
-
     override fun addOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {}
 
     override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {}

@@ -46,10 +46,10 @@ class ProfileViewModel (private val repository: AssignmentDatabaseRepository, ap
     }
 
     private fun saveImageToFile(uri: Uri, username: String): String {
-            val inputStream: InputStream? = context.contentResolver.openInputStream(uri)
-            val file = File(context.cacheDir, "${System.currentTimeMillis()}$username.jpg")
-            val outputStream = FileOutputStream(file)
-            try {
+        val inputStream: InputStream? = context.contentResolver.openInputStream(uri)
+        val file = File(context.cacheDir, "${System.currentTimeMillis()}$username.jpg")
+        val outputStream = FileOutputStream(file)
+        try {
             inputStream?.use { input ->
                 outputStream.use { output ->
                     val buffer = ByteArray(4 * 1024) // 4K buffer size
@@ -61,10 +61,10 @@ class ProfileViewModel (private val repository: AssignmentDatabaseRepository, ap
                     output.flush()
                 }
             }} catch (e: Exception) {
-                Log.e("Error", "Error message", e)
-            }
+            Log.e("Error", "Error message", e)
+        }
         Log.i("Testing", "saveImageFile1")
-            return file.absolutePath
+        return file.absolutePath
     }
 
     suspend fun getUser(username: String) :User?{

@@ -22,6 +22,9 @@ class LoginViewModel (private val repository: AssignmentDatabaseRepository, appl
     val messageLiveData: LiveData<String>
         get() = _messageLiveData
 
+    val navigatetoUserDetails: LiveData<Boolean>
+        get() = _navigatetoHome
+
     @Bindable
     val inputUsername = MutableLiveData<String>()
 
