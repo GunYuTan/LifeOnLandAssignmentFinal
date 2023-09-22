@@ -13,6 +13,7 @@ import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.example.lifeonlandassignment.login.LoginFragment
+import com.example.lifeonlandassignment.profile.UpdateProfileFragment
 import kotlin.math.abs
 
 class ProfileFragment : Fragment() {
@@ -39,6 +40,15 @@ class ProfileFragment : Fragment() {
 
         init()
         setUpTransformer()
+
+        val button: Button = view.findViewById(R.id.btnUpdateProfileScreen)
+        button.setOnClickListener {
+            val fragmentManager = parentFragmentManager
+            val fragmentTransaction = fragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.fragment_container, UpdateProfileFragment())
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.commit()
+        }
 
         handler2.postDelayed(runnable2, 2000)
         handler3.postDelayed(runnable3, 2000)
