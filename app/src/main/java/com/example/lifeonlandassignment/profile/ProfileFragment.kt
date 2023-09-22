@@ -4,22 +4,41 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
+import com.bumptech.glide.Glide
+import com.example.lifeonlandassignment.database.AssignmentDatabase
+import com.example.lifeonlandassignment.database.AssignmentDatabaseRepository
+import com.example.lifeonlandassignment.databinding.ProfileScreenBinding
 import com.example.lifeonlandassignment.profile.ProfileViewModel
+import com.example.lifeonlandassignment.profile.ProfileViewModelFactory
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import kotlin.math.abs
 
 class ProfileFragment : Fragment() {
     private val requestCodeSelectImage = 100
-    private val profileViewModel: ProfileViewModel by viewModels()
+    private lateinit var profileViewModel: ProfileViewModel
+    private var _binding: ProfileScreenBinding? = null
+    private val binding get() = _binding!!
+    private val viewModelJob = Job()
+    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
+
     private lateinit var viewPager2: ViewPager2
     private lateinit var viewPager3: ViewPager2
     private val handler2 = Handler()
@@ -32,8 +51,25 @@ class ProfileFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.profile_screen, container, false)
-        return view
+        _binding = DataBindingUtil.inflate(inflater, R.layout.profile_screen, container, false)
+        val application = requireNotNull(this.activity).application
+        val dataSource = AssignmentDatabase.getInstance(application).assignmentDatabaseDao
+        val repository = AssignmentDatabaseRepository(dataSource)
+        val factory = ProfileViewModelFactory(repository, application)
+        profileViewModel = ViewModelProvider(this,factory).get(ProfileViewModel::class.java)
+        binding.profileViewModel = profileViewModel
+        binding.lifecycleOwner = this
+
+        profileViewModel.getUserImagePath(Global.loginUser)
+        profileViewModel.messageLiveData.observe(viewLifecycleOwner, Observer { message ->
+            message?.let {
+                //imagePath = message
+                Glide.with(requireContext())
+                    .load(message)
+                    .into(binding.profilePic)
+            }
+        })
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -49,15 +85,13 @@ class ProfileFragment : Fragment() {
 
         viewPager2.registerOnPageChangeCallback(getPageChangeCallback(handler2, runnable2))
         viewPager3.registerOnPageChangeCallback(getPageChangeCallback(handler3, runnable3))
-    }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_my)
+        binding.btnChangePicture.setOnClickListener {
+            Log.i("Testing", "Change Picture Button Pressed")
+            selectProfilePicture()
+        }
 
-        val intent = Intent(Intent.ACTION_PICK)
-        intent.type = "image/*"
-        startActivityForResult(intent, requestCodeSelectImage)
+        binding.txtProfileUsername.text = runBlocking { profileViewModel.getUser(Global.loginUser)?.username }
     }
 
     override fun onPause() {
@@ -73,16 +107,44 @@ class ProfileFragment : Fragment() {
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+        try {
+            Log.i("Testing", "onActivityResult1")
+            if (requestCode == requestCodeSelectImage && resultCode == Activity.RESULT_OK && data != null) {
+                val selectedImageUri = data?.data
+                selectedImageUri?.let { uri ->
+                    uiScope.launch {
+                        // Pass the selected image URI to the ViewModel
+                        Log.i("Testing", "onActivityResult2")
+                        profileViewModel.updateProfileImage(uri)
 
-        if (requestCode == requestCodeSelectImage && resultCode == Activity.RESULT_OK) {
-            val selectedImageUri = data?.data
-            selectedImageUri?.let { uri ->
-                // Pass the selected image URI to the ViewModel
-                profileViewModel.updateProfileImage()////////////////////////////
+                        Glide.with(requireContext())
+                            .load(uri)
+                            .placeholder(R.drawable.profile_picture)
+                            .into(binding.profilePic)
+                    }
+                }
+            } else if (resultCode == Activity.RESULT_CANCELED) {
+
             }
+        }catch (e: Exception){
+            Log.e("Error", "Error message", e)
         }
+
     }
 
+    private fun selectProfilePicture() {
+        try {
+            val intent = Intent(Intent.ACTION_PICK)
+            Log.i("Testing", "selectProfile1")
+            intent.type = "image/*"
+            Log.i("Testing", "selectProfile2")
+            startActivityForResult(intent, requestCodeSelectImage)
+            Log.i("Testing", "selectProfile3")
+        }catch (e: Exception){
+            Log.e("Error", "Error message", e)
+        }
+
+    }
 
     private val runnable2 = Runnable { viewPager2.currentItem = (viewPager2.currentItem + 1) % adapter2.itemCount }
     private val runnable3 = Runnable { viewPager3.currentItem = (viewPager3.currentItem + 1) % adapter3.itemCount }
