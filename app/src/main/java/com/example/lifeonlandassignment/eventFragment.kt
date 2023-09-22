@@ -54,6 +54,24 @@ class EventFragment : Fragment() {
             drawerLayout.openDrawer(GravityCompat.START)
         }
 
+        val button: ImageView = view.findViewById(R.id.btnUpcomingEvent)
+        button.setOnClickListener {
+            val fragmentManager = parentFragmentManager
+            val fragmentTransaction = fragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.fragment_container, UpcomingEventFragment())
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.commit()
+        }
+
+        val button1: ImageView = view.findViewById(R.id.btnEventHappen)
+        button1.setOnClickListener {
+            val fragmentManager = parentFragmentManager
+            val fragmentTransaction = fragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.fragment_container, EventHappenFragment())
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.commit()
+        }
+
         toggle = ActionBarDrawerToggle(
             requireActivity(), drawerLayout, R.string.drawer_open, R.string.drawer_close
         )

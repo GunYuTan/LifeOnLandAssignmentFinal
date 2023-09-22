@@ -16,6 +16,16 @@
         android:background="@color/CharcoalBlack">
 
 
+        <ImageView
+            android:id="@+id/backButtonRegister"
+            android:layout_width="40sp"
+            android:layout_height="40sp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="25dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/back_button" />
+
         <TextView
             android:id="@+id/txtRegTitle"
             android:layout_width="wrap_content"
@@ -192,22 +202,6 @@
             android:onClick="@{()->registerViewModel.registerButton()}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtRegInputEmailAddress" />
-
-        <Button
-            android:id="@+id/btnLoginScreen"
-            android:layout_width="0dp"
-            android:layout_height="30sp"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="40dp"
-            android:background="@drawable/round_btn"
-            android:backgroundTint="@color/orange"
-            android:text="Back to Login Screen"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnRegister" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

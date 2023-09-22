@@ -53,6 +53,8 @@ dependencies {
     implementation("androidx.navigation:navigation-ui:2.7.3")
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.3")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.3")
+    implementation("androidx.navigation:navigation-fragment:2.3.5")
+    implementation ("androidx.navigation:navigation-ui:2.3.5")
     implementation("androidx.room:room-common:2.5.2")
     implementation("androidx.room:room-ktx:2.5.2")
     implementation("androidx.databinding:databinding-runtime:8.1.1")

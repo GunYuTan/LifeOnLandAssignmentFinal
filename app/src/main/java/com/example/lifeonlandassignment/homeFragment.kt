@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
+import com.example.lifeonlandassignment.login.LoginFragment
 import com.google.android.material.navigation.NavigationView
 import kotlin.math.abs
 
@@ -44,6 +46,24 @@ class HomeFragment : Fragment() {
         init()
         setUpTransformer()
 
+        val button: Button = view.findViewById(R.id.btnToLogin)
+        button.setOnClickListener {
+            val fragmentManager = parentFragmentManager
+            val fragmentTransaction = fragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.fragment_container, LoginFragment())
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.commit()
+        }
+
+        val button1: ImageView = view.findViewById(R.id.btnExplore)
+        button1.setOnClickListener {
+            val fragmentManager = parentFragmentManager
+            val fragmentTransaction = fragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.fragment_container, AnimalFragment())
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.commit()
+        }
+
         viewPager4.registerOnPageChangeCallback(getPageChangeCallback(handler4))
 
         myImageView.setOnClickListener {
@@ -54,6 +74,7 @@ class HomeFragment : Fragment() {
             // Open Drawer
             drawerLayout.openDrawer(GravityCompat.START)
         }
+
 
         // Initialize the ActionBarDrawerToggle instance
         toggle = ActionBarDrawerToggle(
