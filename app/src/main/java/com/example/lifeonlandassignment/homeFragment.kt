@@ -46,15 +46,6 @@ class HomeFragment : Fragment() {
         init()
         setUpTransformer()
 
-        val button: Button = view.findViewById(R.id.btnToLogin)
-        button.setOnClickListener {
-            val fragmentManager = parentFragmentManager
-            val fragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.fragment_container, LoginFragment())
-            fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.commit()
-        }
-
         val button1: ImageView = view.findViewById(R.id.btnExplore)
         button1.setOnClickListener {
             val fragmentManager = parentFragmentManager

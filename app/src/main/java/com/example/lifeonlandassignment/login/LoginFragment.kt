@@ -44,14 +44,10 @@ class LoginFragment : Fragment(){
             fragmentTransaction.commit()
         }
 
-        val button1: Button = binding.btnLogin
-        button1.setOnClickListener {
-            val fragmentManager = parentFragmentManager
-            val fragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.fragment_container, HomeFragment())
-            fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.commit()
-        }
+//        val button1: Button = binding.btnLogin
+//        button1.setOnClickListener {
+//
+//        }
 
         loginViewModel.messageLiveData.observe(viewLifecycleOwner, Observer { message ->
             message?.let {
@@ -60,7 +56,25 @@ class LoginFragment : Fragment(){
             }
         })
 
+        loginViewModel.navigatetoUserDetails.observe(this, Observer { hasFinished->
+            if (hasFinished == true){
+                val fragmentManager = parentFragmentManager
+                val fragmentTransaction = fragmentManager.beginTransaction()
+                fragmentTransaction.replace(R.id.fragment_container, HomeFragment())
+                fragmentTransaction.addToBackStack(null)
+                fragmentTransaction.commit()
+            }
+        })
+
         return binding.root
+    }
+
+    private fun navigateToHome(){
+        val fragmentManager = parentFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.fragment_container, HomeFragment())
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
     }
 }
 

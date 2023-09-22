@@ -26,4 +26,10 @@ interface AssignmentDatabaseDao {
 
     @Query("SELECT * FROM user_table WHERE username LIKE :username")
     suspend fun getUsername(username: String): User?
+
+    @Query("UPDATE user_table SET userImage = :userImage WHERE username = :username")
+    suspend fun updateProfilePic(username: String, userImage: String)
+
+    @Query("SELECT userImage FROM user_table WHERE username = :username")
+    suspend fun getLoginUserImage(username: String): String?
 }
