@@ -21,6 +21,7 @@ class EventHappenFragment : Fragment() {
             // Perform your action here, for example, navigate back
             fragmentManager?.popBackStack()
         }
+
         return view
     }
 }
