@@ -8,6 +8,7 @@ import androidx.databinding.Observable
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.lifeonlandassignment.database.Admin
 import com.example.lifeonlandassignment.database.AssignmentDatabaseRepository
 import com.example.lifeonlandassignment.database.User
 import kotlinx.coroutines.*
@@ -54,7 +55,7 @@ class RegisterViewModel(private val repository: AssignmentDatabaseRepository, ap
         else{
             uiScope.launch {
                 val userList = repository.getUsername(username!!)
-                if(userList !=null){
+                if(userList != null){
                     _messageLiveData.value = "Username has been register before."
                 }else{
                     repository.insert(User(null,username, password, phoneNo, email, null))

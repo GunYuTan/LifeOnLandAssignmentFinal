@@ -6,7 +6,7 @@
     <data>
         <variable
             name="profileViewModel"
-            type="com.example.lifeonlandassignment.profile.ProfileViewModel" />
+            type="com.example.lifeonlandassignment.user.ProfileViewModel" />
     </data>
 
 <androidx.drawerlayout.widget.DrawerLayout

@@ -10,7 +10,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -23,9 +22,9 @@ import com.bumptech.glide.Glide
 import com.example.lifeonlandassignment.database.AssignmentDatabase
 import com.example.lifeonlandassignment.database.AssignmentDatabaseRepository
 import com.example.lifeonlandassignment.databinding.ProfileScreenBinding
-import com.example.lifeonlandassignment.profile.ProfileViewModel
-import com.example.lifeonlandassignment.profile.ProfileViewModelFactory
-import com.example.lifeonlandassignment.profile.UpdateProfileFragment
+import com.example.lifeonlandassignment.user.ProfileViewModel
+import com.example.lifeonlandassignment.user.ProfileViewModelFactory
+import com.example.lifeonlandassignment.user.UpdateProfileFragment
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -146,7 +145,7 @@ class ProfileFragment : Fragment() {
 
     private fun selectProfilePicture() {
         try {
-            val intent = Intent(Intent.ACTION_PICK)
+            val intent = Intent(Intent.ACTION_GET_CONTENT)
             Log.i("Testing", "selectProfile1")
             intent.type = "image/*"
             Log.i("Testing", "selectProfile2")

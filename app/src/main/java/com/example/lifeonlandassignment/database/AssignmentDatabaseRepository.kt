@@ -10,20 +10,41 @@ class AssignmentDatabaseRepository (private val dao: AssignmentDatabaseDao){
         return dao.insert(user)
     }
 
+    suspend fun insert(admin: Admin){
+        return dao.insert(admin)
+    }
+
     suspend fun update(user: User){
         return dao.update(user)
+    }
+
+    suspend fun update(admin: Admin){
+        return dao.update(admin)
     }
 
     suspend fun getUsername(username: String):User?{
         return dao.getUsername(username)
     }
 
+    suspend fun getAdminUsername(username: String):Admin?{
+        return dao.getAdminUsername(username)
+    }
+
     suspend fun updateProfilePic(username: String, userImage: String){
         return dao.updateProfilePic(username, userImage)
+    }
+
+    suspend fun updateAdminProfilePic(username: String, userImage: String){
+        return dao.updateAdminProfilePic(username, userImage)
     }
 
     suspend fun getLoginUserImage(username: String): String?{
         Log.i("Testing", "Repo" + username)
         return dao.getLoginUserImage(username)
+    }
+
+    suspend fun getLoginAdminImage(username: String): String?{
+        Log.i("Testing", "Repo" + username)
+        return dao.getLoginAdminImage(username)
     }
 }

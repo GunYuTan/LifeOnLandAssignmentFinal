@@ -6,7 +6,7 @@
     <data>
         <variable
             name="updateProfileViewModel"
-            type="com.example.lifeonlandassignment.profile.UpdateProfileViewModel" />
+            type="com.example.lifeonlandassignment.user.UpdateProfileViewModel" />
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"

@@ -1,4 +1,4 @@
-package com.example.lifeonlandassignment.profile
+package com.example.lifeonlandassignment.user
 
 import android.os.Bundle
 import android.view.LayoutInflater

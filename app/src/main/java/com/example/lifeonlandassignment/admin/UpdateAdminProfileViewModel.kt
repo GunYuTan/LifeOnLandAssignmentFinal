@@ -1,4 +1,4 @@
-package com.example.lifeonlandassignment.profile
+package com.example.lifeonlandassignment.admin
 
 import android.app.Application
 import androidx.databinding.Bindable
@@ -7,14 +7,14 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.lifeonlandassignment.Global
+import com.example.lifeonlandassignment.database.Admin
 import com.example.lifeonlandassignment.database.AssignmentDatabaseRepository
-import com.example.lifeonlandassignment.database.User
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class UpdateProfileViewModel (private val repository: AssignmentDatabaseRepository, application: Application): AndroidViewModel(application),
+class UpdateAdminProfileViewModel (private val repository: AssignmentDatabaseRepository, application: Application): AndroidViewModel(application),
     Observable {
     private val _messageLiveData = MutableLiveData<String>()
     private val viewModelJob = Job()
@@ -45,14 +45,14 @@ class UpdateProfileViewModel (private val repository: AssignmentDatabaseReposito
         var passwordChange = false
 
         uiScope.launch {
-            val userList = repository.getUsername(Global.loginUser)
-            if(userList?.password == currentPass){
-                if(phoneNo != null && userList?.phoneNo != phoneNo){
+            val userList = repository.getAdminUsername(Global.loginUser)
+            if(userList?.adminPassword == currentPass){
+                if(phoneNo != null && userList?.adminPhoneNo != phoneNo){
                     message += "Phone Number, "
                     phoneChange = true
                 }
 
-                if(newPass != null && userList?.password != newPass){
+                if(newPass != null && userList?.adminPassword != newPass){
                     if(newPass == confirmNewPass){
                         message += "Password,"
                         passwordChange = true
@@ -63,12 +63,16 @@ class UpdateProfileViewModel (private val repository: AssignmentDatabaseReposito
 
                 if(message != ""){
                     if(phoneChange && passwordChange){
-                        repository.update(User(userList?.userId, userList!!.username, newPass!!, phoneNo!!, userList!!.email, userList?.userImage))
+                        repository.update(Admin(userList?.adminId, userList!!.adminUsername, newPass!!, phoneNo!!, userList!!.adminEmail, userList?.adminUserImage))
                     }else if(phoneChange){
-                        repository.update(User(userList?.userId, userList!!.username, userList!!.password, phoneNo!!, userList!!.email, userList?.userImage))
+                        repository.update(Admin(userList?.adminId, userList!!.adminUsername, userList!!.adminPassword, phoneNo!!, userList!!.adminEmail, userList?.adminUserImage))
                     }else if(passwordChange){
-                        repository.update(User(userList?.userId, userList!!.username, newPass!!, userList!!.phoneNo, userList!!.email, userList?.userImage))
+                        repository.update(Admin(userList?.adminId, userList!!.adminUsername, newPass!!, userList!!.adminPhoneNo, userList!!.adminEmail, userList?.adminUserImage))
                     }
+                    inputPhoneNo.value = null
+                    inputNewPass.value = null
+                    inputConfirmNewPass.value = null
+                    inputCurrentPass.value = null
                     _messageLiveData.value = message + "update successfully."
                 }else{
                     _messageLiveData.value = "Nothing changes."
@@ -78,6 +82,10 @@ class UpdateProfileViewModel (private val repository: AssignmentDatabaseReposito
             }
 
         }
+    }
+
+    suspend fun getAdmin(username: String) : Admin?{
+        return repository.getAdminUsername(username)
     }
     override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
     }

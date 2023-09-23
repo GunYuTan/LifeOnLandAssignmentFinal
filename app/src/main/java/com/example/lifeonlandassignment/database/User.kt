@@ -3,6 +3,7 @@ package com.example.lifeonlandassignment.database
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.util.Date
 
 @Entity(tableName = "user_table")
 data class User(
@@ -57,11 +58,20 @@ data class Event(
     @ColumnInfo(name = "eventName")
     val eventName: String,
 
+    @ColumnInfo(name = "eventStartDate")
+    val eventStartDate: String,
+
+    @ColumnInfo(name = "eventEndDate")
+    val eventEndDate: String,
+
     @ColumnInfo(name = "eventDescription")
     val eventDescription: String,
 
     @ColumnInfo(name = "eventDonation")
-    val eventDonation: String
+    val eventDonation: String,
+
+    @ColumnInfo(name = "eventImage")
+    val eventImage: String
 )
 
 @Entity(tableName = "joined_event_table")
@@ -73,7 +83,10 @@ data class JoinedEvent(
     val joinedEventUserId: Int,
 
     @ColumnInfo(name = "joinedEventEventId")
-    val joinedEventEventId: Int
+    val joinedEventEventId: Int,
+
+    @ColumnInfo(name = "joinedEventDate")
+    val joinedEventDate: String
 )
 
 @Entity(tableName = "donation_table")

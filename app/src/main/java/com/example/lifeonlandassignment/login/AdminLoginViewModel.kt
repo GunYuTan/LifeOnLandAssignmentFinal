@@ -13,7 +13,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class LoginViewModel (private val repository: AssignmentDatabaseRepository, application: Application): AndroidViewModel(application),
+class AdminLoginViewModel (private val repository: AssignmentDatabaseRepository, application: Application): AndroidViewModel(application),
     Observable {
     private val _messageLiveData = MutableLiveData<String>()
     private val viewModelJob = Job()
@@ -39,29 +39,24 @@ class LoginViewModel (private val repository: AssignmentDatabaseRepository, appl
             _messageLiveData.value = "Each field is required."
         }else{
             uiScope.launch {
-                val userList = repository.getUsername(username!!)
+                val userList = repository.getAdminUsername(username!!)
                 if(userList != null){
-                    if(userList.password == password){
+                    if(userList.adminPassword == password){
                         inputUsername.value == null
                         inputPass.value == null
                         _messageLiveData.value = "Login Successfully."
                         _navigatetoHome.value = true
                         Global.loginUser = username
                     }else{
-                        inputUsername.value = null
-                        inputPass.value = null
                         _messageLiveData.value = "Invalid username or password."
                     }
                 }
                 else{
-                    inputUsername.value = null
-                    inputPass.value = null
                     _messageLiveData.value = "Invalid username or password."
                 }
             }
         }
     }
-
     override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
     }
 

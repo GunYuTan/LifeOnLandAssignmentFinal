@@ -10,8 +10,12 @@ import androidx.room.Update
 interface AssignmentDatabaseDao {
     @Insert
     suspend fun insert(user: User)
+    @Insert
+    suspend fun insert(admin: Admin)
     @Update
     suspend fun update(user: User)
+    @Update
+    suspend fun update(admin:Admin)
     @Query("SELECT * from user_table WHERE userId = :key")
     fun get(key:Long): User?
 
@@ -26,10 +30,18 @@ interface AssignmentDatabaseDao {
 
     @Query("SELECT * FROM user_table WHERE username LIKE :username")
     suspend fun getUsername(username: String): User?
+    @Query("SELECT * FROM admin_table WHERE username LIKE :username")
+    suspend fun getAdminUsername(username: String): Admin?
 
     @Query("UPDATE user_table SET userImage = :userImage WHERE username = :username")
     suspend fun updateProfilePic(username: String, userImage: String)
 
+    @Query("UPDATE admin_table SET userImage = :userImage WHERE username = :username")
+    suspend fun updateAdminProfilePic(username: String, userImage: String)
+
     @Query("SELECT userImage FROM user_table WHERE username = :username")
     suspend fun getLoginUserImage(username: String): String?
+
+    @Query("SELECT userImage FROM admin_table WHERE username = :username")
+    suspend fun getLoginAdminImage(username: String): String?
 }

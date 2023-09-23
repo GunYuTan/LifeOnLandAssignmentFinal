@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="updateAdminProfileViewModel"
+            type="com.example.lifeonlandassignment.admin.UpdateAdminProfileViewModel" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/CharcoalBlack">
@@ -113,7 +120,7 @@
         android:background="@color/white"
         android:fontFamily="@font/inter"
         android:importantForAutofill="no"
-        android:text="@={updateProfileViewModel.inputPhoneNo}"
+        android:text="@={updateAdminProfileViewModel.inputPhoneNo}"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -143,7 +150,7 @@
         android:fontFamily="@font/inter"
         android:importantForAutofill="no"
         android:inputType="text|textPassword"
-        android:text="@={updateProfileViewModel.inputNewPass}"
+        android:text="@={updateAdminProfileViewModel.inputNewPass}"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -173,7 +180,7 @@
         android:fontFamily="@font/inter"
         android:importantForAutofill="no"
         android:inputType="text|textPassword"
-        android:text="@={updateProfileViewModel.inputConfirmNewPass}"
+        android:text="@={updateAdminProfileViewModel.inputConfirmNewPass}"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -203,7 +210,7 @@
         android:fontFamily="@font/inter"
         android:importantForAutofill="no"
         android:inputType="text|textPassword"
-        android:text="@={updateProfileViewModel.inputCurrentPass}"
+        android:text="@={updateAdminProfileViewModel.inputCurrentPass}"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -219,7 +226,7 @@
         android:layout_marginEnd="40dp"
         android:background="@drawable/round_btn"
         android:backgroundTint="@color/orange"
-        android:onClick="@{()->updateProfileViewModel.updateButton()}"
+        android:onClick="@{()->updateAdminProfileViewModel.updateButton()}"
         android:text="Update"
         android:textColor="@color/white"
         android:textSize="15sp"
@@ -227,4 +234,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtUpdateProfileInputCurrentPassAdmin" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
