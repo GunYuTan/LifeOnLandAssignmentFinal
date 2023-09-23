@@ -1,21 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
-
-    <data>
-        <variable
-            name="updateProfileViewModel"
-            type="com.example.lifeonlandassignment.profile.UpdateProfileViewModel" />
-    </data>
-<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/CharcoalBlack">
 
-
     <ImageView
-        android:id="@+id/backButtonUpdateProfile"
+        android:id="@+id/backButtonAdminProfile"
         android:layout_width="40sp"
         android:layout_height="40sp"
         android:layout_marginStart="25dp"
@@ -25,7 +17,7 @@
         app:srcCompat="@drawable/back_button" />
 
     <TextView
-        android:id="@+id/txtUpdateProfileTitle"
+        android:id="@+id/txtUpdateAdminProfileTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="45dp"
@@ -39,34 +31,65 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txtUpdateProfileUsername"
+        android:id="@+id/txtUpdateProfileUsername2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="5dp"
+        android:text="Username :"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtInputAdminID" />
+
+    <TextView
+        android:id="@+id/txtAdminId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="120dp"
-        android:text="Username :"
+        android:text="Admin ID :"
         android:textColor="@color/white"
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txtUpdateProfileInputUsername"
+        android:id="@+id/txtUpdateProfileInputUsernameAdmin"
         android:layout_width="0dp"
         android:layout_height="30dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="40dp"
         android:background="@color/white"
-        android:inputType="text"
         android:editable="false"
         android:enabled="false"
         android:fontFamily="@font/inter"
+        android:inputType="text"
         android:text="Username"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtUpdateProfileUsername" />
+        app:layout_constraintTop_toBottomOf="@+id/txtUpdateProfileUsername2" />
+
+    <TextView
+        android:id="@+id/txtInputAdminID"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="40dp"
+        android:background="@color/white"
+        android:editable="false"
+        android:enabled="false"
+        android:fontFamily="@font/inter"
+        android:inputType="text"
+        android:text="Admin Id"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtAdminId" />
 
     <TextView
         android:id="@+id/txtUpdatePhone"
@@ -78,7 +101,7 @@
         android:textColor="@color/white"
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtUpdateProfileInputUsername" />
+        app:layout_constraintTop_toBottomOf="@+id/txtUpdateProfileInputUsernameAdmin" />
 
     <EditText
         android:id="@+id/txtInputPhoneAdmin"
@@ -89,16 +112,16 @@
         android:layout_marginEnd="40dp"
         android:background="@color/white"
         android:fontFamily="@font/inter"
-        android:textSize="20sp"
         android:importantForAutofill="no"
         android:text="@={updateProfileViewModel.inputPhoneNo}"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtUpdatePhone" />
 
     <TextView
-        android:id="@+id/txtUpdatePassword"
+        android:id="@+id/txtUpdatePassword2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -118,32 +141,14 @@
         android:layout_marginEnd="40dp"
         android:background="@color/white"
         android:fontFamily="@font/inter"
-        android:inputType="text|textPassword"
-        android:textSize="20sp"
         android:importantForAutofill="no"
+        android:inputType="text|textPassword"
         android:text="@={updateProfileViewModel.inputNewPass}"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtUpdatePassword" />
-
-    <EditText
-        android:id="@+id/txtUpdateProfileInputConfirmPasswordAdmin"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="40dp"
-        android:background="@color/white"
-        android:fontFamily="@font/inter"
-        android:inputType="text|textPassword"
         android:textSize="20sp"
-        android:importantForAutofill="no"
-        android:text="@={updateProfileViewModel.inputConfirmNewPass}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtUpdateProfileConfirmPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/txtUpdatePassword2" />
 
     <TextView
         android:id="@+id/txtUpdateProfileConfirmPassword"
@@ -156,6 +161,24 @@
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtinputPasswordAdmin" />
+
+    <EditText
+        android:id="@+id/txtUpdateProfileInputConfirmPasswordAdmin"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="40dp"
+        android:background="@color/white"
+        android:fontFamily="@font/inter"
+        android:importantForAutofill="no"
+        android:inputType="text|textPassword"
+        android:text="@={updateProfileViewModel.inputConfirmNewPass}"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtUpdateProfileConfirmPassword" />
 
     <TextView
         android:id="@+id/txtUpdateProfileCurrentPassword"
@@ -188,7 +211,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtUpdateProfileCurrentPassword" />
 
     <Button
-        android:id="@+id/btnUpdateProfile"
+        android:id="@+id/btnUpdateProfile2"
         android:layout_width="match_parent"
         android:layout_height="30sp"
         android:layout_marginStart="40dp"
@@ -204,6 +227,4 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtUpdateProfileInputCurrentPassAdmin" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>

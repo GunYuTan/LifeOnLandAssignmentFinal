@@ -44,10 +44,14 @@ class LoginFragment : Fragment(){
             fragmentTransaction.commit()
         }
 
-//        val button1: Button = binding.btnLogin
-//        button1.setOnClickListener {
-//
-//        }
+        val button1: Button = binding.btnToAdminLogin
+        button1.setOnClickListener {
+            val fragmentManager = parentFragmentManager
+            val fragmentTransaction = fragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.fragment_container, AdminLoginFragment())
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.commit()
+        }
 
         loginViewModel.messageLiveData.observe(viewLifecycleOwner, Observer { message ->
             message?.let {

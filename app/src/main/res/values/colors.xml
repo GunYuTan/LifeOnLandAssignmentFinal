@@ -6,4 +6,5 @@
     <color name="bottom_nav_inactive">#FFFFFFFF</color>
     <color name="CharcoalBlack">#3D4142</color>
     <color name="orange">#FFA500</color>
+    <color name="DarkCharcoal">#333333</color>
 </resources>
