@@ -11,7 +11,7 @@ interface AssignmentDatabaseDao {
     @Insert
     suspend fun insert(user: User)
     @Update
-    fun update(user: User)
+    suspend fun update(user: User)
     @Query("SELECT * from user_table WHERE userId = :key")
     fun get(key:Long): User?
 

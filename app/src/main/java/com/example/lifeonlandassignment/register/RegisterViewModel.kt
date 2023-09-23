@@ -49,7 +49,7 @@ class RegisterViewModel(private val repository: AssignmentDatabaseRepository, ap
         if(username == null || password == null || confirmPass == null || phoneNo == null || email == null){
             _messageLiveData.value = "Each field is required."
         }else if(password != confirmPass){
-            _messageLiveData.value = "Password field is not match."
+            _messageLiveData.value = "Password field are not match."
         }
         else{
             uiScope.launch {

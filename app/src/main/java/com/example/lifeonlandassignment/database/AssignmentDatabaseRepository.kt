@@ -10,6 +10,10 @@ class AssignmentDatabaseRepository (private val dao: AssignmentDatabaseDao){
         return dao.insert(user)
     }
 
+    suspend fun update(user: User){
+        return dao.update(user)
+    }
+
     suspend fun getUsername(username: String):User?{
         return dao.getUsername(username)
     }
