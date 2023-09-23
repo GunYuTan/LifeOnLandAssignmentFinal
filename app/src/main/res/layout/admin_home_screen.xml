@@ -240,6 +240,44 @@
                 android:textStyle="bold" />
         </TableRow>
 
+        <TableRow>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/rouge_script"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="50sp"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:id="@+id/btnLogout"
+            android:background="@color/DarkCharcoal">
+
+            <ImageView
+                android:id="@+id/logoutImage"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/ic_account" />
+
+            <TextView
+                android:id="@+id/txtlogout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/rouge_script"
+                android:text="Logout"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="50sp"
+                android:textStyle="bold" />
+        </TableRow>
+
     </TableLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

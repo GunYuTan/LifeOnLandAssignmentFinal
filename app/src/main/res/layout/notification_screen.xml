@@ -36,22 +36,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" /> <!--Notification Title-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="550dp"
-            android:layout_marginTop="20dp"
-            android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@+id/txtNotificationTitle"
-            tools:layout_editor_absoluteX="-9dp">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Notification"
-                android:id="@+id/notification_title"
-                style="@style/TextAppearance.Compat.Notification.Title" />
-        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

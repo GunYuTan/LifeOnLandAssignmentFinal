@@ -7,7 +7,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TableRow
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -19,6 +18,7 @@ import com.example.lifeonlandassignment.R
 import com.example.lifeonlandassignment.database.AssignmentDatabase
 import com.example.lifeonlandassignment.database.AssignmentDatabaseRepository
 import com.example.lifeonlandassignment.databinding.AdminHomeScreenBinding
+import com.example.lifeonlandassignment.login.LoginFragment
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -60,7 +60,7 @@ class AdminHomeFragment : Fragment (){
         tableLayout1.setOnClickListener {
             val fragmentManager = parentFragmentManager
             val fragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.fragment_container, AdminHomeFragment())
+            fragmentTransaction.replace(R.id.fragment_container, ClientDataFragment())
             fragmentTransaction.addToBackStack(null)
             fragmentTransaction.commit()
         }
@@ -69,7 +69,7 @@ class AdminHomeFragment : Fragment (){
         tableLayout2.setOnClickListener {
             val fragmentManager = parentFragmentManager
             val fragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.fragment_container, AdminHomeFragment())
+            fragmentTransaction.replace(R.id.fragment_container, EventDataFragment())
             fragmentTransaction.addToBackStack(null)
             fragmentTransaction.commit()
         }
@@ -78,7 +78,7 @@ class AdminHomeFragment : Fragment (){
         tableLayout3.setOnClickListener {
             val fragmentManager = parentFragmentManager
             val fragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.fragment_container, AdminHomeFragment())
+            fragmentTransaction.replace(R.id.fragment_container, DonationDataFragment())
             fragmentTransaction.addToBackStack(null)
             fragmentTransaction.commit()
         }
@@ -87,7 +87,16 @@ class AdminHomeFragment : Fragment (){
         tableLayout4.setOnClickListener {
             val fragmentManager = parentFragmentManager
             val fragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.fragment_container, AdminHomeFragment())
+            fragmentTransaction.replace(R.id.fragment_container, ReportDataFragment())
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.commit()
+        }
+
+        val tableLayout5 : TableRow = binding.btnLogout
+        tableLayout5.setOnClickListener {
+            val fragmentManager = parentFragmentManager
+            val fragmentTransaction = fragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.fragment_container, LoginFragment())
             fragmentTransaction.addToBackStack(null)
             fragmentTransaction.commit()
         }

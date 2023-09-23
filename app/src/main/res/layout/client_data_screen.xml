@@ -5,6 +5,20 @@
     android:layout_height="match_parent"
     android:background="@color/CharcoalBlack">
 
+    <TextView
+        android:id="@+id/txtClientDateTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:fontFamily="@font/rouge_script"
+        android:text="Client Data"
+        android:textColor="@color/white"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/backButtonClientData"
         android:layout_width="40sp"
