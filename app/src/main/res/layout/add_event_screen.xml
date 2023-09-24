@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="addEventViewModel"
+            type="com.example.lifeonlandassignment.manage.AddEventViewModel" />
+    </data>
+<ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -65,47 +70,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/txtEventID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="120dp"
-        android:text="Event ID :"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/txtInputEventID"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="40dp"
-        android:background="@color/white"
-        android:editable="false"
-        android:enabled="false"
-        android:fontFamily="@font/inter"
-        android:inputType="text"
-        android:text="Event ID"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtEventID" />
-
-    <TextView
-        android:id="@+id/txtAdminID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="5dp"
-        android:text="Admin ID :"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtInputEventID" />
+        <TextView
+            android:id="@+id/txtAdminID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:text="Admin ID :"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtAddEventTitle" />
 
     <TextView
         android:id="@+id/txtInputAdminIDAddEvent"
@@ -115,11 +89,9 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="40dp"
         android:background="@color/white"
-        android:editable="false"
         android:enabled="false"
         android:fontFamily="@font/inter"
-        android:inputType="text"
-        android:text="Event ID"
+        android:text=""
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -138,7 +110,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtInputAdminIDAddEvent" />
 
-    <TextView
+    <EditText
         android:id="@+id/txtInputEventName"
         android:layout_width="0dp"
         android:layout_height="30dp"
@@ -146,11 +118,9 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="40dp"
         android:background="@color/white"
-        android:editable="false"
-        android:enabled="false"
         android:fontFamily="@font/inter"
         android:inputType="text"
-        android:text="Event Name"
+        android:text="@={addEventViewModel.inputEventName}"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -181,31 +151,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtInputEventDescription" />
 
-    <TextView
-        android:id="@+id/txtEventImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="5dp"
-        android:text="Event Image :"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtInputEventDonation" />
+        <TextView
+            android:id="@+id/txtEventImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="12dp"
+            android:text="Event Image :"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtInputEndDate" />
 
-    <TextView
-        android:id="@+id/txtEventDonation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="5dp"
-        android:text="Event Donation Amount :"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtInputEndDate" />
-
-    <TextView
+        <EditText
         android:id="@+id/txtInputEventDescription"
         android:layout_width="0dp"
         android:layout_height="30dp"
@@ -213,37 +171,16 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="40dp"
         android:background="@color/white"
-        android:editable="false"
-        android:enabled="false"
         android:fontFamily="@font/inter"
         android:inputType="text"
-        android:text="Event Description"
+        android:text="@={addEventViewModel.inputEventDescription}"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtEventDescription" />
 
-    <TextView
-        android:id="@+id/txtInputEventDonation"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="40dp"
-        android:background="@color/white"
-        android:editable="false"
-        android:enabled="false"
-        android:fontFamily="@font/inter"
-        android:inputType="text"
-        android:text="Event Donation Amount"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtEventDonation" />
-
-    <TextView
+        <TextView
         android:id="@+id/txtInputStartDate"
         android:layout_width="0dp"
         android:layout_height="30dp"
@@ -251,11 +188,10 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="100dp"
         android:background="@color/white"
-        android:editable="false"
         android:enabled="false"
         android:fontFamily="@font/inter"
         android:inputType="text"
-        android:text="Start Date"
+        android:text="@={addEventViewModel.inputEventStartDate}"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -274,7 +210,7 @@
             android:enabled="false"
             android:fontFamily="@font/inter"
             android:inputType="text"
-            android:text="End Date"
+            android:text="@={addEventViewModel.inputEventEndDate}"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -313,3 +249,4 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
+</layout>

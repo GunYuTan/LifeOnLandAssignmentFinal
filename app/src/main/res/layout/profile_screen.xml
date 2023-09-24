@@ -9,178 +9,183 @@
             type="com.example.lifeonlandassignment.user.ProfileViewModel" />
     </data>
 
-<androidx.drawerlayout.widget.DrawerLayout
-    android:id="@+id/profile_screen"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/CharcoalBlack">
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/profile_screen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/CharcoalBlack">
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/CharcoalBlack">
 
-        <ImageView
-            android:id="@+id/myImageView"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="35dp"
-            android:layout_marginEnd="10dp"
-            android:src="@drawable/dashboard"
-            android:visibility="visible"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/txtHomeTitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="35dp"
-            android:fontFamily="@font/rouge_script"
-            android:text="Profile"
-            android:textColor="@color/white"
-            android:textSize="50sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" /> <!--Profile Title-->
+                <TextView
+                    android:id="@+id/brTag4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="30dp"
+                    android:text=""
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btnUserLogout" />
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/profilePic"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp"
-            android:elevation="15dp"
-            android:src="@drawable/profile_picture"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtHomeTitle"
-            app:shapeAppearanceOverlay="@style/Circular"
-            app:strokeColor="@color/orange"
-            app:strokeWidth="2sp" /> <!--Profile Picture-->
+                <ImageView
+                    android:id="@+id/myImageView"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="35dp"
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/dashboard"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/txtProfileUsername"
+                <TextView
+                    android:id="@+id/txtHomeTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="35dp"
+                    android:fontFamily="@font/rouge_script"
+                    android:text="Profile"
+                    android:textColor="@color/white"
+                    android:textSize="50sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" /> <!--Profile Title-->
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/profilePic"
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="10dp"
+                    android:elevation="15dp"
+                    android:src="@drawable/profile_picture"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtHomeTitle"
+                    app:shapeAppearanceOverlay="@style/Circular"
+                    app:strokeColor="@color/orange"
+                    app:strokeWidth="2sp" /> <!--Profile Picture-->
+
+                <TextView
+                    android:id="@+id/txtProfileUsername"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/inter"
+                    android:text=""
+                    android:textColor="@color/white"
+                    android:textSize="25sp"
+                    app:layout_constraintStart_toEndOf="@+id/profilePic"
+                    app:layout_constraintTop_toBottomOf="@+id/txtHomeTitle" /> <!--Profile Username-->
+
+                <Button
+                    android:id="@+id/btnUpdateProfileScreen"
+                    android:layout_width="0dp"
+                    android:layout_height="45sp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/round_btn"
+                    android:backgroundTint="@color/orange"
+                    android:text="Update"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/profilePic"
+                    app:layout_constraintTop_toBottomOf="@+id/txtProfileUsername" /> <!--Update Button-->
+
+                <Button
+                    android:id="@+id/btnUserLogout"
+                    android:layout_width="0dp"
+                    android:layout_height="45sp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="40dp"
+                    android:background="@drawable/round_btn"
+                    android:backgroundTint="@android:color/holo_red_light"
+                    android:text="Logout"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/viewPager2" />
+
+                <Button
+                    android:id="@+id/btnChangePicture"
+                    android:layout_width="0dp"
+                    android:layout_height="45sp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/round_btn"
+                    android:backgroundTint="@color/orange"
+                    android:text="Change Picture"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/profilePic"
+                    app:layout_constraintTop_toBottomOf="@+id/btnUpdateProfileScreen" /> <!--Change Profile Picture Button-->
+
+                <TextView
+                    android:id="@+id/txtRecentlyViewed"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/rouge_script"
+                    android:text="Recently Viewed"
+                    android:textColor="@color/white"
+                    android:textSize="50sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/profilePic" /> <!--Recently Viewed Title-->
+
+                <androidx.constraintlayout.widget.Barrier
+                    android:id="@+id/barrier2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:barrierDirection="top"
+                    app:constraint_referenced_ids="viewPager2" /> <!--Barrier-->
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewPager2"
+                    android:layout_width="0dp"
+                    android:layout_height="150dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="30dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtRecentlyViewed" /> <!--viewPager 2 (id)-->
+
+                <!--Recently Event Joined Title-->
+
+                <!--viewPager 3(id)-->
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/nav_view"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/inter"
-            android:text=""
-            android:textColor="@color/white"
-            android:textSize="25sp"
-            app:layout_constraintStart_toEndOf="@+id/profilePic"
-            app:layout_constraintTop_toBottomOf="@+id/txtHomeTitle" /> <!--Profile Username-->
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:menu="@menu/drawer_menu" />
 
-        <Button
-            android:id="@+id/btnUpdateProfileScreen"
-            android:layout_width="0dp"
-            android:layout_height="45sp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/round_btn"
-            android:backgroundTint="@color/orange"
-            android:text="Update"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/profilePic"
-            app:layout_constraintTop_toBottomOf="@+id/txtProfileUsername" /> <!--Update Button-->
-
-        <Button
-            android:id="@+id/btnChangePicture"
-            android:layout_width="0dp"
-            android:layout_height="45sp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/round_btn"
-            android:backgroundTint="@color/orange"
-            android:text="Change Picture"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/profilePic"
-            app:layout_constraintTop_toBottomOf="@+id/btnUpdateProfileScreen" /> <!--Change Profile Picture Button-->
-
-        <TextView
-            android:id="@+id/txtRecentlyViewed"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/rouge_script"
-            android:text="Recently Viewed"
-            android:textColor="@color/white"
-            android:textSize="50sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/profilePic" /> <!--Recently Viewed Title-->
-
-        <androidx.constraintlayout.widget.Barrier
-            android:id="@+id/barrier2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:barrierDirection="top"
-            app:constraint_referenced_ids="viewPager2" /> <!--Barrier-->
-
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/viewPager2"
-            android:layout_width="0dp"
-            android:layout_height="150dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="30dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtRecentlyViewed" /> <!--viewPager 2 (id)-->
-
-        <TextView
-            android:id="@+id/txtRecentlyEventJoined"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="5dp"
-            android:fontFamily="@font/rouge_script"
-            android:text="Recently Event Joined"
-            android:textColor="@color/white"
-            android:textSize="50sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/viewPager2" /> <!--Recently Event Joined Title-->
-
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/viewPager3"
-            android:layout_width="0dp"
-            android:layout_height="150dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="30dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtRecentlyEventJoined" /> <!--viewPager 3(id)-->
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
-
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        app:menu="@menu/drawer_menu" />
-
-</androidx.drawerlayout.widget.DrawerLayout>
+    </androidx.drawerlayout.widget.DrawerLayout>
 </layout>

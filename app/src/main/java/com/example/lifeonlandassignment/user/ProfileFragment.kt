@@ -22,6 +22,7 @@ import com.bumptech.glide.Glide
 import com.example.lifeonlandassignment.database.AssignmentDatabase
 import com.example.lifeonlandassignment.database.AssignmentDatabaseRepository
 import com.example.lifeonlandassignment.databinding.ProfileScreenBinding
+import com.example.lifeonlandassignment.login.LoginFragment
 import com.example.lifeonlandassignment.user.ProfileViewModel
 import com.example.lifeonlandassignment.user.ProfileViewModelFactory
 import com.example.lifeonlandassignment.user.UpdateProfileFragment
@@ -41,11 +42,8 @@ class ProfileFragment : Fragment() {
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
     private lateinit var viewPager2: ViewPager2
-    private lateinit var viewPager3: ViewPager2
     private val handler2 = Handler()
-    private val handler3 = Handler()
     private lateinit var adapter2: ImageAdapter2
-    private lateinit var adapter3: ImageAdapter3
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -76,7 +74,6 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewPager2 = view.findViewById(R.id.viewPager2)
-        viewPager3 = view.findViewById(R.id.viewPager3)
 
         init()
         setUpTransformer()
@@ -90,11 +87,18 @@ class ProfileFragment : Fragment() {
             fragmentTransaction.commit()
         }
 
+        val button1: Button = view.findViewById(R.id.btnUserLogout)
+        button1.setOnClickListener {
+            val fragmentManager = parentFragmentManager
+            val fragmentTransaction = fragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.fragment_container, LoginFragment())
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.commit()
+        }
+
         handler2.postDelayed(runnable2, 2000)
-        handler3.postDelayed(runnable3, 2000)
 
         viewPager2.registerOnPageChangeCallback(getPageChangeCallback(handler2, runnable2))
-        viewPager3.registerOnPageChangeCallback(getPageChangeCallback(handler3, runnable3))
 
         binding.btnChangePicture.setOnClickListener {
             Log.i("Testing", "Change Picture Button Pressed")
@@ -107,13 +111,11 @@ class ProfileFragment : Fragment() {
     override fun onPause() {
         super.onPause()
         handler2.removeCallbacks(runnable2)
-        handler3.removeCallbacks(runnable3)
     }
 
     override fun onResume() {
         super.onResume()
         handler2.postDelayed(runnable2, 2000)
-        handler3.postDelayed(runnable3, 2000)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -158,7 +160,6 @@ class ProfileFragment : Fragment() {
     }
 
     private val runnable2 = Runnable { viewPager2.currentItem = (viewPager2.currentItem + 1) % adapter2.itemCount }
-    private val runnable3 = Runnable { viewPager3.currentItem = (viewPager3.currentItem + 1) % adapter3.itemCount }
 
     private fun getPageChangeCallback(handler: Handler, runnable: Runnable) = object : ViewPager2.OnPageChangeCallback() {
         override fun onPageSelected(position: Int) {
@@ -176,7 +177,6 @@ class ProfileFragment : Fragment() {
             page.scaleY = 0.85f + r * 0.14f
         }
         viewPager2.setPageTransformer(transformer)
-        viewPager3.setPageTransformer(transformer)
     }
 
     private fun init() {
@@ -197,29 +197,10 @@ class ProfileFragment : Fragment() {
         imageList3.add(R.drawable.javan_rhino)
 
         adapter2 = ImageAdapter2(imageList2)
-        adapter3 = ImageAdapter3(imageList3)
         viewPager2.adapter = adapter2
-        viewPager3.adapter = adapter3
     }
 
     inner class ImageAdapter2(private val imageList: ArrayList<Int>) : RecyclerView.Adapter<ImageAdapter2.ImageViewHolder>() {
-        inner class ImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-            val imageView: ImageView = itemView.findViewById(R.id.imageView)
-        }
-
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
-            val view = LayoutInflater.from(parent.context).inflate(R.layout.image_container, parent, false)
-            return ImageViewHolder(view)
-        }
-
-        override fun getItemCount(): Int = imageList.size
-
-        override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
-            holder.imageView.setImageResource(imageList[position])
-        }
-    }
-
-    inner class ImageAdapter3(private val imageList: ArrayList<Int>) : RecyclerView.Adapter<ImageAdapter3.ImageViewHolder>() {
         inner class ImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             val imageView: ImageView = itemView.findViewById(R.id.imageView)
         }

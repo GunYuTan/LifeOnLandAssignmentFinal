@@ -7,4 +7,11 @@
     <string name="email_hint">Email Address</string>
     <string name="drawer_open" />
     <string name="drawer_close" />
+
+    <string-array name="spinner_data">
+        <item>TNG E-Wallet</item>
+        <item>Online Banking</item>
+        <item>Visa Card</item>
+    </string-array>
+
 </resources>
