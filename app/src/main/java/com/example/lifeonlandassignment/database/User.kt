@@ -68,7 +68,7 @@ data class Event(
     val eventDescription: String,
 
     @ColumnInfo(name = "eventDonation")
-    val eventDonation: String,
+    val eventDonation: Double,
 
     @ColumnInfo(name = "eventImage")
     val eventImage: String

@@ -1,4 +1,4 @@
-package com.example.lifeonlandassignment.admin
+package com.example.lifeonlandassignment.userHome
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,15 +8,15 @@ import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import com.example.lifeonlandassignment.R
 
-class DonationDataFragment : Fragment() {
+class UpcomingEventFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.donation_data_screen, container, false)
+        val view = inflater.inflate(R.layout.event_description_screen_1, container, false)
         // Initialize the back button ImageView
-        val backButton = view.findViewById<ImageView>(R.id.backButtonDonationData)
+        val backButton = view.findViewById<ImageView>(R.id.backButtonUpcomingButton)
         // Set click listener for back button
         backButton.setOnClickListener {
             // Perform your action here, for example, navigate back

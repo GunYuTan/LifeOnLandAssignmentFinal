@@ -7,6 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.example.lifeonlandassignment.login.LoginFragment
+import com.example.lifeonlandassignment.userHome.EventFragment
+import com.example.lifeonlandassignment.userHome.FavouriteFragment
+import com.example.lifeonlandassignment.userHome.HomeFragment
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

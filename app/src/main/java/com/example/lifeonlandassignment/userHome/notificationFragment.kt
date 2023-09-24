@@ -1,21 +1,11 @@
 package com.example.lifeonlandassignment
 
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.RemoteViews
 import android.widget.TableRow
-import androidx.core.app.NotificationCompat
 import androidx.fragment.app.Fragment
-import com.example.lifeonlandassignment.admin.ClientDataFragment
-import com.example.lifeonlandassignment.admin.DonationDataFragment
-import com.example.lifeonlandassignment.admin.EventDataFragment
-import com.example.lifeonlandassignment.admin.ReportDataFragment
 
 class NotificationFragment : Fragment() {
 

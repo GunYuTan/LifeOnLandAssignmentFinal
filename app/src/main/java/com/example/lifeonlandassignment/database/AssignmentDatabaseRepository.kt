@@ -14,6 +14,10 @@ class AssignmentDatabaseRepository (private val dao: AssignmentDatabaseDao){
         return dao.insert(admin)
     }
 
+    suspend fun insert(event: Event){
+        return dao.insert(event)
+    }
+
     suspend fun update(user: User){
         return dao.update(user)
     }

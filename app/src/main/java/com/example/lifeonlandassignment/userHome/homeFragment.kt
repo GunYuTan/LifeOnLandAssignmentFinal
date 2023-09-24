@@ -1,4 +1,4 @@
-package com.example.lifeonlandassignment
+package com.example.lifeonlandassignment.userHome
 
 import android.graphics.drawable.Drawable
 import android.os.Bundle
@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
+import com.example.lifeonlandassignment.R
 import com.google.android.material.navigation.NavigationView
 import kotlin.math.abs
 

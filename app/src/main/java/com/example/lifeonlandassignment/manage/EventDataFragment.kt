@@ -1,4 +1,4 @@
-package com.example.lifeonlandassignment.admin
+package com.example.lifeonlandassignment.manage
 
 import android.os.Bundle
 import android.view.LayoutInflater

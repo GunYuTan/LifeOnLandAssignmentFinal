@@ -1,4 +1,4 @@
-package com.example.lifeonlandassignment
+package com.example.lifeonlandassignment.userHome
 
 import android.graphics.drawable.Drawable
 import android.os.Bundle
@@ -14,6 +14,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
+import com.example.lifeonlandassignment.EventHappenFragment
 import com.example.lifeonlandassignment.R
 
 

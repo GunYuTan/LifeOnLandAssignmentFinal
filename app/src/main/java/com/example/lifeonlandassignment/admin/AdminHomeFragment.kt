@@ -19,6 +19,10 @@ import com.example.lifeonlandassignment.database.AssignmentDatabase
 import com.example.lifeonlandassignment.database.AssignmentDatabaseRepository
 import com.example.lifeonlandassignment.databinding.AdminHomeScreenBinding
 import com.example.lifeonlandassignment.login.LoginFragment
+import com.example.lifeonlandassignment.manage.ClientDataFragment
+import com.example.lifeonlandassignment.manage.DonationDataFragment
+import com.example.lifeonlandassignment.manage.EventDataFragment
+import com.example.lifeonlandassignment.manage.ReportDataFragment
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

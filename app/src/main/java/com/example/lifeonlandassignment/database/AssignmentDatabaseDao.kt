@@ -12,6 +12,8 @@ interface AssignmentDatabaseDao {
     suspend fun insert(user: User)
     @Insert
     suspend fun insert(admin: Admin)
+    @Insert
+    suspend fun insert(event: Event)
     @Update
     suspend fun update(user: User)
     @Update
