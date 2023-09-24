@@ -26,7 +26,7 @@ class EventDataFragment : Fragment() {
         button.setOnClickListener {
             val fragmentManager = parentFragmentManager
             val fragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.fragment_container, RegisterFragment())
+            fragmentTransaction.replace(R.id.fragment_container, AddEventFragment())
             fragmentTransaction.addToBackStack(null)
             fragmentTransaction.commit()
         }

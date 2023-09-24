@@ -43,12 +43,14 @@ class AssignmentDatabaseRepository (private val dao: AssignmentDatabaseDao){
     }
 
     suspend fun getLoginUserImage(username: String): String?{
-        Log.i("Testing", "Repo" + username)
         return dao.getLoginUserImage(username)
     }
 
     suspend fun getLoginAdminImage(username: String): String?{
-        Log.i("Testing", "Repo" + username)
         return dao.getLoginAdminImage(username)
+    }
+
+    suspend fun getHappenEvent(startDate: String): Event?{
+        return dao.getHappenEvent(startDate)
     }
 }

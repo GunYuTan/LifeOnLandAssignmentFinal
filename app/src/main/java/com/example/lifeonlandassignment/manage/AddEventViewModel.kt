@@ -56,7 +56,7 @@ class AddEventViewModel (private val repository: AssignmentDatabaseRepository, a
             _messageLiveData.value = "Each field is required."
         }else{
             uiScope.launch {
-                repository.insert(Event(null, eventAdminId.toInt(), eventName, eventDescription, eventStartDate, eventEndDate, 0.00, eventImage))
+                repository.insert(Event(null, eventAdminId.toInt(), eventName, eventStartDate, eventEndDate, eventDescription, 0.00, eventImage))
                 inputEventName.value = null
                 inputEventDescription.value = null
                 inputEventStartDate.value = null

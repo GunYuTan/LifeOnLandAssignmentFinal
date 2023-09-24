@@ -7,18 +7,29 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.example.lifeonlandassignment.EventHappenFragment
 import com.example.lifeonlandassignment.R
+import com.example.lifeonlandassignment.database.AssignmentDatabase
+import com.example.lifeonlandassignment.database.AssignmentDatabaseRepository
+import com.example.lifeonlandassignment.databinding.EventDescriptionScreen2Binding
+import com.example.lifeonlandassignment.databinding.EventScreenBinding
 
 
 class EventFragment : Fragment() {
+    private lateinit var eventViewModel: EventViewModel
+    private var _binding: EventScreenBinding? = null
+    private val binding get() = _binding!!
 
     private lateinit var upcomingEventsPager: ViewPager2
     private lateinit var currentEventsPager: ViewPager2
@@ -38,7 +49,18 @@ class EventFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.event_screen, container, false)
+        _binding = DataBindingUtil.inflate(
+            inflater, R.layout.event_screen, container, false)
+        val application = requireNotNull(this.activity).application
+        val dataSource = AssignmentDatabase.getInstance(application).assignmentDatabaseDao
+        val repository = AssignmentDatabaseRepository(dataSource)
+        val factory = EventViewModelFactory(repository, application)
+
+        eventViewModel = ViewModelProvider(this, factory).get(EventViewModel::class.java)
+        binding.eventViewModel = eventViewModel
+        binding.lifecycleOwner = this
+
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -64,14 +86,22 @@ class EventFragment : Fragment() {
             fragmentTransaction.commit()
         }
 
-        val button1: ImageView = view.findViewById(R.id.btnEventHappen)
-        button1.setOnClickListener {
-            val fragmentManager = parentFragmentManager
-            val fragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.fragment_container, EventHappenFragment())
-            fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.commit()
-        }
+        eventViewModel.messageLiveData.observe(viewLifecycleOwner, Observer { message ->
+            message?.let {
+                // Use the context of the fragment to show the Toast
+                Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+            }
+        })
+
+        eventViewModel.navigatetoCurrentEvent.observe(this, Observer { hasFinished->
+            if (hasFinished == true){
+                val fragmentManager = parentFragmentManager
+                val fragmentTransaction = fragmentManager.beginTransaction()
+                fragmentTransaction.replace(R.id.fragment_container, EventHappenFragment())
+                fragmentTransaction.addToBackStack(null)
+                fragmentTransaction.commit()
+            }
+        })
 
         toggle = ActionBarDrawerToggle(
             requireActivity(), drawerLayout, R.string.drawer_open, R.string.drawer_close

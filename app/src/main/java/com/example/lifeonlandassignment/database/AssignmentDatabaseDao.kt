@@ -1,5 +1,6 @@
 package com.example.lifeonlandassignment.database
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
@@ -46,4 +47,7 @@ interface AssignmentDatabaseDao {
 
     @Query("SELECT userImage FROM admin_table WHERE username = :username")
     suspend fun getLoginAdminImage(username: String): String?
+
+    @Query("SELECT * FROM event_table WHERE DATE(STRFTIME('%Y-%m-%d', :startDate)) BETWEEN DATE(STRFTIME('%Y-%m-%d', eventStartDate)) AND DATE(STRFTIME('%Y-%m-%d', eventEndDate)) LIMIT 1")
+    suspend fun getHappenEvent(startDate: String): Event?
 }
