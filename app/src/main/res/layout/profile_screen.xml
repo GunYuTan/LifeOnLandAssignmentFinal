@@ -24,6 +24,18 @@
         android:background="@color/CharcoalBlack">
 
 
+        <TextView
+            android:id="@+id/brTag4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:text=""
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnUserLogout" />
+
         <ImageView
             android:id="@+id/myImageView"
             android:layout_width="50dp"
@@ -94,6 +106,23 @@
             app:layout_constraintTop_toBottomOf="@+id/txtProfileUsername" /> <!--Update Button-->
 
         <Button
+            android:id="@+id/btnUserLogout"
+            android:layout_width="0dp"
+            android:layout_height="45sp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="40dp"
+            android:background="@drawable/round_btn"
+            android:backgroundTint="@android:color/holo_red_light"
+            android:text="Logout"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewPager2" />
+
+        <Button
             android:id="@+id/btnChangePicture"
             android:layout_width="0dp"
             android:layout_height="45sp"
@@ -144,33 +173,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtRecentlyViewed" /> <!--viewPager 2 (id)-->
 
-        <TextView
-            android:id="@+id/txtRecentlyEventJoined"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="5dp"
-            android:fontFamily="@font/rouge_script"
-            android:text="Recently Event Joined"
-            android:textColor="@color/white"
-            android:textSize="50sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/viewPager2" /> <!--Recently Event Joined Title-->
+        <!--Recently Event Joined Title-->
 
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/viewPager3"
-            android:layout_width="0dp"
-            android:layout_height="150dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="30dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtRecentlyEventJoined" /> <!--viewPager 3(id)-->
+        <!--viewPager 3(id)-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
