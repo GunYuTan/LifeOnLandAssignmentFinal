@@ -69,47 +69,17 @@
             app:layout_constraintTop_toBottomOf="@+id/txtEventImage2"
             app:srcCompat="@drawable/sunde_island2" />
 
-    <TextView
-        android:id="@+id/txtEventID2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="120dp"
-        android:text="Event ID :"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/txtInputEventID2"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="40dp"
-        android:background="@color/white"
-        android:editable="false"
-        android:enabled="false"
-        android:fontFamily="@font/inter"
-        android:inputType="text"
-        android:text="Event ID"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtEventID2" />
-
-    <TextView
-        android:id="@+id/txtAdminID2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="5dp"
-        android:text="Admin ID :"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtInputEventID2" />
+        <TextView
+            android:id="@+id/txtAdminID2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="5dp"
+            android:text="Admin ID :"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtUpdateEventTitle" />
 
     <TextView
         android:id="@+id/txtInputAdminIDAddEvent2"
