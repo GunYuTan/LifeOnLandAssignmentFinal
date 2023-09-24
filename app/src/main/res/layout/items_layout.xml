@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="110dp"
+    android:orientation="horizontal"
+    android:background="@color/CharcoalBlack">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/cell_border2">
+
+        <TextView
+            android:id="@+id/itemEventNameView"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Event : "
+            android:textColor="@color/white"
+            app:layout_constraintStart_toEndOf="@+id/itemImageView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/eventNameDetail"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="10dp"
+            android:text="Sunda Island Event"
+            android:textColor="@color/orange"
+            app:layout_constraintEnd_toStartOf="@+id/btnEditor"
+            app:layout_constraintStart_toEndOf="@+id/itemEventNameView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/itemStartDateView"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginStart="10dp"
+            android:text="Start Date : "
+            android:textColor="@color/white"
+            app:layout_constraintStart_toEndOf="@+id/itemImageView"
+            app:layout_constraintTop_toBottomOf="@+id/itemEventNameView" />
+
+        <TextView
+            android:id="@+id/startDateDetail"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:text="11/11/1111"
+            android:textColor="@color/orange"
+            app:layout_constraintEnd_toStartOf="@+id/btnEditor"
+            app:layout_constraintStart_toEndOf="@+id/itemStartDateView"
+            app:layout_constraintTop_toBottomOf="@+id/eventNameDetail" />
+
+        <TextView
+            android:id="@+id/itemEndDateView"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginStart="10dp"
+            android:text="End Date : "
+            android:textColor="@color/white"
+            app:layout_constraintStart_toEndOf="@+id/itemImageView"
+            app:layout_constraintTop_toBottomOf="@+id/itemStartDateView" />
+
+        <TextView
+            android:id="@+id/endDateDetail"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:text="11/11/1111"
+            android:textColor="@color/orange"
+            app:layout_constraintEnd_toStartOf="@+id/btnEditor"
+            app:layout_constraintStart_toEndOf="@+id/itemEndDateView"
+            app:layout_constraintTop_toBottomOf="@+id/startDateDetail" />
+
+        <TextView
+            android:id="@+id/itemDonationAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginStart="10dp"
+            android:text="Total Donation : "
+            android:textColor="@color/white"
+            app:layout_constraintStart_toEndOf="@+id/itemImageView"
+            app:layout_constraintTop_toBottomOf="@+id/itemEndDateView" />
+
+        <TextView
+            android:id="@+id/donationAmountDetail"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:text="MYR 1111"
+            android:textColor="@color/orange"
+            app:layout_constraintEnd_toStartOf="@+id/btnEditor"
+            app:layout_constraintStart_toEndOf="@+id/itemDonationAmount"
+            app:layout_constraintTop_toBottomOf="@+id/endDateDetail" />
+
+        <ImageView
+            android:id="@+id/itemImageView"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/btnEditor"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_editor" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
