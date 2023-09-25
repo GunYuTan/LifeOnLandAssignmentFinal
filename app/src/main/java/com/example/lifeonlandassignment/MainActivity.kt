@@ -20,6 +20,18 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         bottomNavigationView = findViewById(R.id.bottomNavigationView)
 
+        supportFragmentManager.addOnBackStackChangedListener {
+            val currentFragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
+            val isTargetFragment = currentFragment?.javaClass?.simpleName in arrayOf(
+                "HomeFragment",
+                "NotificationFragment",
+                "FavouriteFragment",
+                "EventFragment",
+                "ProfileFragment"
+            )
+            bottomNavigationView.visibility = if (isTargetFragment) View.VISIBLE else View.GONE
+        }
+
         bottomNavigationView.setOnItemSelectedListener { item ->
             var selectedFragment: Fragment? = null
             when (item.itemId) {
@@ -34,7 +46,7 @@ class MainActivity : AppCompatActivity() {
                     .replace(R.id.fragment_container, selectedFragment)
                     .commit()
             }
-            bottomNavigationView.visibility = if (selectedFragment != null) View.VISIBLE else View.GONE
+
             true
         }
 
