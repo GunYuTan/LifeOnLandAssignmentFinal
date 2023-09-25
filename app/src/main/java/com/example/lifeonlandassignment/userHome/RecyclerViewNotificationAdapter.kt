@@ -9,7 +9,8 @@ import com.example.lifeonlandassignment.databinding.ItemsLayoutNotificationBindi
 data class MyNotificationItem(
     val imageResource: Int,
     val notificationTitle: String,
-    val notificationDetail: String
+    val notificationDetail: String,
+    val imageResourceDelete: Int
 )
 
 class RecyclerViewNotificationAdapter(private val itemList: List<MyNotificationItem>) : RecyclerView.Adapter<RecyclerViewNotificationAdapter.ViewNotificationHolder>() {
@@ -19,6 +20,7 @@ class RecyclerViewNotificationAdapter(private val itemList: List<MyNotificationI
             binding.itemImageView.setImageResource(item.imageResource)
             binding.itemNotificationTitleView.text = item.notificationTitle
             binding.txtNotificationDetail.text = item.notificationDetail
+            binding.itemNotificationDelete.setImageResource(item.imageResourceDelete)
         }
     }
 
