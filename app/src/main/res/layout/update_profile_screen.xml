@@ -8,11 +8,11 @@
             name="updateProfileViewModel"
             type="com.example.lifeonlandassignment.user.UpdateProfileViewModel" />
     </data>
+
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/CharcoalBlack">
-
 
     <ImageView
         android:id="@+id/backButtonUpdateProfile"

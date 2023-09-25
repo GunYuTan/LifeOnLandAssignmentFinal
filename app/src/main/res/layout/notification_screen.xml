@@ -6,176 +6,61 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/CharcoalBlack">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/myImageView"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="35dp"
-            android:layout_marginEnd="10dp"
-            android:src="@drawable/dashboard"
-            android:visibility="visible"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/brTag9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerNotificationView" />
 
-        <TextView
-            android:id="@+id/txtNotificationTitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="35dp"
-            android:fontFamily="@font/rouge_script"
-            android:text="Notification"
-            android:textColor="@color/white"
-            android:textSize="50sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" /> <!--Notification Title-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerNotificationView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtNotificationTitle" />
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="550dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="20dp"
-            android:background="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtNotificationTitle">
+    <ImageView
+        android:id="@+id/myImageView2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="10dp"
+        android:src="@drawable/dashboard"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-            <TableLayout
-                android:layout_width="340dp"
-                android:layout_height="550dp"
-                android:paddingTop="10dp"
-                android:paddingLeft="12dp">
+    <TextView
+        android:id="@+id/txtNotificationTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="35dp"
+        android:fontFamily="@font/rouge_script"
+        android:text="Notification"
+        android:textColor="@color/white"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-                <TableRow
-                    android:id="@+id/btnNotice1"
-                    android:layout_width="340dp"
-                    android:layout_height="40dp"
-                    android:background="@color/DarkCharcoal">
-
-                    <ImageView
-                        android:id="@+id/Notice1"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        app:srcCompat="@drawable/ic_notification" />
-
-                    <TextView
-                        android:id="@+id/txtNotice1"
-                        android:layout_width="300dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/inter"
-                        android:text="Sunda Island is Happening \nSunda Island Tigers is one of the ..."
-                        android:textColor="@color/white"
-                        android:textSize="15sp" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="340dp"
-                    android:layout_height="10dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-                </TableRow>
-
-                <TableRow
-                    android:id="@+id/btnNotice2"
-                    android:layout_width="340dp"
-                    android:layout_height="40dp"
-                    android:background="@color/DarkCharcoal">
-
-                    <ImageView
-                        android:id="@+id/Notice2"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        app:srcCompat="@drawable/ic_notification" />
-
-                    <TextView
-                        android:id="@+id/txtNotice2"
-                        android:layout_width="300dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/inter"
-                        android:text="Sunda Island is Happening \nSunda Island Tigers is one of the ..."
-                        android:textColor="@color/white"
-                        android:textSize="15sp" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="340dp"
-                    android:layout_height="10dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-                </TableRow>
-
-                <TableRow
-                    android:id="@+id/btnNotice3"
-                    android:layout_width="340dp"
-                    android:layout_height="40dp"
-                    android:background="@color/DarkCharcoal">
-
-                    <ImageView
-                        android:id="@+id/Notice3"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        app:srcCompat="@drawable/ic_notification" />
-
-                    <TextView
-                        android:id="@+id/txtNotice3"
-                        android:layout_width="300dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/inter"
-                        android:text="Sunda Island is Happening \nSunda Island Tigers is one of the ..."
-                        android:textColor="@color/white"
-                        android:textSize="15sp" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="340dp"
-                    android:layout_height="10dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-                </TableRow>
-
-                <TableRow
-                    android:id="@+id/btnNotice4"
-                    android:layout_width="340dp"
-                    android:layout_height="40dp"
-                    android:background="@color/DarkCharcoal">
-
-                    <ImageView
-                        android:id="@+id/Notice4"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        app:srcCompat="@drawable/ic_notification" />
-
-                    <TextView
-                        android:id="@+id/txtNotice4"
-                        android:layout_width="300dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/inter"
-                        android:text="Sunda Island is Happening \nSunda Island Tigers is one of the ..."
-                        android:textColor="@color/white"
-                        android:textSize="15sp" />
-                </TableRow>
-            </TableLayout>
-
-        </ScrollView>
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+</androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </androidx.drawerlayout.widget.DrawerLayout>

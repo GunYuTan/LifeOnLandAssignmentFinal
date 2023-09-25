@@ -54,7 +54,7 @@
             android:layout_marginEnd="20dp"
             android:fontFamily="@font/inter"
             android:text="[Notice] Sunda Island Events is Currently Open. Come and Join!!!"
-            android:textColor="@color/white"
+            android:textColor="@color/orange"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

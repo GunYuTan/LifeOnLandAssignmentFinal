@@ -1,5 +1,6 @@
 package com.example.lifeonlandassignment
 
+import android.content.pm.ActivityInfo
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
@@ -16,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
 
         // Adding BackStack Listener
@@ -48,6 +50,7 @@ class MainActivity : AppCompatActivity() {
                     .replace(R.id.fragment_container, localSelectedFragment)
                     .commit()
             }
+            bottomNavigationView.visibility = if (localSelectedFragment != null) View.VISIBLE else View.GONE
 
             true
         }
@@ -72,11 +75,10 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.beginTransaction().apply {
                 setReorderingAllowed(true)
                 add(R.id.fragment_container, LoginFragment())
+                bottomNavigationView.visibility = View.GONE
                 commit()
             }
         }
-
-        bottomNavigationView.visibility = View.GONE
     }
 }
 

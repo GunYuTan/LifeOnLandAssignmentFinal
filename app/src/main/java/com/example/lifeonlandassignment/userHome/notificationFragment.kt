@@ -4,8 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TableRow
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.lifeonlandassignment.databinding.NotificationScreenBinding
+import com.example.lifeonlandassignment.userHome.MyNotificationItem
+import com.example.lifeonlandassignment.userHome.RecyclerViewNotificationAdapter
 
 class NotificationFragment : Fragment() {
 
@@ -14,43 +18,25 @@ class NotificationFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.notification_screen, container, false)
+        val binding = NotificationScreenBinding.inflate(inflater, container, false)
 
-        val tableLayout1 : TableRow = view.findViewById(R.id.btnNotice1)
-        tableLayout1.setOnClickListener {
-            val fragmentManager = parentFragmentManager
-            val fragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.fragment_container, NotificationDescriptionFragment())
-            fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.commit()
-        }
+        // Get root view
+        val view = binding.root
 
-        val tableLayout2 : TableRow = view.findViewById(R.id.btnNotice2)
-        tableLayout2.setOnClickListener {
-            val fragmentManager = parentFragmentManager
-            val fragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.fragment_container, NotificationDescriptionFragment())
-            fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.commit()
-        }
+        // Initialize RecyclerView
+        val recyclerView: RecyclerView = binding.recyclerNotificationView
+        recyclerView.layoutManager = LinearLayoutManager(context)
 
-        val tableLayout3 : TableRow = view.findViewById(R.id.btnNotice3)
-        tableLayout3.setOnClickListener {
-            val fragmentManager = parentFragmentManager
-            val fragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.fragment_container, NotificationDescriptionFragment())
-            fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.commit()
-        }
+        // Sample data and setting adapter
+        val items = listOf(
+            MyNotificationItem(R.drawable.ic_notification,
+                "Sunda Island Event is Happening!!", "lsdmaspmdiiamdinawiomsfkanfoiganifnaifna"),
+            MyNotificationItem(R.drawable.ic_notification,
+                "Sunda Island Event is Happening!!", "sfdkoakfsmkvnaionfsanfoianfskfnaipfasmfian",)
+        )
 
-        val tableLayout4 : TableRow = view.findViewById(R.id.btnNotice4)
-        tableLayout4.setOnClickListener {
-            val fragmentManager = parentFragmentManager
-            val fragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.fragment_container, NotificationDescriptionFragment())
-            fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.commit()
-        }
+        val adapter = RecyclerViewNotificationAdapter(items)
+        recyclerView.adapter = adapter
 
         return view
     }
