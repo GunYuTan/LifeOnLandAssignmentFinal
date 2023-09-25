@@ -1,6 +1,5 @@
 package com.example.lifeonlandassignment
 
-import android.content.pm.ActivityInfo
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
@@ -14,23 +13,23 @@ import com.example.lifeonlandassignment.userHome.FavouriteFragment
 import com.example.lifeonlandassignment.userHome.HomeFragment
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var bottomNavigationView: BottomNavigationView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR
-        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        bottomNavigationView = findViewById(R.id.bottomNavigationView)
 
-        // Adding BackStack Listener
         supportFragmentManager.addOnBackStackChangedListener {
             val currentFragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
-            val showBottomNav = currentFragment?.javaClass?.simpleName in arrayOf(
+            val isTargetFragment = currentFragment?.javaClass?.simpleName in arrayOf(
                 "HomeFragment",
                 "NotificationFragment",
                 "FavouriteFragment",
                 "EventFragment",
                 "ProfileFragment"
             )
-            bottomNavigationView.visibility = if (showBottomNav) View.VISIBLE else View.GONE
+            bottomNavigationView.visibility = if (isTargetFragment) View.VISIBLE else View.GONE
         }
 
         bottomNavigationView.setOnItemSelectedListener { item ->
@@ -42,20 +41,15 @@ class MainActivity : AppCompatActivity() {
                 R.id.btnEvent -> selectedFragment = EventFragment()
                 R.id.btnProfile -> selectedFragment = ProfileFragment()
             }
-
-            val localSelectedFragment = selectedFragment
-
-            if (localSelectedFragment != null) {
+            if (selectedFragment != null) {
                 supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragment_container, localSelectedFragment)
+                    .replace(R.id.fragment_container, selectedFragment)
                     .commit()
             }
-            bottomNavigationView.visibility = if (localSelectedFragment != null) View.VISIBLE else View.GONE
 
             true
         }
 
-        // Color setup
         val colorStateList = ColorStateList(
             arrayOf(
                 intArrayOf(android.R.attr.state_checked),
@@ -70,7 +64,6 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.itemIconTintList = colorStateList
         bottomNavigationView.itemTextColor = colorStateList
 
-        // Initial fragment
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction().apply {
                 setReorderingAllowed(true)
@@ -81,4 +74,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
+
+
 

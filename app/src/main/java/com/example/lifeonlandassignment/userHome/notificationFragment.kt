@@ -30,9 +30,11 @@ class NotificationFragment : Fragment() {
         // Sample data and setting adapter
         val items = listOf(
             MyNotificationItem(R.drawable.ic_notification,
-                "Sunda Island Event is Happening!!", "lsdmaspmdiiamdinawiomsfkanfoiganifnaifna"),
+                "Sunda Island Event is Happening!!", "lsdmaspmdiiamdinawiomsfkanfoiganifnaifna",
+                R.drawable.ic_delete),
             MyNotificationItem(R.drawable.ic_notification,
-                "Sunda Island Event is Happening!!", "sfdkoakfsmkvnaionfsanfoianfskfnaipfasmfian",)
+                "Sunda Island Event is Happening!!", "sfdkoakfsmkvnaionfsanfoianfskfnaipfasmfian",
+                R.drawable.ic_delete,)
         )
 
         val adapter = RecyclerViewNotificationAdapter(items)
