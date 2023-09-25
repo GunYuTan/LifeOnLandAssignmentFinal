@@ -18,6 +18,10 @@ class AssignmentDatabaseRepository (private val dao: AssignmentDatabaseDao){
         return dao.insert(event)
     }
 
+    suspend fun clearEvent(){
+        return dao.clearEvent()
+    }
+
     suspend fun update(user: User){
         return dao.update(user)
     }
@@ -52,5 +56,9 @@ class AssignmentDatabaseRepository (private val dao: AssignmentDatabaseDao){
 
     suspend fun getHappenEvent(startDate: String): Event?{
         return dao.getHappenEvent(startDate)
+    }
+
+    suspend fun getUpcomingEvent(startDate: String): Event?{
+        return dao.getUpcomingEvent(startDate)
     }
 }

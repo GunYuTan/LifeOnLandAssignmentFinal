@@ -25,6 +25,9 @@ interface AssignmentDatabaseDao {
     @Query("DELETE FROM user_table")
     fun clear()
 
+    @Query("DELETE FROM event_table")
+    suspend fun clearEvent()
+
     @Query("SELECT * from user_table")
     fun getAllUser(): LiveData<List<User>>
 
@@ -50,4 +53,7 @@ interface AssignmentDatabaseDao {
 
     @Query("SELECT * FROM event_table WHERE DATE(STRFTIME('%Y-%m-%d', :startDate)) BETWEEN DATE(STRFTIME('%Y-%m-%d', eventStartDate)) AND DATE(STRFTIME('%Y-%m-%d', eventEndDate)) LIMIT 1")
     suspend fun getHappenEvent(startDate: String): Event?
+
+    @Query("SELECT * FROM event_table WHERE DATE(STRFTIME('%Y-%m-%d', eventStartDate)) > DATE(STRFTIME('%Y-%m-%d', :startDate)) ORDER BY DATE(STRFTIME('%s', eventStartDate)) ASC LIMIT 1")
+    suspend fun getUpcomingEvent(startDate: String): Event?
 }

@@ -89,6 +89,7 @@ class AdminHomeFragment : Fragment (){
 
         val tableLayout4 : TableRow = binding.btnReportDataScreen
         tableLayout4.setOnClickListener {
+//            runBlocking { adminHomeViewModel.clearEvent() }
             val fragmentManager = parentFragmentManager
             val fragmentTransaction = fragmentManager.beginTransaction()
             fragmentTransaction.replace(R.id.fragment_container, ReportDataFragment())

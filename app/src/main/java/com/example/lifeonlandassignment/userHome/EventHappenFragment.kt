@@ -15,7 +15,6 @@ import com.example.lifeonlandassignment.database.AssignmentDatabase
 import com.example.lifeonlandassignment.database.AssignmentDatabaseRepository
 import com.example.lifeonlandassignment.database.Event
 import com.example.lifeonlandassignment.databinding.EventDescriptionScreen2Binding
-import com.example.lifeonlandassignment.user.UpdateProfileViewModel
 import com.example.lifeonlandassignment.userHome.EventFragment
 import com.example.lifeonlandassignment.userHome.EventHappenViewModel
 import com.example.lifeonlandassignment.userHome.EventHappenViewModelFactory
@@ -45,7 +44,7 @@ class EventHappenFragment : Fragment() {
         val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
         val currentDate = Date()
         val eventList: Event? = runBlocking { eventHappenViewModel.getHappenEvent(dateFormat.format(currentDate)) }
-        Log.i("Testing", eventList!!.eventName + "123")
+        Log.i("Testing", eventList!!.eventImage + "123")
         if(eventList != null){
             Glide.with(requireContext())
                 .load(eventList.eventImage)
