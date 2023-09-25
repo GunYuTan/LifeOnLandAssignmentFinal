@@ -1,8 +1,6 @@
 package com.example.lifeonlandassignment
 
-import android.content.pm.ActivityInfo
 import android.content.res.ColorStateList
-import android.content.res.Configuration
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
@@ -22,24 +20,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         bottomNavigationView = findViewById(R.id.bottomNavigationView)
 
-        supportFragmentManager.addOnBackStackChangedListener {
-            val currentFragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
-            val isTargetFragment = currentFragment?.javaClass?.simpleName in arrayOf(
-                "HomeFragment",
-                "NotificationFragment",
-                "FavouriteFragment",
-                "EventFragment",
-                "ProfileFragment"
-            )
-            bottomNavigationView.visibility = if (isTargetFragment) View.VISIBLE else View.GONE
-
-            requestedOrientation = if (isTargetFragment) {
-                ActivityInfo.SCREEN_ORIENTATION_SENSOR
-            } else {
-                ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-            }
-        }
-
         bottomNavigationView.setOnItemSelectedListener { item ->
             var selectedFragment: Fragment? = null
             when (item.itemId) {
@@ -54,6 +34,7 @@ class MainActivity : AppCompatActivity() {
                     .replace(R.id.fragment_container, selectedFragment)
                     .commit()
             }
+            bottomNavigationView.visibility = if (selectedFragment != null) View.VISIBLE else View.GONE
             true
         }
 
@@ -79,21 +60,6 @@ class MainActivity : AppCompatActivity() {
                 commit()
             }
         }
-    }
-
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        super.onConfigurationChanged(newConfig)
-
-        val currentFragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
-        val isTargetFragment = currentFragment?.javaClass?.simpleName in arrayOf(
-            "HomeFragment",
-            "NotificationFragment",
-            "FavouriteFragment",
-            "EventFragment",
-            "ProfileFragment"
-        )
-
-        bottomNavigationView.visibility = if (isTargetFragment) View.VISIBLE else View.GONE
     }
 }
 

@@ -14,8 +14,8 @@ import com.example.lifeonlandassignment.R
 import com.example.lifeonlandassignment.database.AssignmentDatabase
 import com.example.lifeonlandassignment.database.AssignmentDatabaseRepository
 import com.example.lifeonlandassignment.databinding.EventDataScreenBinding
-import com.example.lifeonlandassignment.userHome.MyItem
-import com.example.lifeonlandassignment.userHome.RecyclerViewAdapter
+import com.example.lifeonlandassignment.userHome.MyEventItem
+import com.example.lifeonlandassignment.userHome.RecyclerViewEventAdapter
 import kotlinx.coroutines.runBlocking
 
 class EventDataFragment : Fragment() {
@@ -67,24 +67,24 @@ class EventDataFragment : Fragment() {
         val recyclerView: RecyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-        val myItemList: List<MyItem> = eventList.map { event ->
-            MyItem(
-                eventId = event.eventId,
+        val myItemList: List<MyEventItem> = eventList.map { event ->
+            MyEventItem(
+                EventID = event.eventId,
                 imageResource = R.drawable.ic_event,
-                eventName = "Event Name: ",
-                eventDetail = event.eventName,
-                startDate = "Start Date : ",
-                startDateDetail = event.eventStartDate,
-                endDate = "End Date : ",
-                endDateDetail = event.eventEndDate,
-                donationAmount = "Donation Amount : ",
-                donationAmountDetail = event.eventDonation.toString(),
+                EventName = "Event Name: ",
+                EventNameDetail = event.eventName,
+                EventStartDate = "Start Date : ",
+                EventStartDateDetail = event.eventStartDate,
+                EventEndDate = "End Date : ",
+                EventEndDateDetail = event.eventEndDate,
+                EventTotalDonation = "Donation Amount : ",
+                EventTotalDonationDetail = event.eventDonation.toString(),
                 imageResourceEditor = R.drawable.ic_editor,
                 imageResourceDelete = R.drawable.ic_delete
             )
         }
 
-        val adapter = RecyclerViewAdapter(myItemList)
+        val adapter = RecyclerViewEventAdapter(myItemList)
         recyclerView.adapter = adapter
 
         return binding.root
