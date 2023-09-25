@@ -7,6 +7,7 @@ import com.example.lifeonlandassignment.databinding.ItemsLayoutBinding
 
 // Move this class definition outside of your ViewHolder
 data class MyItem(
+    val eventId: Int?,
     val imageResource: Int,
     val eventName: String,
     val eventDetail: String,
@@ -24,6 +25,7 @@ class RecyclerViewAdapter(private val itemList: List<MyItem>) : RecyclerView.Ada
 
     inner class ViewHolder(private val binding: ItemsLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: MyItem) {
+            binding.textInvisibleEventId.text = item.eventId.toString()
             binding.itemImageView.setImageResource(item.imageResource)
             binding.itemEventNameView.text = item.eventName
             binding.eventNameDetail.text = item.eventDetail

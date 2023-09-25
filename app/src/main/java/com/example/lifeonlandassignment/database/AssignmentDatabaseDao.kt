@@ -31,6 +31,9 @@ interface AssignmentDatabaseDao {
     @Query("SELECT * from user_table")
     fun getAllUser(): LiveData<List<User>>
 
+    @Query("SELECT * from event_table")
+    suspend fun getAllEvent(): List<Event>
+
     @Query("SELECT * FROM user_table WHERE username LIKE :username AND password LIKE :password")
     fun readAllData(username: String, password: String): LiveData<User>
 

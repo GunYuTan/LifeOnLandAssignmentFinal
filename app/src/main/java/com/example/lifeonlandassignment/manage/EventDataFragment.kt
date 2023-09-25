@@ -5,22 +5,35 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lifeonlandassignment.R
+import com.example.lifeonlandassignment.database.AssignmentDatabase
+import com.example.lifeonlandassignment.database.AssignmentDatabaseRepository
 import com.example.lifeonlandassignment.databinding.EventDataScreenBinding
-import com.example.lifeonlandassignment.register.RegisterFragment
 import com.example.lifeonlandassignment.userHome.MyItem
 import com.example.lifeonlandassignment.userHome.RecyclerViewAdapter
+import kotlinx.coroutines.runBlocking
 
 class EventDataFragment : Fragment() {
+    private lateinit var  eventDataViewModel: EventDataViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = EventDataScreenBinding.inflate(inflater, container, false)
+        val binding: EventDataScreenBinding = DataBindingUtil.inflate(inflater, R.layout.event_data_screen, container, false)
+        val application = requireNotNull(this.activity).application
+        val dataSource = AssignmentDatabase.getInstance(application).assignmentDatabaseDao
+        val repository = AssignmentDatabaseRepository(dataSource)
+        val factory = EventDataViewModelFactory(repository, application)
+        eventDataViewModel = ViewModelProvider(this,factory).get(EventDataViewModel::class.java)
+        binding.eventDataViewModel = eventDataViewModel
+        binding.lifecycleOwner = this
 
         val button: Button = binding.btnAddEvent
         button.setOnClickListener {
@@ -48,32 +61,32 @@ class EventDataFragment : Fragment() {
             fragmentManager?.popBackStack()
         }
 
-        // Get root view
-        val view = binding.root
 
         // Initialize RecyclerView
+        val eventList = runBlocking { eventDataViewModel.getEventList() }
         val recyclerView: RecyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-        // Sample data and setting adapter
-        val items = listOf(
-            MyItem(R.drawable.ic_event,
-                "Event : ", "Sunda Island Tiger",
-                "Start Date : ", "11/11/1111",
-                "End Date : ", "11/11/1111",
-                "Donation Amount : ", "MYR 1111",
-                R.drawable.ic_editor, R.drawable.ic_delete),
-            MyItem(R.drawable.ic_event,
-                "Event : ", "Sunda Island Tiger",
-                "Start Date : ", "22/22/2222",
-                "End Date : ", "22/22/2222",
-                "Donation Amount : ", "MYR 2222",
-                R.drawable.ic_editor, R.drawable.ic_delete)
-        )
+        val myItemList: List<MyItem> = eventList.map { event ->
+            MyItem(
+                eventId = event.eventId,
+                imageResource = R.drawable.ic_event,
+                eventName = "Event Name: ",
+                eventDetail = event.eventName,
+                startDate = "Start Date : ",
+                startDateDetail = event.eventStartDate,
+                endDate = "End Date : ",
+                endDateDetail = event.eventEndDate,
+                donationAmount = "Donation Amount : ",
+                donationAmountDetail = event.eventDonation.toString(),
+                imageResourceEditor = R.drawable.ic_editor,
+                imageResourceDelete = R.drawable.ic_delete
+            )
+        }
 
-        val adapter = RecyclerViewAdapter(items)
+        val adapter = RecyclerViewAdapter(myItemList)
         recyclerView.adapter = adapter
 
-        return view
+        return binding.root
     }
 }
