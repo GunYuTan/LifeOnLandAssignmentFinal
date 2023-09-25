@@ -233,7 +233,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:fontFamily="@font/rouge_script"
-                android:text="Report"
+                android:text="Notification"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="40sp"

@@ -3,6 +3,7 @@ package com.example.lifeonlandassignment
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -16,6 +17,40 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+
+        // Adding BackStack Listener
+        supportFragmentManager.addOnBackStackChangedListener {
+            val currentFragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
+            val showBottomNav = currentFragment?.javaClass?.simpleName in arrayOf(
+                "HomeFragment",
+                "NotificationFragment",
+                "FavouriteFragment",
+                "EventFragment",
+                "ProfileFragment"
+            )
+            bottomNavigationView.visibility = if (showBottomNav) View.VISIBLE else View.GONE
+        }
+
+        bottomNavigationView.setOnItemSelectedListener { item ->
+            var selectedFragment: Fragment? = null
+            when (item.itemId) {
+                R.id.btnToHomeScreen -> selectedFragment = HomeFragment()
+                R.id.btnNotification -> selectedFragment = NotificationFragment()
+                R.id.btnFavourite -> selectedFragment = FavouriteFragment()
+                R.id.btnEvent -> selectedFragment = EventFragment()
+                R.id.btnProfile -> selectedFragment = ProfileFragment()
+            }
+
+            val localSelectedFragment = selectedFragment
+
+            if (localSelectedFragment != null) {
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragment_container, localSelectedFragment)
+                    .commit()
+            }
+
+            true
+        }
 
         // Color setup
         val colorStateList = ColorStateList(
@@ -41,24 +76,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        // Navigation item selection
-        bottomNavigationView.setOnItemSelectedListener { item ->
-            var selectedFragment: Fragment? = null
-            when (item.itemId) {
-                R.id.btnToHomeScreen -> selectedFragment = HomeFragment()
-                R.id.btnNotification -> selectedFragment = NotificationFragment()
-                R.id.btnFavourite -> selectedFragment = FavouriteFragment()
-                R.id.btnEvent -> selectedFragment = EventFragment()
-                // R.id.btnSearch -> selectedFragment = SearchFragment()
-                R.id.btnProfile -> selectedFragment = ProfileFragment()
-            }
-
-            if (selectedFragment != null) {
-                supportFragmentManager.beginTransaction().replace(R.id.fragment_container, selectedFragment).commit()
-            }
-
-            true
-        }
+        bottomNavigationView.visibility = View.GONE
     }
 }
 

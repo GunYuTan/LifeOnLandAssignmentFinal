@@ -62,13 +62,13 @@ class EventDataFragment : Fragment() {
                 "Start Date : ", "11/11/1111",
                 "End Date : ", "11/11/1111",
                 "Donation Amount : ", "MYR 1111",
-                R.drawable.ic_editor),
+                R.drawable.ic_editor, R.drawable.ic_delete),
             MyItem(R.drawable.ic_event,
                 "Event : ", "Sunda Island Tiger",
                 "Start Date : ", "22/22/2222",
                 "End Date : ", "22/22/2222",
                 "Donation Amount : ", "MYR 2222",
-                R.drawable.ic_editor)
+                R.drawable.ic_editor, R.drawable.ic_delete)
         )
 
         val adapter = RecyclerViewAdapter(items)

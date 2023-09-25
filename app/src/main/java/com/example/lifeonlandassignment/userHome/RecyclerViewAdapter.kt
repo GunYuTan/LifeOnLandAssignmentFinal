@@ -16,7 +16,8 @@ data class MyItem(
     val endDateDetail: String,
     val donationAmount: String,
     val donationAmountDetail: String,
-    val imageResourceEditor: Int
+    val imageResourceEditor: Int,
+    val imageResourceDelete: Int
 )
 
 class RecyclerViewAdapter(private val itemList: List<MyItem>) : RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
@@ -33,6 +34,7 @@ class RecyclerViewAdapter(private val itemList: List<MyItem>) : RecyclerView.Ada
             binding.itemDonationAmount.text = item.donationAmount
             binding.donationAmountDetail.text = item.donationAmountDetail
             binding.btnEditor.setImageResource(item.imageResourceEditor)
+            binding.btnDelete.setImageResource(item.imageResourceDelete)
         }
     }
 

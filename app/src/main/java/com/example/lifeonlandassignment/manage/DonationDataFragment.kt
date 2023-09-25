@@ -42,13 +42,13 @@ class DonationDataFragment : Fragment() {
                 "Username : ", "SMALL",
                 "Event : ", "Sunda Island Tiger",
                 "Donation Amount : ", "MYR 1111",
-                R.drawable.ic_none),
+                R.drawable.ic_none, R.drawable.ic_none),
             MyItem(R.drawable.ic_favourite,
                 "Donation ID : ", "D0002",
                 "Username : ", "BIG",
                 "Event : ", "Sunda Island Tiger",
                 "Donation Amount : ", "MYR 2222",
-                R.drawable.ic_none)
+                R.drawable.ic_none, R.drawable.ic_none)
         )
 
         val adapter = RecyclerViewAdapter(items)

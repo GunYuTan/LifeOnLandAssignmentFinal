@@ -42,13 +42,13 @@ class ClientDataFragment : Fragment() {
                 "Username : ", "SMALL",
                 "Email : ", "small@gmail.com",
                 "Phone : ", "small",
-                R.drawable.ic_none),
+                R.drawable.ic_none, R.drawable.ic_none),
             MyItem(R.drawable.ic_account,
                 "User ID : ", "U0002",
                 "Username : ", "BIG",
                 "Email : ", "big@gmail.com",
                 "Phone : ", "big",
-                R.drawable.ic_none)
+                R.drawable.ic_none, R.drawable.ic_none)
         )
 
         val adapter = RecyclerViewAdapter(items)
