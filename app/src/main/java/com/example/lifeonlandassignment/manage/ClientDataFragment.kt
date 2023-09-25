@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lifeonlandassignment.R
 import com.example.lifeonlandassignment.databinding.ClientDataScreenBinding
-import com.example.lifeonlandassignment.userHome.MyItem
-import com.example.lifeonlandassignment.userHome.RecyclerViewAdapter
+import com.example.lifeonlandassignment.userHome.MyClientItem
+import com.example.lifeonlandassignment.userHome.RecyclerViewClientAdapter
 
 class ClientDataFragment : Fragment() {
     override fun onCreateView(
@@ -37,21 +37,19 @@ class ClientDataFragment : Fragment() {
 
         // Sample data and setting adapter
         val items = listOf(
-            MyItem(null, R.drawable.ic_account,
+            MyClientItem(R.drawable.ic_account,
                 "User ID : ", "U0001",
                 "Username : ", "SMALL",
                 "Email : ", "small@gmail.com",
-                "Phone : ", "small",
-                R.drawable.ic_none, R.drawable.ic_none),
-            MyItem(null,R.drawable.ic_account,
+                "Phone : ", "small",),
+            MyClientItem(R.drawable.ic_account,
                 "User ID : ", "U0002",
                 "Username : ", "BIG",
                 "Email : ", "big@gmail.com",
-                "Phone : ", "big",
-                R.drawable.ic_none, R.drawable.ic_none)
+                "Phone : ", "big",)
         )
 
-        val adapter = RecyclerViewAdapter(items)
+        val adapter = RecyclerViewClientAdapter(items)
         recyclerView.adapter = adapter
 
         return view

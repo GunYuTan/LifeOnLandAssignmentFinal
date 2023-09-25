@@ -13,86 +13,91 @@
         android:background="@drawable/cell_border2">
 
         <TextView
-            android:id="@+id/itemEventNameView"
+            android:id="@+id/itemDonationID"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:text="Event : "
+            android:text="Donation ID : "
             android:textColor="@color/white"
             app:layout_constraintStart_toEndOf="@+id/itemImageView"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/eventNameDetail"
+            android:id="@+id/itemDonationIDDetail"
             android:layout_width="0dp"
             android:layout_height="20dp"
             android:layout_marginTop="10dp"
-            android:text="Sunda Island Event"
+            android:layout_marginEnd="40dp"
+            android:text="1"
             android:textColor="@color/orange"
-            app:layout_constraintEnd_toStartOf="@+id/btnEditor"
-            app:layout_constraintStart_toEndOf="@+id/itemEventNameView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/itemDonationID"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/itemStartDateView"
+            android:id="@+id/itemDonationUserID"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:layout_marginStart="10dp"
-            android:text="Start Date : "
+            android:text="User ID : "
             android:textColor="@color/white"
             app:layout_constraintStart_toEndOf="@+id/itemImageView"
-            app:layout_constraintTop_toBottomOf="@+id/itemEventNameView" />
+            app:layout_constraintTop_toBottomOf="@+id/itemDonationID" />
 
         <TextView
-            android:id="@+id/startDateDetail"
+            android:id="@+id/itemDonationUserIDDetail"
             android:layout_width="0dp"
             android:layout_height="20dp"
+            android:layout_marginEnd="40dp"
             android:text="11/11/1111"
             android:textColor="@color/orange"
-            app:layout_constraintEnd_toStartOf="@+id/btnEditor"
-            app:layout_constraintStart_toEndOf="@+id/itemStartDateView"
-            app:layout_constraintTop_toBottomOf="@+id/eventNameDetail" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/itemDonationUserID"
+            app:layout_constraintTop_toBottomOf="@+id/itemDonationIDDetail" />
 
         <TextView
-            android:id="@+id/itemEndDateView"
+            android:id="@+id/itemDonationEventID"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:layout_marginStart="10dp"
-            android:text="End Date : "
+            android:text="Event ID : "
             android:textColor="@color/white"
             app:layout_constraintStart_toEndOf="@+id/itemImageView"
-            app:layout_constraintTop_toBottomOf="@+id/itemStartDateView" />
+            app:layout_constraintTop_toBottomOf="@+id/itemDonationUserID" />
 
         <TextView
-            android:id="@+id/endDateDetail"
+            android:id="@+id/itemDonationEventIDDetail"
             android:layout_width="0dp"
             android:layout_height="20dp"
+            android:layout_marginEnd="40dp"
             android:text="11/11/1111"
             android:textColor="@color/orange"
-            app:layout_constraintEnd_toStartOf="@+id/btnEditor"
-            app:layout_constraintStart_toEndOf="@+id/itemEndDateView"
-            app:layout_constraintTop_toBottomOf="@+id/startDateDetail" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/itemDonationEventID"
+            app:layout_constraintTop_toBottomOf="@+id/itemDonationUserIDDetail" />
 
         <TextView
             android:id="@+id/itemDonationAmount"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:layout_marginStart="10dp"
-            android:text="Total Donation : "
+            android:text="Donation Amount : "
             android:textColor="@color/white"
             app:layout_constraintStart_toEndOf="@+id/itemImageView"
-            app:layout_constraintTop_toBottomOf="@+id/itemEndDateView" />
+            app:layout_constraintTop_toBottomOf="@+id/itemDonationEventID" />
 
         <TextView
-            android:id="@+id/donationAmountDetail"
+            android:id="@+id/itemDonationAmountDetail"
             android:layout_width="0dp"
             android:layout_height="20dp"
+            android:layout_marginEnd="40dp"
             android:text="MYR 1111"
             android:textColor="@color/orange"
-            app:layout_constraintEnd_toStartOf="@+id/btnEditor"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/itemDonationAmount"
-            app:layout_constraintTop_toBottomOf="@+id/endDateDetail" />
+            app:layout_constraintTop_toBottomOf="@+id/itemDonationEventIDDetail" />
 
         <ImageView
             android:id="@+id/itemImageView"
@@ -102,29 +107,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/btnEditor"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_editor" />
-
-        <ImageView
-            android:id="@+id/btnDelete"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/endDateDetail"
-            app:layout_constraintTop_toBottomOf="@+id/btnEditor"
-            app:srcCompat="@drawable/ic_delete" />
 
         <TextView
             android:id="@+id/textInvisibleEventId"

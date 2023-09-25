@@ -20,6 +20,9 @@ class AssignmentDatabaseRepository (private val dao: AssignmentDatabaseDao){
     suspend fun insert(event: Event){
         return dao.insert(event)
     }
+    suspend fun insert(donation: Donation){
+        return dao.insert(donation)
+    }
 
     suspend fun clearEvent(){
         return dao.clearEvent()
@@ -33,12 +36,20 @@ class AssignmentDatabaseRepository (private val dao: AssignmentDatabaseDao){
         return dao.update(admin)
     }
 
+    suspend fun updateEventDonation(eventId: Int, donationAmount: Double){
+        return dao.updateEventDonation(eventId, donationAmount)
+    }
+
     suspend fun getUsername(username: String):User?{
         return dao.getUsername(username)
     }
 
     suspend fun getAdminUsername(username: String):Admin?{
         return dao.getAdminUsername(username)
+    }
+
+    suspend fun getEventName(event: String): Event?{
+        return dao.getEventName(event)
     }
 
     suspend fun updateProfilePic(username: String, userImage: String){

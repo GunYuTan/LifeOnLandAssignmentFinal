@@ -15,6 +15,8 @@ interface AssignmentDatabaseDao {
     suspend fun insert(admin: Admin)
     @Insert
     suspend fun insert(event: Event)
+    @Insert
+    suspend fun insert(donation: Donation)
     @Update
     suspend fun update(user: User)
     @Update
@@ -42,11 +44,17 @@ interface AssignmentDatabaseDao {
     @Query("SELECT * FROM admin_table WHERE username LIKE :username")
     suspend fun getAdminUsername(username: String): Admin?
 
+    @Query("SELECT * FROM event_table WHERE eventName LIKE :eventName")
+    suspend fun getEventName(eventName: String): Event?
+
     @Query("UPDATE user_table SET userImage = :userImage WHERE username = :username")
     suspend fun updateProfilePic(username: String, userImage: String)
 
     @Query("UPDATE admin_table SET userImage = :userImage WHERE username = :username")
     suspend fun updateAdminProfilePic(username: String, userImage: String)
+
+    @Query("UPDATE event_table SET eventDonation = eventDonation + :donationAmount WHERE eventId = :eventId")
+    suspend fun updateEventDonation(eventId: Int, donationAmount: Double)
 
     @Query("SELECT userImage FROM user_table WHERE username = :username")
     suspend fun getLoginUserImage(username: String): String?

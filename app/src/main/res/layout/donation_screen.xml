@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="donationViewModel"
+            type="com.example.lifeonlandassignment.userHome.DonationViewModel" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/CharcoalBlack">
@@ -19,6 +26,7 @@
         android:text="Donate"
         android:textColor="@color/white"
         android:textSize="15sp"
+        android:onClickListener="@{()->donationViewModel.donation()}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,7 +56,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtInputDonationAmount" />
 
-    <TextView
+    <EditText
         android:id="@+id/txtInputDonationAmount"
         android:layout_width="0dp"
         android:layout_height="30dp"
@@ -56,11 +64,9 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="40dp"
         android:background="@color/white"
-        android:editable="false"
-        android:enabled="false"
         android:fontFamily="@font/inter"
-        android:inputType="text"
-        android:text="Donation Amount"
+        android:inputType="number|numberDecimal"
+        android:text="@={donationViewModel.inputDonationAmount}"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -168,3 +174,4 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/back_button" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

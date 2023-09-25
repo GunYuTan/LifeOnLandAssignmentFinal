@@ -61,13 +61,29 @@ class AddEventViewModel (private val repository: AssignmentDatabaseRepository, a
             _messageLiveData.value = "Each field is required."
         }else{
             uiScope.launch {
-                repository.insert(Event(null, eventAdminId.toInt(), eventName, eventStartDate, eventEndDate, eventDescription, 0.00, eventImage))
-                inputEventName.value = null
-                inputEventDescription.value = null
-                inputEventStartDate.value = null
-                inputEventEndDate.value = null
-                inputEventImage = null
-                _messageLiveData.value = "Event add successfully."
+                val eventList = repository.getEventName(eventName!!)
+                if(eventList != null){
+                    _messageLiveData.value = "Event Name has been register before."
+                }else {
+                    repository.insert(
+                        Event(
+                            null,
+                            eventAdminId.toInt(),
+                            eventName,
+                            eventStartDate,
+                            eventEndDate,
+                            eventDescription,
+                            0.00,
+                            eventImage
+                        )
+                    )
+                    inputEventName.value = null
+                    inputEventDescription.value = null
+                    inputEventStartDate.value = null
+                    inputEventEndDate.value = null
+                    inputEventImage = null
+                    _messageLiveData.value = "Event add successfully."
+                }
             }
         }
 

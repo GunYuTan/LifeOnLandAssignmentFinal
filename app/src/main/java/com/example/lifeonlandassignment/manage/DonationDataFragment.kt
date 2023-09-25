@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lifeonlandassignment.R
 import com.example.lifeonlandassignment.databinding.DonationDataScreenBinding
-import com.example.lifeonlandassignment.userHome.MyItem
-import com.example.lifeonlandassignment.userHome.RecyclerViewAdapter
+import com.example.lifeonlandassignment.userHome.MyDonationItem
+import com.example.lifeonlandassignment.userHome.RecyclerViewDonationAdapter
 
 class DonationDataFragment : Fragment() {
     override fun onCreateView(
@@ -37,21 +37,19 @@ class DonationDataFragment : Fragment() {
 
         // Sample data and setting adapter
         val items = listOf(
-            MyItem(null,R.drawable.ic_favourite,
+            MyDonationItem(R.drawable.ic_favourite,
                 "Donation ID : ", "D0001",
-                "Username : ", "SMALL",
-                "Event : ", "Sunda Island Tiger",
-                "Donation Amount : ", "MYR 1111",
-                R.drawable.ic_none, R.drawable.ic_none),
-            MyItem(null,R.drawable.ic_favourite,
+                "User ID : ", "SMALL",
+                "Event ID : ", "Sunda Island Tiger",
+                "Donation Amount : ", "MYR 1111",),
+            MyDonationItem(R.drawable.ic_favourite,
                 "Donation ID : ", "D0002",
-                "Username : ", "BIG",
-                "Event : ", "Sunda Island Tiger",
-                "Donation Amount : ", "MYR 2222",
-                R.drawable.ic_none, R.drawable.ic_none)
+                "User ID : ", "BIG",
+                "Event ID : ", "Sunda Island Tiger",
+                "Donation Amount : ", "MYR 2222",)
         )
 
-        val adapter = RecyclerViewAdapter(items)
+        val adapter = RecyclerViewDonationAdapter(items)
         recyclerView.adapter = adapter
 
         return view

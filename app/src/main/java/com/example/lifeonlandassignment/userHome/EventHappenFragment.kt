@@ -68,7 +68,8 @@ class EventHappenFragment : Fragment() {
         }
 
         val button: Button = binding.btnDonate
-        button.setOnClickListener {
+        button.setOnClickListener() {
+            Global.donationEventId = eventList.eventId!!
             val fragmentManager = parentFragmentManager
             val fragmentTransaction = fragmentManager.beginTransaction()
             fragmentTransaction.replace(R.id.fragment_container, DonationFragment())
