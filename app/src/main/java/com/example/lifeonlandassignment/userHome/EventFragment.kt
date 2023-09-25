@@ -77,15 +77,6 @@ class EventFragment : Fragment() {
             drawerLayout.openDrawer(GravityCompat.START)
         }
 
-        val button: ImageView = view.findViewById(R.id.btnUpcomingEvent)
-        button.setOnClickListener {
-            val fragmentManager = parentFragmentManager
-            val fragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.fragment_container, UpcomingEventFragment())
-            fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.commit()
-        }
-
         eventViewModel.messageLiveData.observe(viewLifecycleOwner, Observer { message ->
             message?.let {
                 // Use the context of the fragment to show the Toast
@@ -98,6 +89,16 @@ class EventFragment : Fragment() {
                 val fragmentManager = parentFragmentManager
                 val fragmentTransaction = fragmentManager.beginTransaction()
                 fragmentTransaction.replace(R.id.fragment_container, EventHappenFragment())
+                fragmentTransaction.addToBackStack(null)
+                fragmentTransaction.commit()
+            }
+        })
+
+        eventViewModel.navigatetoUpcomingEvent.observe(this, Observer { hasFinished->
+            if (hasFinished == true){
+                val fragmentManager = parentFragmentManager
+                val fragmentTransaction = fragmentManager.beginTransaction()
+                fragmentTransaction.replace(R.id.fragment_container, UpcomingEventFragment())
                 fragmentTransaction.addToBackStack(null)
                 fragmentTransaction.commit()
             }

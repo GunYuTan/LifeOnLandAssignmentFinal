@@ -74,7 +74,7 @@ class AddEventFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.addPic.setOnClickListener {
-            selectProfilePicture()
+            selectPicture()
         }
 
         binding.btnStartdateCalendar.setOnClickListener{
@@ -100,7 +100,7 @@ class AddEventFragment : Fragment() {
                     uiScope.launch {
                         // Pass the selected image URI to the ViewModel
                         Log.i("Testing", "onActivityResult2")
-                        addEventViewModel.inputEventImage = uri.toString()
+                        addEventViewModel.inputEventImage = addEventViewModel.getImageFilePath(uri)
 
                         Glide.with(requireContext())
                             .load(uri)
@@ -116,7 +116,7 @@ class AddEventFragment : Fragment() {
         }
 
     }
-    private fun selectProfilePicture() {
+    private fun selectPicture() {
         try {
             val intent = Intent(Intent.ACTION_GET_CONTENT)
             Log.i("Testing", "selectProfile1")

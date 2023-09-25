@@ -38,6 +38,10 @@ class AdminHomeViewModel (private val repository: AssignmentDatabaseRepository, 
             }
         }
     }
+    /////SINI delete
+//    suspend fun clearEvent(){
+//        return repository.clearEvent()
+//    }
     fun getUserImagePath(username: String) {
         uiScope.launch {
             _messageLiveData.value = repository.getLoginAdminImage(username)

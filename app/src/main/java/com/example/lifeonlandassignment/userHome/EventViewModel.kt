@@ -25,11 +25,15 @@ class EventViewModel (private val repository: AssignmentDatabaseRepository, appl
     private val viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
     private val _navigatetoCurrentlyEvent = MutableLiveData<Boolean>()
+    private val _navigatetoUpcomingEvent = MutableLiveData<Boolean>()
     val messageLiveData: LiveData<String>
         get() = _messageLiveData
 
     val navigatetoCurrentEvent: LiveData<Boolean>
         get() = _navigatetoCurrentlyEvent
+
+    val navigatetoUpcomingEvent: LiveData<Boolean>
+        get() = _navigatetoUpcomingEvent
     fun checkCurrentEvent(){
         val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
         val currentDate = Date()
@@ -39,6 +43,20 @@ class EventViewModel (private val repository: AssignmentDatabaseRepository, appl
                 _messageLiveData.value = "Currently no event."
             }else {
                 _navigatetoCurrentlyEvent.value = true
+            }
+        }
+
+    }
+
+    fun checkUpcomingEvent(){
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val currentDate = Date()
+        uiScope.launch {
+            val eventList = repository.getUpcomingEvent(dateFormat.format(currentDate))
+            if(eventList == null){
+                _messageLiveData.value = "No upcoming event."
+            }else {
+                _navigatetoUpcomingEvent.value = true
             }
         }
 

@@ -45,6 +45,10 @@ class AddEventViewModel (private val repository: AssignmentDatabaseRepository, a
     @Bindable
     var inputEventImage: String? = ""
 
+    fun getImageFilePath(uri: Uri): String{
+        return saveImageToFile(uri)
+    }
+
     fun addEventButton(eventAdminId: String){
         val eventName = inputEventName.value
         val eventDescription = inputEventDescription.value
@@ -53,6 +57,7 @@ class AddEventViewModel (private val repository: AssignmentDatabaseRepository, a
         val eventImage = inputEventImage
 
         if(eventAdminId == null || eventName == null || eventDescription == null || eventStartDate == null || eventEndDate == null || eventImage == null){
+            Log.i("Testing", eventAdminId + eventName + eventDescription + eventStartDate +eventEndDate +eventImage)
             _messageLiveData.value = "Each field is required."
         }else{
             uiScope.launch {
@@ -68,9 +73,9 @@ class AddEventViewModel (private val repository: AssignmentDatabaseRepository, a
 
     }
 
-    private fun saveImageToFile(uri: Uri, username: String): String {
+    private fun saveImageToFile(uri: Uri): String {
         val inputStream: InputStream? = context.contentResolver.openInputStream(uri)
-        val file = File(context.cacheDir, "${System.currentTimeMillis()}$username.jpg")
+        val file = File(context.cacheDir, "${System.currentTimeMillis()}.jpg")
         val outputStream = FileOutputStream(file)
         try {
             inputStream?.use { input ->
