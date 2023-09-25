@@ -37,13 +37,13 @@ class DonationDataFragment : Fragment() {
 
         // Sample data and setting adapter
         val items = listOf(
-            MyItem(R.drawable.ic_favourite,
+            MyItem(null,R.drawable.ic_favourite,
                 "Donation ID : ", "D0001",
                 "Username : ", "SMALL",
                 "Event : ", "Sunda Island Tiger",
                 "Donation Amount : ", "MYR 1111",
                 R.drawable.ic_none, R.drawable.ic_none),
-            MyItem(R.drawable.ic_favourite,
+            MyItem(null,R.drawable.ic_favourite,
                 "Donation ID : ", "D0002",
                 "Username : ", "BIG",
                 "Event : ", "Sunda Island Tiger",

@@ -5,6 +5,9 @@ import com.example.lifeonlandassignment.Global
 
 class AssignmentDatabaseRepository (private val dao: AssignmentDatabaseDao){
     val userList = dao.getAllUser()
+    suspend fun getAllEvent(): List<Event>{
+        return dao.getAllEvent()
+    }
 
     suspend fun insert(user: User){
         return dao.insert(user)

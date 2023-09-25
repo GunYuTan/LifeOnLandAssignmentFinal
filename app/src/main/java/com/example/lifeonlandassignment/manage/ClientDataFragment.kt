@@ -37,13 +37,13 @@ class ClientDataFragment : Fragment() {
 
         // Sample data and setting adapter
         val items = listOf(
-            MyItem(R.drawable.ic_account,
+            MyItem(null, R.drawable.ic_account,
                 "User ID : ", "U0001",
                 "Username : ", "SMALL",
                 "Email : ", "small@gmail.com",
                 "Phone : ", "small",
                 R.drawable.ic_none, R.drawable.ic_none),
-            MyItem(R.drawable.ic_account,
+            MyItem(null,R.drawable.ic_account,
                 "User ID : ", "U0002",
                 "Username : ", "BIG",
                 "Email : ", "big@gmail.com",
