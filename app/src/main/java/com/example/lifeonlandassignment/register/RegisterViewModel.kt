@@ -22,8 +22,6 @@ class RegisterViewModel(private val repository: AssignmentDatabaseRepository, ap
     val messageLiveData: LiveData<String>
         get() = _messageLiveData
 
-    val users = repository.userList
-
     @Bindable
     val inputUsername = MutableLiveData<String>()
 

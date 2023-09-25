@@ -4,9 +4,12 @@ import android.util.Log
 import com.example.lifeonlandassignment.Global
 
 class AssignmentDatabaseRepository (private val dao: AssignmentDatabaseDao){
-    val userList = dao.getAllUser()
     suspend fun getAllEvent(): List<Event>{
         return dao.getAllEvent()
+    }
+
+    suspend fun getAllUser(): List<User>{
+        return dao.getAllUser()
     }
 
     suspend fun insert(user: User){
@@ -52,12 +55,22 @@ class AssignmentDatabaseRepository (private val dao: AssignmentDatabaseDao){
         return dao.getEventName(event)
     }
 
+    suspend fun getEventId(event: Int): Event?{
+        return dao.getEventId(event)
+    }
+
     suspend fun updateProfilePic(username: String, userImage: String){
         return dao.updateProfilePic(username, userImage)
     }
 
     suspend fun updateAdminProfilePic(username: String, userImage: String){
         return dao.updateAdminProfilePic(username, userImage)
+    }
+    suspend fun updateEvent(eventName: String, eventDescription: String, eventStartDate: String, eventEndDate: String, eventImage: String, eventId: Int){
+        return dao.updateEvent(eventName, eventDescription, eventStartDate, eventEndDate, eventImage, eventId)
+    }
+    suspend fun updateEventNoImage(eventName: String, eventDescription: String, eventStartDate: String, eventEndDate: String, eventId: Int){
+        return dao.updateEventNoImage(eventName, eventDescription, eventStartDate, eventEndDate, eventId)
     }
 
     suspend fun getLoginUserImage(username: String): String?{

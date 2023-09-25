@@ -31,7 +31,7 @@ interface AssignmentDatabaseDao {
     suspend fun clearEvent()
 
     @Query("SELECT * from user_table")
-    fun getAllUser(): LiveData<List<User>>
+    suspend fun getAllUser(): List<User>
 
     @Query("SELECT * from event_table")
     suspend fun getAllEvent(): List<Event>
@@ -47,6 +47,9 @@ interface AssignmentDatabaseDao {
     @Query("SELECT * FROM event_table WHERE eventName LIKE :eventName")
     suspend fun getEventName(eventName: String): Event?
 
+    @Query("SELECT * FROM event_table WHERE eventId = :eventId")
+    suspend fun getEventId(eventId: Int): Event?
+
     @Query("UPDATE user_table SET userImage = :userImage WHERE username = :username")
     suspend fun updateProfilePic(username: String, userImage: String)
 
@@ -55,6 +58,11 @@ interface AssignmentDatabaseDao {
 
     @Query("UPDATE event_table SET eventDonation = eventDonation + :donationAmount WHERE eventId = :eventId")
     suspend fun updateEventDonation(eventId: Int, donationAmount: Double)
+
+    @Query("UPDATE event_table SET eventName = :eventName, eventDescription = :eventDescription, eventStartDate = :eventStartDate, eventEndDate = :eventEndDate, eventImage = :eventImage WHERE eventId = :eventId")
+    suspend fun updateEvent(eventName: String, eventDescription: String, eventStartDate: String, eventEndDate: String, eventImage: String, eventId: Int)
+    @Query("UPDATE event_table SET eventName = :eventName, eventDescription = :eventDescription, eventStartDate = :eventStartDate, eventEndDate = :eventEndDate WHERE eventId = :eventId")
+    suspend fun updateEventNoImage(eventName: String, eventDescription: String, eventStartDate: String, eventEndDate: String, eventId: Int)
 
     @Query("SELECT userImage FROM user_table WHERE username = :username")
     suspend fun getLoginUserImage(username: String): String?

@@ -44,15 +44,6 @@ class EventDataFragment : Fragment() {
             fragmentTransaction.commit()
         }
 
-        val button1: Button = binding.btnUpdateEvent
-        button1.setOnClickListener {
-            val fragmentManager = parentFragmentManager
-            val fragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.fragment_container, UpdateEventFragment())
-            fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.commit()
-        }
-
         // Initialize the back button ImageView
         val backButton = binding.backButtonEventData
         // Set click listener for back button

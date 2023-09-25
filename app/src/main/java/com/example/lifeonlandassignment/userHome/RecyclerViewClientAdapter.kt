@@ -24,7 +24,7 @@ class RecyclerViewClientAdapter(private val itemClientList: List<MyClientItem>) 
         fun bind(item: MyClientItem) {
             binding.itemImageView.setImageResource(item.imageResource)
             binding.itemClientID.text = item.ClientID
-            binding.itemClientID.text = item.ClientIDDetail
+            binding.itemClientIDDetail.text = item.ClientIDDetail
             binding.itemClientUsername.text = item.ClientUsername
             binding.itemClientUsernameDetail.text = item.ClientUsernameDetail
             binding.itemClientEmail.text = item.ClientEmail

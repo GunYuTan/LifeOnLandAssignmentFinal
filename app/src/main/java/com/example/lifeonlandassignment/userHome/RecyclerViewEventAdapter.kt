@@ -2,8 +2,12 @@ package com.example.lifeonlandassignment.userHome
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.lifeonlandassignment.Global
+import com.example.lifeonlandassignment.R
 import com.example.lifeonlandassignment.databinding.ItemsLayoutEventBinding
+import com.example.lifeonlandassignment.manage.UpdateEventFragment
 
 // Move this class definition outside of your ViewHolder
 data class MyEventItem(
@@ -35,8 +39,14 @@ class RecyclerViewEventAdapter(private val itemList: List<MyEventItem>) : Recycl
             binding.itemEndDateDetail.text = item.EventEndDateDetail
             binding.itemTotalDonation.text = item.EventTotalDonation
             binding.itemTotalDonationDetail.text = item.EventTotalDonationDetail
-            binding.btnEditor.setImageResource(item.imageResourceEditor)
-            binding.btnDelete.setImageResource(item.imageResourceDelete)
+            binding.btnEditor.setOnClickListener {
+                Global.editEventId = item.EventID!!
+                val fragmentManager = (binding.root.context as AppCompatActivity).supportFragmentManager
+                val fragmentTransaction = fragmentManager.beginTransaction()
+                fragmentTransaction.replace(R.id.fragment_container, UpdateEventFragment())
+                fragmentTransaction.addToBackStack(null)
+                fragmentTransaction.commit() }
+            binding.btnDelete.setOnClickListener {  }
         }
     }
 
