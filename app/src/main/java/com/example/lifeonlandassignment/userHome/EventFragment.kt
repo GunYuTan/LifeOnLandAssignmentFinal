@@ -35,7 +35,6 @@ class EventFragment : Fragment() {
     private lateinit var currentEventsPager: ViewPager2
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var toggle: ActionBarDrawerToggle
-    private lateinit var myImageView: ImageView
 
     private val upcomingEventsHandler = Handler()
     private val currentEventsHandler = Handler()
@@ -67,15 +66,7 @@ class EventFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         upcomingEventsPager = view.findViewById(R.id.viewPager5)
         currentEventsPager = view.findViewById(R.id.viewPager6)
-        myImageView = view.findViewById(R.id.myImageView)
         drawerLayout = view.findViewById(R.id.event_screen)
-
-        // Drawer and ImageView setup
-        myImageView.setOnClickListener {
-            val newImageDrawable: Drawable = resources.getDrawable(R.drawable.dashboard, requireActivity().theme)
-            myImageView.setImageDrawable(newImageDrawable)
-            drawerLayout.openDrawer(GravityCompat.START)
-        }
 
         eventViewModel.messageLiveData.observe(viewLifecycleOwner, Observer { message ->
             message?.let {
