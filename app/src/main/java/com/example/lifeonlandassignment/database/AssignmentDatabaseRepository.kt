@@ -12,6 +12,10 @@ class AssignmentDatabaseRepository (private val dao: AssignmentDatabaseDao){
         return dao.getAllUser()
     }
 
+    suspend fun getAllDonation(): List<Donation>{
+        return dao.getAllDonation()
+    }
+
     suspend fun insert(user: User){
         return dao.insert(user)
     }
@@ -29,6 +33,10 @@ class AssignmentDatabaseRepository (private val dao: AssignmentDatabaseDao){
 
     suspend fun clearEvent(){
         return dao.clearEvent()
+    }
+
+    suspend fun deleteEvent(deleteEvent: Int){
+        return dao.deleteEvent(deleteEvent)
     }
 
     suspend fun update(user: User){

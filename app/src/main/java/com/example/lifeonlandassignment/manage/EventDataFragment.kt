@@ -1,15 +1,20 @@
 package com.example.lifeonlandassignment.manage
 
+import android.app.AlertDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.lifeonlandassignment.Global
 import com.example.lifeonlandassignment.R
 import com.example.lifeonlandassignment.database.AssignmentDatabase
 import com.example.lifeonlandassignment.database.AssignmentDatabaseRepository
@@ -75,9 +80,55 @@ class EventDataFragment : Fragment() {
             )
         }
 
-        val adapter = RecyclerViewEventAdapter(myItemList)
+        val adapter = RecyclerViewEventAdapter(myItemList, eventDataViewModel)
         recyclerView.adapter = adapter
 
+        eventDataViewModel.messageLiveData.observe(viewLifecycleOwner, Observer { message ->
+            message?.let {
+                // Use the context of the fragment to show the Toast
+                Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+            }
+        })
+
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Observe the LiveData in the ViewModel
+        eventDataViewModel.showAlertDialog.observe(viewLifecycleOwner) { shouldShowDialog ->
+            // Show the AlertDialog here
+            if(shouldShowDialog){
+                showConfirmationDialog()
+            }
+        }
+
+        eventDataViewModel.refreshEventDataScreen.observe(viewLifecycleOwner) { shouldNavigate ->
+            if (shouldNavigate) {
+                val fragmentManager = parentFragmentManager
+                val fragmentTransaction = fragmentManager.beginTransaction()
+                fragmentTransaction.replace(R.id.fragment_container, EventDataFragment())
+                fragmentTransaction.addToBackStack(null)
+                fragmentTransaction.commit()
+            }
+        }
+    }
+    private fun showConfirmationDialog() {
+        val builder = AlertDialog.Builder(requireActivity())
+        builder.setTitle("Confirm Deletion")
+            .setMessage("Are you sure you want to delete this item?")
+            .setPositiveButton("Delete") { _, _ ->
+                // User confirmed, proceed with deletion
+                // Call a ViewModel function to handle the deletion
+                Log.i("DeleteEventId", Global.editEventId.toString())
+                eventDataViewModel.deleteButton(Global.editEventId)
+            }
+            .setNegativeButton("Cancel") { dialog, _ ->
+                // User canceled, do nothing
+                dialog.dismiss()
+            }
+            .create()
+            .show()
     }
 }

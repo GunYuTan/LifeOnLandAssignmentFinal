@@ -27,6 +27,9 @@ interface AssignmentDatabaseDao {
     @Query("DELETE FROM user_table")
     fun clear()
 
+    @Query("DELETE FROM event_table WHERE eventId = :deleteEvent")
+    suspend fun deleteEvent(deleteEvent: Int)
+
     @Query("DELETE FROM event_table")
     suspend fun clearEvent()
 
@@ -35,6 +38,9 @@ interface AssignmentDatabaseDao {
 
     @Query("SELECT * from event_table")
     suspend fun getAllEvent(): List<Event>
+
+    @Query("SELECT * from donation_table")
+    suspend fun getAllDonation(): List<Donation>
 
     @Query("SELECT * FROM user_table WHERE username LIKE :username AND password LIKE :password")
     fun readAllData(username: String, password: String): LiveData<User>

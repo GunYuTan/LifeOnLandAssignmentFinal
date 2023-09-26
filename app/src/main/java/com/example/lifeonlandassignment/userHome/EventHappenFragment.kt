@@ -60,8 +60,6 @@ class EventHappenFragment : Fragment() {
             binding.txtEventHappenTitle.visibility = View.GONE
             binding.txtEventHappenTitle3.visibility = View.GONE
             binding.txtEventHappen.text = "Currently no event."
-            binding.textView.visibility = View.GONE
-            binding.tableLayout.visibility = View.GONE
             binding.btnJoinEvent.visibility = View.GONE
             binding.btnDonate.visibility = View.GONE
             binding.btnLeaveEvent.visibility = View.GONE

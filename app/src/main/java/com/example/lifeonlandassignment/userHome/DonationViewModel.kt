@@ -47,6 +47,7 @@ class DonationViewModel  (private val repository: AssignmentDatabaseRepository, 
                 Log.i("Donation", inputUserId.toString() + inputEventId.toString() + donationAmount.toString() + inputDonationMethod + "")
                 repository.insert(Donation(null, inputUserId!!, inputEventId, donationAmount!!, inputDonationMethod))
                 repository.updateEventDonation(inputEventId, donationAmount)
+                inputDonationAmount.value = null
                 _messageLiveData.value = "Donation successfully added."
 
             }
