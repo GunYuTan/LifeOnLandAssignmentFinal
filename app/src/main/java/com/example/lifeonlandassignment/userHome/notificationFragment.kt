@@ -8,8 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lifeonlandassignment.databinding.NotificationScreenBinding
+import com.example.lifeonlandassignment.userHome.MyNotificationCustomerItem
 import com.example.lifeonlandassignment.userHome.MyNotificationItem
-import com.example.lifeonlandassignment.userHome.RecyclerViewNotificationAdapter
+import com.example.lifeonlandassignment.userHome.RecyclerViewNotificationCustomerAdapter
 
 class NotificationFragment : Fragment() {
 
@@ -29,15 +30,13 @@ class NotificationFragment : Fragment() {
 
         // Sample data and setting adapter
         val items = listOf(
-            MyNotificationItem(R.drawable.ic_notification,
-                "Sunda Island Event is Happening!!", "lsdmaspmdiiamdinawiomsfkanfoiganifnaifna",
-                R.drawable.ic_delete),
-            MyNotificationItem(R.drawable.ic_notification,
-                "Sunda Island Event is Happening!!", "sfdkoakfsmkvnaionfsanfoianfskfnaipfasmfian",
-                R.drawable.ic_delete,)
+            MyNotificationCustomerItem(R.drawable.ic_notification,
+                "Sunda Island Event is Happening!!", "lsdmaspmdiiamdinawiomsfkanfoiganifnaifna"),
+            MyNotificationCustomerItem(R.drawable.ic_notification,
+                "Sunda Island Event is Happening!!", "sfdkoakfsmkvnaionfsanfoianfskfnaipfasmfian")
         )
 
-        val adapter = RecyclerViewNotificationAdapter(items)
+        val adapter = RecyclerViewNotificationCustomerAdapter(items)
         recyclerView.adapter = adapter
 
         return view
