@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
@@ -25,9 +24,7 @@ class FavouriteFragment : Fragment() {
     private val handler7 = Handler()
     private lateinit var adapter7: ImageAdapter7
     private lateinit var drawerLayout: DrawerLayout
-    private lateinit var navigationView: NavigationView
     private lateinit var toggle: ActionBarDrawerToggle
-    private lateinit var myImageView: ImageView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,21 +35,11 @@ class FavouriteFragment : Fragment() {
 
         viewPager7 = view.findViewById(R.id.viewPager7)
         drawerLayout = view.findViewById(R.id.favourite_screen) // Not the best ID naming
-        myImageView = view.findViewById(R.id.myImageView)
 
         init()
         setUpTransformer()
 
         viewPager7.registerOnPageChangeCallback(getPageChangeCallback(handler7))
-
-        myImageView.setOnClickListener {
-            // Change ImageView
-            val newImageDrawable: Drawable = resources.getDrawable(R.drawable.dashboard, requireActivity().theme)
-            myImageView.setImageDrawable(newImageDrawable)
-
-            // Open Drawer
-            drawerLayout.openDrawer(GravityCompat.START)
-        }
 
         // Initialize the ActionBarDrawerToggle instance
         toggle = ActionBarDrawerToggle(

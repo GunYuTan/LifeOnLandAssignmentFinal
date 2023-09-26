@@ -6,39 +6,46 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.lifeonlandassignment.databinding.NotificationScreenBinding
 import com.example.lifeonlandassignment.userHome.MyNotificationCustomerItem
-import com.example.lifeonlandassignment.userHome.MyNotificationItem
+import com.example.lifeonlandassignment.userHome.NotificationViewModel
 import com.example.lifeonlandassignment.userHome.RecyclerViewNotificationCustomerAdapter
 
 class NotificationFragment : Fragment() {
+    private lateinit var notificationViewModel: NotificationViewModel
+    private var _binding: NotificationScreenBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = NotificationScreenBinding.inflate(inflater, container, false)
+        _binding = NotificationScreenBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-        // Get root view
-        val view = binding.root
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         // Initialize RecyclerView
-        val recyclerView: RecyclerView = binding.recyclerNotificationView
-        recyclerView.layoutManager = LinearLayoutManager(context)
-
-        // Sample data and setting adapter
         val items = listOf(
             MyNotificationCustomerItem(R.drawable.ic_notification,
-                "Sunda Island Event is Happening!!", "lsdmaspmdiiamdinawiomsfkanfoiganifnaifna"),
+                "Sunda Island Event is Happening!!", "Some content here"),
             MyNotificationCustomerItem(R.drawable.ic_notification,
-                "Sunda Island Event is Happening!!", "sfdkoakfsmkvnaionfsanfoianfskfnaipfasmfian")
+                "Another Event is Happening!!", "Another content here")
         )
 
-        val adapter = RecyclerViewNotificationCustomerAdapter(items)
-        recyclerView.adapter = adapter
+        binding.recyclerNotificationView.layoutManager = LinearLayoutManager(context)
+        binding.recyclerNotificationView.adapter = RecyclerViewNotificationCustomerAdapter(items)
+    }
 
-        return view
+    private fun navigateToFragment(fragment: Fragment) {
+        parentFragmentManager.beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack(null).commit()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
