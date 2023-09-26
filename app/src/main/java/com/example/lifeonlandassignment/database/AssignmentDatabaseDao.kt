@@ -17,6 +17,10 @@ interface AssignmentDatabaseDao {
     suspend fun insert(event: Event)
     @Insert
     suspend fun insert(donation: Donation)
+    @Insert
+    suspend fun insert(joinedEvent: JoinedEvent)
+    @Insert
+    suspend fun insert(notification: Notification)
     @Update
     suspend fun update(user: User)
     @Update
@@ -29,6 +33,11 @@ interface AssignmentDatabaseDao {
 
     @Query("DELETE FROM event_table WHERE eventId = :deleteEvent")
     suspend fun deleteEvent(deleteEvent: Int)
+    @Query("DELETE FROM joined_event_table WHERE joinedEventUserId = :userId AND joinedEventEventId = :eventId")
+    suspend fun deleteEvent(userId: Int, eventId: Int)
+
+    @Query("DELETE FROM noti_table WHERE notiId = :deleteNoti")
+    suspend fun deleteNoti(deleteNoti: Int)
 
     @Query("DELETE FROM event_table")
     suspend fun clearEvent()
@@ -41,6 +50,8 @@ interface AssignmentDatabaseDao {
 
     @Query("SELECT * from donation_table")
     suspend fun getAllDonation(): List<Donation>
+    @Query("SELECT * from noti_table")
+    suspend fun getAllNotification(): List<Notification>
 
     @Query("SELECT * FROM user_table WHERE username LIKE :username AND password LIKE :password")
     fun readAllData(username: String, password: String): LiveData<User>
@@ -55,6 +66,9 @@ interface AssignmentDatabaseDao {
 
     @Query("SELECT * FROM event_table WHERE eventId = :eventId")
     suspend fun getEventId(eventId: Int): Event?
+
+    @Query("SELECT * FROM joined_event_table WHERE joinedEventUserId = :userId AND joinedEventEventId = :eventId")
+    suspend fun getJoinEvent(userId: Int, eventId: Int): JoinedEvent?
 
     @Query("UPDATE user_table SET userImage = :userImage WHERE username = :username")
     suspend fun updateProfilePic(username: String, userImage: String)

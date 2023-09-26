@@ -7,13 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.lifeonlandassignment.database.AssignmentDatabase
 import com.example.lifeonlandassignment.database.AssignmentDatabaseRepository
 import com.example.lifeonlandassignment.database.Event
+import com.example.lifeonlandassignment.database.JoinedEvent
 import com.example.lifeonlandassignment.databinding.EventDescriptionScreen2Binding
 import com.example.lifeonlandassignment.userHome.EventFragment
 import com.example.lifeonlandassignment.userHome.EventHappenViewModel
@@ -85,6 +88,23 @@ class EventHappenFragment : Fragment() {
             fragmentTransaction.addToBackStack(null)
             fragmentTransaction.commit()
         }
+
+        binding.btnJoinEvent.setOnClickListener {
+            val user = runBlocking { eventHappenViewModel.getUsername() }
+            eventHappenViewModel.joinEvent(user!!.userId!!, Global.happenEventId)
+        }
+
+        binding.btnLeaveEvent.setOnClickListener {
+            val user = runBlocking { eventHappenViewModel.getUsername() }
+            eventHappenViewModel.leaveEvent(user!!.userId!!, Global.happenEventId)
+        }
+
+        eventHappenViewModel.messageLiveData.observe(viewLifecycleOwner, Observer { message ->
+            message?.let {
+                // Use the context of the fragment to show the Toast
+                Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+            }
+        })
 
         return binding.root
     }

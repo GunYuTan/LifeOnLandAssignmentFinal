@@ -1,5 +1,6 @@
 package com.example.lifeonlandassignment.database
 
+import android.graphics.Paint.Join
 import android.util.Log
 import com.example.lifeonlandassignment.Global
 
@@ -14,6 +15,9 @@ class AssignmentDatabaseRepository (private val dao: AssignmentDatabaseDao){
 
     suspend fun getAllDonation(): List<Donation>{
         return dao.getAllDonation()
+    }
+    suspend fun getAllNotification(): List<Notification>{
+        return dao.getAllNotification()
     }
 
     suspend fun insert(user: User){
@@ -30,6 +34,12 @@ class AssignmentDatabaseRepository (private val dao: AssignmentDatabaseDao){
     suspend fun insert(donation: Donation){
         return dao.insert(donation)
     }
+    suspend fun insert(joinedEvent: JoinedEvent){
+        return dao.insert(joinedEvent)
+    }
+    suspend fun insert(notification: Notification){
+        return dao.insert(notification)
+    }
 
     suspend fun clearEvent(){
         return dao.clearEvent()
@@ -37,6 +47,14 @@ class AssignmentDatabaseRepository (private val dao: AssignmentDatabaseDao){
 
     suspend fun deleteEvent(deleteEvent: Int){
         return dao.deleteEvent(deleteEvent)
+    }
+
+    suspend fun deleteEvent(userId: Int, eventId: Int){
+        return dao.deleteEvent(userId, eventId)
+    }
+
+    suspend fun deleteNoti(deleteNoti: Int){
+        return dao.deleteNoti(deleteNoti)
     }
 
     suspend fun update(user: User){
@@ -65,6 +83,10 @@ class AssignmentDatabaseRepository (private val dao: AssignmentDatabaseDao){
 
     suspend fun getEventId(event: Int): Event?{
         return dao.getEventId(event)
+    }
+
+    suspend fun getJoinEvent(userId: Int, eventId: Int): JoinedEvent?{
+        return dao.getJoinEvent(userId, eventId)
     }
 
     suspend fun updateProfilePic(username: String, userImage: String){

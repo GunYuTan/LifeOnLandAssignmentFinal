@@ -7,6 +7,7 @@ import androidx.databinding.Observable
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.lifeonlandassignment.Global
 import com.example.lifeonlandassignment.R
 import com.example.lifeonlandassignment.database.AssignmentDatabaseRepository
 import com.example.lifeonlandassignment.database.Event
@@ -42,6 +43,7 @@ class EventViewModel (private val repository: AssignmentDatabaseRepository, appl
             if(eventList == null){
                 _messageLiveData.value = "Currently no event."
             }else {
+                Global.happenEventId = eventList.eventId!!
                 _navigatetoCurrentlyEvent.value = true
             }
         }

@@ -3,24 +3,32 @@ package com.example.lifeonlandassignment.userHome
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.lifeonlandassignment.Global
 import com.example.lifeonlandassignment.databinding.ItemsLayoutNotificationBinding
+import com.example.lifeonlandassignment.manage.EventDataViewModel
+import com.example.lifeonlandassignment.manage.ReportDataViewModel
 
 // Move this class definition outside of your ViewHolder
 data class MyNotificationItem(
+    val invisibleNotiId: Int,
     val imageResource: Int,
     val notificationTitle: String,
     val notificationDetail: String,
     val imageResourceDelete: Int
 )
 
-class RecyclerViewNotificationAdapter(private val itemList: List<MyNotificationItem>) : RecyclerView.Adapter<RecyclerViewNotificationAdapter.ViewNotificationHolder>() {
+class RecyclerViewNotificationAdapter(private val itemList: List<MyNotificationItem>, private val reportDataViewModel: ReportDataViewModel) : RecyclerView.Adapter<RecyclerViewNotificationAdapter.ViewNotificationHolder>() {
 
     inner class ViewNotificationHolder(private val binding: ItemsLayoutNotificationBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: MyNotificationItem) {
+            binding.invisibleNotiId.text = item.invisibleNotiId.toString()
             binding.itemImageView.setImageResource(item.imageResource)
             binding.itemNotificationTitleView.text = item.notificationTitle
             binding.txtNotificationDetail.text = item.notificationDetail
-            binding.itemNotificationDelete.setImageResource(item.imageResourceDelete)
+            binding.itemNotificationDelete.setOnClickListener {
+                Global.deleteNoti = item.invisibleNotiId
+                reportDataViewModel.showAlertDialog()
+            }
         }
     }
 

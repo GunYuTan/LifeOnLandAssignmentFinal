@@ -106,3 +106,18 @@ data class Donation(
     @ColumnInfo(name = "donateMethod")
     val donateMethod: String
 )
+
+@Entity(tableName = "noti_table")
+data class Notification(
+    @PrimaryKey(autoGenerate = true)
+    val notiId: Int?,
+
+    @ColumnInfo(name = "notiAdminId")
+    val notiAdminId: Int,
+
+    @ColumnInfo(name = "notiTitle")
+    val notiTitle: String,
+
+    @ColumnInfo(name = "notiDescription")
+    val notiDescription: String
+)

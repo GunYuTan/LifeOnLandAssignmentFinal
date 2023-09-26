@@ -39,6 +39,7 @@ class UpdateEventViewModel  (private val repository: AssignmentDatabaseRepositor
         return saveImageToFile(uri)
     }
 
+
     fun updateEventButton(eventName: String?, eventDescription: String?, eventStartDate: String?, eventEndDate: String?){
         val eventImage: String? = inputEventImage
         Log.i("UpdateEvent",eventName + eventDescription + eventStartDate + eventEndDate + eventImage)
