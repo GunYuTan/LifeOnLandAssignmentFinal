@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,11 +23,20 @@ class ReportDataFragment : Fragment() {
     ): View? {
         val binding = ReportDataScreenBinding.inflate(inflater, container, false)
 
-        val backButton: ImageView = binding.backButtonReportData
+        val backButton: ImageView = binding.backButtonNotificationData
         // Set click listener for back button
         backButton.setOnClickListener {
             // Perform your action here, for example, navigate back
             fragmentManager?.popBackStack()
+        }
+
+        val button: Button = binding.btnAddNotification
+        button.setOnClickListener {
+            val fragmentManager = parentFragmentManager
+            val fragmentTransaction = fragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.fragment_container, AddEventFragment())
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.commit()
         }
 
         // Get root view
