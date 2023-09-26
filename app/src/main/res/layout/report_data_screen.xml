@@ -5,6 +5,23 @@
     android:layout_height="match_parent"
     android:background="@color/CharcoalBlack">
 
+    <Button
+        android:id="@+id/btnAddNotification"
+        android:layout_width="match_parent"
+        android:layout_height="30sp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/round_btn"
+        android:backgroundTint="@color/orange"
+        android:text="Add Notification"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtNotificationDataTitle" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerNotificationView"
         android:layout_width="match_parent"
@@ -15,7 +32,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNotificationDataTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/btnAddNotification" />
 
     <TextView
         android:id="@+id/txtNotificationDataTitle"
@@ -32,7 +49,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/backButtonReportData"
+        android:id="@+id/backButtonNotificationData"
         android:layout_width="40sp"
         android:layout_height="40sp"
         android:layout_marginStart="25dp"
