@@ -42,7 +42,7 @@ class ReportDataViewModel (private val repository: AssignmentDatabaseRepository,
         uiScope.launch {
             repository.deleteNoti(Global.deleteNoti)
             _refreshEventDataScreen.value = true
-            _messageLiveData.value = "This event successfully deleted."
+            _messageLiveData.value = "This notification successfully deleted."
 
         }
     }

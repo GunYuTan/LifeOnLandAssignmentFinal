@@ -10,10 +10,12 @@ import android.view.ViewGroup
 import android.widget.TableRow
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.lifeonlandassignment.Global
+import com.example.lifeonlandassignment.MainActivity
 import com.example.lifeonlandassignment.R
 import com.example.lifeonlandassignment.database.AssignmentDatabase
 import com.example.lifeonlandassignment.database.AssignmentDatabaseRepository
@@ -99,11 +101,14 @@ class AdminHomeFragment : Fragment (){
 
         val tableLayout5 : TableRow = binding.btnLogout
         tableLayout5.setOnClickListener {
-            val fragmentManager = parentFragmentManager
-            val fragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.fragment_container, LoginFragment())
-            fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.commit()
+            Global.loginUser = ""
+            Global.donationEventId= 0
+            Global.editEventId = 0
+            Global.happenEventId = 0
+            Global.deleteNoti = 0
+            val intent = Intent(requireContext(), MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
         }
 
         return binding.root

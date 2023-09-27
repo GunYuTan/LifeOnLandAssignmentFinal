@@ -89,11 +89,14 @@ class ProfileFragment : Fragment() {
 
         val button1: Button = view.findViewById(R.id.btnUserLogout)
         button1.setOnClickListener {
-            val fragmentManager = parentFragmentManager
-            val fragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.fragment_container, LoginFragment())
-            fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.commit()
+            Global.loginUser = ""
+            Global.donationEventId= 0
+            Global.editEventId = 0
+            Global.happenEventId = 0
+            Global.deleteNoti = 0
+            val intent = Intent(requireContext(), MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
         }
 
         handler2.postDelayed(runnable2, 2000)
