@@ -73,6 +73,10 @@ class AssignmentDatabaseRepository (private val dao: AssignmentDatabaseDao){
         return dao.getUsername(username)
     }
 
+    suspend fun getUserId(userId: Int):User?{
+        return dao.getUserId(userId)
+    }
+
     suspend fun getAdminUsername(username: String):Admin?{
         return dao.getAdminUsername(username)
     }

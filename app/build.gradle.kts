@@ -1,7 +1,10 @@
+import com.android.build.api.dsl.Packaging
+
 plugins {
     id("com.android.application")
     id("kotlin-android")
     id("kotlin-kapt")
+//    id("com.google.gms.google-services")
 }
 
 android {
@@ -38,6 +41,17 @@ android {
         viewBinding = true
         dataBinding = true
     }
+
+//    packagingOptions {
+//        exclude ("META-INF/DEPENDENCIES")
+//        exclude ("META-INF/LICENSE")
+//        exclude ("META-INF/LICENSE.txt")
+//        exclude ("META-INF/license.txt")
+//        exclude ("META-INF/NOTICE")
+//        exclude ("META-INF/NOTICE.txt")
+//        exclude ("META-INF/notice.txt")
+//        exclude ("META-INF/ASL2.0")
+//    }
 }
 
 dependencies {
@@ -69,6 +83,12 @@ dependencies {
     kapt ("androidx.room:room-compiler:2.5.2")
     implementation ("androidx.lifecycle:lifecycle-extensions:2.2.0")
 
+    //Firebase
+//    implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
+//    implementation("com.google.firebase:firebase-analytics-ktx")
+//    implementation("com.google.firebase:firebase-auth-ktx")
+//    implementation("com.google.firebase:firebase-firestore-ktx")
+
     // Testing
     testImplementation ("junit:junit:4.12")
     androidTestImplementation ("androidx.test.ext:junit:1.1.0")
@@ -80,4 +100,8 @@ dependencies {
 
     //Recycler View
     implementation("androidx.recyclerview:recyclerview:1.2.1")
+
+    //email
+    //implementation("javax.mail:javax.mail-api:1.6.2")
+    implementation("com.sun.mail:javax.mail:1.6.2")
 }

@@ -66,6 +66,8 @@ interface AssignmentDatabaseDao {
 
     @Query("SELECT * FROM event_table WHERE eventId = :eventId")
     suspend fun getEventId(eventId: Int): Event?
+    @Query("SELECT * FROM user_table WHERE userId = :userId")
+    suspend fun getUserId(userId: Int): User?
 
     @Query("SELECT * FROM joined_event_table WHERE joinedEventUserId = :userId AND joinedEventEventId = :eventId")
     suspend fun getJoinEvent(userId: Int, eventId: Int): JoinedEvent?

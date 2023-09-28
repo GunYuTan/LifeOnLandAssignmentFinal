@@ -16,8 +16,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.lifeonlandassignment.database.AssignmentDatabase
 import com.example.lifeonlandassignment.database.AssignmentDatabaseRepository
 import com.example.lifeonlandassignment.databinding.DonationScreenBinding
-import com.example.lifeonlandassignment.manage.AddEventViewModel
-import com.example.lifeonlandassignment.manage.AddEventViewModelFactory
 import com.example.lifeonlandassignment.userHome.DonationViewModel
 import com.example.lifeonlandassignment.userHome.DonationViewModelFactory
 import kotlinx.coroutines.runBlocking
@@ -26,11 +24,13 @@ class DonationFragment : Fragment() {
     private lateinit var donationViewModel: DonationViewModel
     private var _binding: DonationScreenBinding? = null
     private val binding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         _binding = DataBindingUtil.inflate(inflater, R.layout.donation_screen, container, false)
         val application = requireNotNull(this.activity).application
         val dataSource = AssignmentDatabase.getInstance(application).assignmentDatabaseDao

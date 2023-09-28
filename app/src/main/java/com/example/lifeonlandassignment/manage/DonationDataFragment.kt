@@ -47,19 +47,6 @@ class DonationDataFragment : Fragment() {
         val recyclerView: RecyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-        // Sample data and setting adapter
-//        val items = listOf(
-//            MyDonationItem(,
-//                , "D0001",
-//                , "SMALL",
-//                , "Sunda Island Tiger",
-//                , "MYR 1111",),
-//            MyDonationItem(R.drawable.ic_favourite,
-//                "Donation ID : ", "D0002",
-//                "User ID : ", "BIG",
-//                "Event ID : ", "Sunda Island Tiger",
-//                "Donation Amount : ", "MYR 2222",)
-//        )
         val myItemList: List<MyDonationItem> = donationList.map { donation ->
             MyDonationItem(
             imageResource = R.drawable.ic_favourite,
@@ -70,11 +57,12 @@ class DonationDataFragment : Fragment() {
             DonationEventID = "Event ID : ",
             DonationEventIDDetail = donation.donateEventId.toString(),
             DonationAmount = "Donation Amount : ",
-            DonationAmountDetail = donation.donateAmount.toString()
+            DonationAmountDetail = donation.donateAmount.toString(),
+            DonationSendMessage = R.drawable.ic_message
             )
         }
 
-        val adapter = RecyclerViewDonationAdapter(myItemList)
+        val adapter = RecyclerViewDonationAdapter(myItemList, donationDataViewModel)
         recyclerView.adapter = adapter
 
         return binding.root

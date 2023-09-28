@@ -8,7 +8,7 @@ import androidx.databinding.Observable
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.lifeonlandassignment.database.Admin
+import com.example.lifeonlandassignment.Global
 import com.example.lifeonlandassignment.database.AssignmentDatabaseRepository
 import com.example.lifeonlandassignment.database.User
 import kotlinx.coroutines.*
