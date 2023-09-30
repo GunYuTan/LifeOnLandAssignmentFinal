@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
+import com.example.lifeonlandassignment.MainActivity
 import com.example.lifeonlandassignment.NotificationFragment
 import com.example.lifeonlandassignment.ProfileFragment
 import com.example.lifeonlandassignment.R

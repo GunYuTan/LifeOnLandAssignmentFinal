@@ -118,6 +118,12 @@ class MainActivity : AppCompatActivity() {
             )
             myImageView.visibility = if (isTargetFragment) View.VISIBLE else View.GONE
             bottomNavigationView.visibility = if (isTargetFragment) View.VISIBLE else View.GONE
+
+            // Enable/Disable drawer swipe
+            drawerLayout.setDrawerLockMode(
+                if (isTargetFragment) DrawerLayout.LOCK_MODE_UNLOCKED
+                else DrawerLayout.LOCK_MODE_LOCKED_CLOSED, GravityCompat.START
+            )
         }
     }
 
@@ -131,6 +137,7 @@ class MainActivity : AppCompatActivity() {
                 commit()
             }
         }
+        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
     }
 
     private fun syncBottomNavigationWithDrawer(selectedFragment: Fragment?) {
