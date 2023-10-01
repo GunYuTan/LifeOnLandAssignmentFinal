@@ -83,12 +83,6 @@ dependencies {
     kapt ("androidx.room:room-compiler:2.5.2")
     implementation ("androidx.lifecycle:lifecycle-extensions:2.2.0")
 
-    //Firebase
-//    implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
-//    implementation("com.google.firebase:firebase-analytics-ktx")
-//    implementation("com.google.firebase:firebase-auth-ktx")
-//    implementation("com.google.firebase:firebase-firestore-ktx")
-
     // Testing
     testImplementation ("junit:junit:4.12")
     androidTestImplementation ("androidx.test.ext:junit:1.1.0")

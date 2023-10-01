@@ -45,12 +45,12 @@ interface AssignmentDatabaseDao {
     @Query("SELECT * from user_table")
     suspend fun getAllUser(): List<User>
 
-    @Query("SELECT * from event_table")
+    @Query("SELECT * from event_table ORDER BY eventId DESC")
     suspend fun getAllEvent(): List<Event>
 
     @Query("SELECT * from donation_table")
     suspend fun getAllDonation(): List<Donation>
-    @Query("SELECT * from noti_table")
+    @Query("SELECT * from noti_table ORDER BY notiId DESC")
     suspend fun getAllNotification(): List<Notification>
 
     @Query("SELECT * FROM user_table WHERE username LIKE :username AND password LIKE :password")
