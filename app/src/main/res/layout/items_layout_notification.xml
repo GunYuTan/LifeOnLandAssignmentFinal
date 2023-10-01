@@ -62,6 +62,7 @@
             android:layout_marginStart="18dp"
             android:layout_marginTop="19dp"
             android:text="TextView"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
