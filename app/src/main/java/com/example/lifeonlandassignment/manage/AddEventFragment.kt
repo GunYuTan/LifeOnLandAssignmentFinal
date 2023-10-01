@@ -18,6 +18,7 @@ import com.bumptech.glide.Glide
 import com.example.lifeonlandassignment.DatePickerFragment
 import com.example.lifeonlandassignment.Global
 import com.example.lifeonlandassignment.R
+import com.example.lifeonlandassignment.admin.AdminHomeFragment
 import com.example.lifeonlandassignment.database.AssignmentDatabase
 import com.example.lifeonlandassignment.database.AssignmentDatabaseRepository
 import com.example.lifeonlandassignment.databinding.AddEventScreenBinding
@@ -54,8 +55,11 @@ class AddEventFragment : Fragment() {
         val backButton: ImageView = binding.backButtonAddEventData
         // Set click listener for back button
         backButton.setOnClickListener {
-            // Perform your action here, for example, navigate back
-            fragmentManager?.popBackStack()
+            val fragmentManager = parentFragmentManager
+            val fragmentTransaction = fragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.fragment_container, EventDataFragment())
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.commit()
         }
 
         binding.txtInputAdminIDAddEvent.text = runBlocking { addEventViewModel.getAdmin(Global.loginUser)?.adminId.toString() }

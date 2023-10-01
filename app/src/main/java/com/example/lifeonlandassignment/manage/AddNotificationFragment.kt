@@ -32,8 +32,11 @@ class AddNotificationFragment : Fragment() {
         binding.lifecycleOwner = this
 
         binding.backButtonAddEventData2.setOnClickListener {
-            // Perform your action here, for example, navigate back
-            fragmentManager?.popBackStack()
+            val fragmentManager = parentFragmentManager
+            val fragmentTransaction = fragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.fragment_container, ReportDataFragment())
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.commit()
         }
 
         addNotificationViewModel.messageLiveData.observe(viewLifecycleOwner, Observer { message ->

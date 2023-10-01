@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lifeonlandassignment.Global
 import com.example.lifeonlandassignment.R
+import com.example.lifeonlandassignment.admin.AdminHomeFragment
 import com.example.lifeonlandassignment.database.AssignmentDatabase
 import com.example.lifeonlandassignment.database.AssignmentDatabaseRepository
 import com.example.lifeonlandassignment.databinding.EventDataScreenBinding
@@ -53,8 +54,11 @@ class EventDataFragment : Fragment() {
         val backButton = binding.backButtonEventData
         // Set click listener for back button
         backButton.setOnClickListener {
-            // Perform your action here, for example, navigate back
-            fragmentManager?.popBackStack()
+            val fragmentManager = parentFragmentManager
+            val fragmentTransaction = fragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.fragment_container, AdminHomeFragment())
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.commit()
         }
 
 
